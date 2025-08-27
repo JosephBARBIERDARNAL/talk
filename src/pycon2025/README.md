@@ -61,3 +61,13 @@ Votre package a besoin de ces 4 choses, la 3ème va vous surprendre !
 ![](./doc-emacs.png)
 
 ### Configuration du pyproject.toml
+
+utiliser uv!
+
+- dependencies
+  - open source VS closed source
+  - dev dependencies
+
+### Partage du template
+
+https://github.com/y-sunflower/python-package-template

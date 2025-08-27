@@ -2,11 +2,12 @@
 title: "Tout ce dont votre package a besoin"
 author: "Joseph Barbier - *PyCon2025*"
 format:
-  revealjs: 
+  revealjs:
     theme: [default, style.scss]
     transition: slide
     background-transition: fade
-    incremental: true   
+    incremental: true
+    auto-stretch: false
 embed-resources: true
 echo: true
 ---
@@ -21,12 +22,13 @@ echo: true
 ![](joseph.png){.circle}
 <div style="font-size:0.6em;">
    *Joseph Barbier*
-   
+
    <br><br>
-   
+
    <a href="https://barbierjoseph.com">barbierjoseph.com</a>
 
-   <a href="https://github.com/JosephBARBIERDARNAL">github.com/JosephBARBIERDARNAL</a>
+   <a href="https://ysunflower.com">ysunflower.com</a>
+
 </div>
 :::
 
@@ -36,9 +38,9 @@ echo: true
 ::: {.column width="50%"}
 <div style="font-size: 1.2em;">
    Freelance
-   
+
    Open source
-   
+
    Data(viz)
 
    ![](viz.png)
@@ -47,29 +49,75 @@ echo: true
 
 ::::
 
-## Package Python
+## Le bon package et le mauvais package
 
-<div style="font-size: 1.2em;">
-   - Qui a déjà créé un package Python ?
-   <br>
-   <br>
-   - Qui comprend quand on lui parle de package ?
-   <br>
-   <br>
-   - Qui comprend quand on lui parle de package ?
-</div>
+
+
+![](./meme-bon-mauvais-package.png){width=40%}
+
+
+Un bon package **c'est pas (uniquement) une question de code**.
+
+- facile à comprendre ?
+- facile à utiliser ?
+- facile à développer ?
+
+
+## TLDR: package Python
+
+```python
+def my_super_cool_function(arg):
+    if arg == "cool":
+        something = 123
+    else:
+        ...
+
+    ...
+
+    return something
+```
+
+:::: {.columns}
+
+::: {.column width="20%"}
+:::
+
+::: {.column width="30%"}
+![](./arrow.svg){width=80%}
+:::
+
+::: {.column width="50%"}
+![](./pkg.jpg){width=60%}
+:::
+
+::::
+
+Facilement **distribuable** et donc **reutilisable** !
+
+
+## Sommaire
+
+### Votre package a besoin de ces 4 choses, <b>la dernière va vous surprendre 😱</b> !
+
+<br>
+
+- Ne jamais commit une erreur
+- Tester dans les meilleures conditions
+- Configuration du `pyproject.toml`
+- Créer <span style="background-color:black; color: black;">la meilleure documentation</span>
+
 
 ## Parlons style de code !
 
-![](meme-word-ide-2.png){fig-align="center" width="70%"}
+![](meme-word-ide-2.png){fig-align="center" width="60%"}
 
-## Code style {auto-animate="true"}
+## {auto-animate="true"}
 
 ```{python}
 def add_nums(  A ,B):return A+B
 ```
 
-## Code style {auto-animate="true"}
+## {auto-animate="true"}
 
 ```{python}
 def add_nums(  A ,B):return A+B
@@ -79,7 +127,7 @@ def add_nums_numpy(  A ,B):
      return np.sum([A, B])
 ```
 
-## Code style {auto-animate="true"}
+## {auto-animate="true"}
 
 ```{python}
 def add_nums(  A ,B):return A+B
@@ -95,7 +143,7 @@ def multiply(a,b ):
  return  a *b
 ```
 
-## Code style {auto-animate="true"}
+## {auto-animate="true"}
 
 ```{python}
 def add_nums(  A ,B):return A+B
@@ -111,14 +159,14 @@ def multiply(a,b ):
  return  a *b
 
 def main( ) :
-    x= add_nums(2,  3) 
+    x= add_nums(2,  3)
 #some comment
     y=multiply( x ,4 )                            # in the middle of the sea
     print( "sum:",x  )
     print("product:" ,  y)
 ```
 
-## Code style
+##
 
 ```{python}
 import numpy as np
@@ -127,18 +175,14 @@ import numpy as np
 def add_nums(A, B):
     return A + B
 
-
 def add_nums_numpy(A, B):
     return np.sum([A, B])
-
 
 def divideNums(A, B):
     return A / B
 
-
 def multiply(a, b):
     return a * b
-
 
 def main():
     x = add_nums(2, 3)
@@ -147,6 +191,60 @@ def main():
     print("sum:", x)
     print("product:", y)
 ```
+
+##
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](./meme-formateur.jpg)
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="40%"}
+<br>
+[ruff](https://docs.astral.sh/ruff/) est probablement la meilleure option
+
+<br>
+
+2 manières d'utiliser :
+
+- "on save"
+- pre-commit
+- On va faire les deux !
+:::
+
+::::
+
+## Git
+
+
+
+:::: {.columns}
+
+::: {.column width="40%"}
+<br>
+
+- Git c'est <b>Google Drive sous stéroïdes</b>, pour des fichiers légers
+- comme des fichiers textes par exemple...
+- ... et donc des fichiers de code!
+
+<br>
+<br>
+
+- Git c'est surtout l'historique, avec les <b>commits</b>
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="50%"}
+![](./meme-git.jpg)
+:::
+
+::::
 
 ## {auto-animate=true}
 
