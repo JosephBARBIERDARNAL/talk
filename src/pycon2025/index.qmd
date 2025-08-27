@@ -97,6 +97,9 @@ Facilement **distribuable** et donc **reutilisable** !
 
 ## Sommaire
 
+<br>
+<br>
+
 ### Votre package a besoin de ces 4 choses, <b>la dernière va vous surprendre 😱</b> !
 
 <br>
@@ -233,6 +236,7 @@ def main():
 
 <br>
 <br>
+<br>
 
 - Git c'est surtout l'historique, avec les <b>commits</b>
 :::
@@ -245,6 +249,8 @@ def main():
 :::
 
 ::::
+
+## pre-commit
 
 ## {auto-animate=true}
 
