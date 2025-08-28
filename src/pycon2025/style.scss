@@ -362,3 +362,7 @@ img.circle {
   border-radius: 50%;
   object-fit: cover; /* ensures image fills the circle without distortion */
 }
+
+.reveal .slides section .blur {
+  filter: blur(5px);
+}

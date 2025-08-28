@@ -49,19 +49,40 @@ echo: true
 
 ::::
 
+## Questions
+
+<br>
+<br>
+
+<div style="font-size: 1.5em; font-style: italic;">
+
+::: {.fragment .fade-in-then-semi-out}
+Qui a déjà créé un package Python ?
+:::
+
+<br>
+
+::: {.fragment .fade-in-then-semi-out}
+Qui a déjà mis sur PyPI un package Python ?
+:::
+
+<br>
+
+::: {.fragment .fade-in-then-semi-out}
+Qui contribue à des packages Python open source ?
+:::
+
+</div>
+
 ## Le bon package et le mauvais package
 
-
-
 ![](./meme-bon-mauvais-package.png){width=40%}
-
 
 Un bon package **c'est pas (uniquement) une question de code**.
 
 - facile à comprendre ?
 - facile à utiliser ?
 - facile à développer ?
-
 
 ## TLDR: package Python
 
@@ -105,10 +126,14 @@ Facilement **distribuable** et donc **reutilisable** !
 <br>
 
 - Ne jamais commit une erreur
-- Tester dans les meilleures conditions
-- Configuration du `pyproject.toml`
-- Créer <span style="background-color:black; color: black;">la meilleure documentation</span>
 
+- Tester dans les meilleures conditions
+
+- Configuration du `pyproject.toml`
+
+::: {.blur}
+- Créer la meilleure documentation
+:::
 
 ## Parlons style de code !
 
@@ -230,7 +255,7 @@ def main():
 ::: {.column width="40%"}
 <br>
 
-- Git c'est <b>Google Drive sous stéroïdes</b>, pour des fichiers légers
+- Git c'est <b>Google Drive sous stéroïdes</b>, mais pour des fichiers légers
 - comme des fichiers textes par exemple...
 - ... et donc des fichiers de code!
 
@@ -239,6 +264,7 @@ def main():
 <br>
 
 - Git c'est surtout l'historique, avec les <b>commits</b>
+- Mais on veut que l'historique soit propre !
 :::
 
 ::: {.column width="10%"}
@@ -252,14 +278,27 @@ def main():
 
 ## pre-commit
 
-## {auto-animate=true}
+<br>
 
-::: {style="margin-top: 100px;"}
-Animating content
+A chaque commit, fait tourner une série de check qu'on aura définit
+
+Certains sont bloquants --> fichier trop lourd --> il faut compresser ou supprimer
+
+Certains peuvent être réparé automatiquement --> ruff --> cas d'usage principal
+
+## Tests
+
+:::: {.columns}
+
+::: {.column width="40%"}
+![](./meme-testing.jpg)
 :::
 
-## {auto-animate=true}
-
-::: {style="margin-top: 200px; font-size: 3em; color: red;"}
-Animating content
+::: {.column width="10%"}
 :::
+
+::: {.column width="50%"}
+Tester son code ça veut dire quoi ?
+:::
+
+::::
