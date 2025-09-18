@@ -57,6 +57,12 @@ echo: true
 <div style="font-size: 1.5em; font-style: italic;">
 
 ::: {.fragment .fade-in-then-semi-out}
+Qui ne sait pas du tout ce qu'est un package Python ?
+:::
+
+<br>
+
+::: {.fragment .fade-in-then-semi-out}
 Qui a déjà créé un package Python ?
 :::
 
@@ -152,7 +158,7 @@ def add_nums(  A ,B):return A+B
 
 import numpy as np
 def add_nums_numpy(  A ,B):
-     return np.sum([A, B])
+                    return np.sum([A, B])
 ```
 
 ## {auto-animate="true"}
@@ -162,7 +168,7 @@ def add_nums(  A ,B):return A+B
 
 import numpy as np
 def add_nums_numpy(  A ,B):
-     return np.sum([A, B])
+                    return np.sum([A, B])
 
 
 def divideNums( A , B):
@@ -178,7 +184,7 @@ def add_nums(  A ,B):return A+B
 
 import numpy as np
 def add_nums_numpy(  A ,B):
-     return np.sum([A, B])
+                    return np.sum([A, B])
 
 
 def divideNums( A , B):
@@ -193,6 +199,22 @@ def main( ) :
     print( "sum:",x  )
     print("product:" ,  y)
 ```
+
+<br>
+
+::: {.fragment}
+Quelle est la première erreur qui va apparaître?
+:::
+
+::: {.fragment}
+<div style="font-size: 1.5em;">
+    Code parfaitement valide ✅
+</div>
+:::
+
+::: {.fragment}
+On prend le même code, mais on le standardise
+:::
 
 ##
 
@@ -220,6 +242,11 @@ def main():
     print("product:", y)
 ```
 
+- indentation ✅
+- commentaires ✅
+- import ✅
+- sauts de ligne ✅
+
 ##
 
 :::: {.columns}
@@ -233,15 +260,23 @@ def main():
 
 ::: {.column width="40%"}
 <br>
+
+:::{.fragment}
 [ruff](https://docs.astral.sh/ruff/) est probablement la meilleure option
+:::
 
 <br>
 
+:::{.fragment}
 2 manières d'utiliser :
+:::
 
 - "on save"
 - pre-commit
-- On va faire les deux !
+
+:::{.fragment}
+→ pre-commit est le plus important!
+:::
 :::
 
 ::::
@@ -282,23 +317,128 @@ def main():
 
 A chaque commit, fait tourner une série de check qu'on aura définit
 
-Certains sont bloquants --> fichier trop lourd --> il faut compresser ou supprimer
+- [ruff](https://docs.astral.sh/ruff/)
+- [check added large files](https://github.com/pre-commit/pre-commit-hooks/blob/main/pre_commit_hooks/check_added_large_files.py)
+    - met une taille limite de fichier
+- [check yaml](https://github.com/pre-commit/pre-commit-hooks/blob/main/pre_commit_hooks/check_yaml.py)
+    - vérifie la parsabilité des fichiers yaml
 
-Certains peuvent être réparé automatiquement --> ruff --> cas d'usage principal
+<br>
+
+:::{.fragment}
+Vous n'avez plus à penser à cela, tout est vérifié en amont
+:::
+
 
 ## Tests
 
 :::: {.columns}
 
-::: {.column width="40%"}
+::: {.column width="30%"}
 ![](./meme-testing.jpg)
 :::
 
-::: {.column width="10%"}
-:::
-
-::: {.column width="50%"}
+::: {.column width="70%"}
 Tester son code ça veut dire quoi ?
+
+- vérifier que le code **n'a pas d'erreur**
+- vérifier que le code **fait ce que je pense**
+- vérifier que le code **fonctionne dans différents scénarios**
+- vérifier que le code **fonctionne dans différents environnements**
+
+<br>
+
+:::{.fragment .fade-in-then-semi-out}
+Il suffit de le faire tourner!
+:::
+:::{.fragment style="color: red; font-weight: bold; font-size: 1.5em; font-style: italic;"}
+Il suffit de le faire tourner?
+:::
 :::
 
 ::::
+
+## Comment (et quoi) tester
+
+:::: {.columns}
+
+::: {.column width="60%"}
+- trust yourself
+    - ❌ pas d'erreur
+    - ❌ fait ce que je pense
+    - ❌ différents scénarios
+    - ❌ différents environnements
+- lancer un exemple d'utilisation
+    - ✅ pas d'erreur
+    - ❓ fait ce que je pense
+    - ❌ différents scénarios
+    - ❌ différents environnements
+- écrire des tests unitaires
+    - ✅ pas d'erreur
+    - ✅ fait ce que je pense
+    - ✅ différents scénarios
+    - ❌ différents environnements
+- git push ✅
+:::
+
+::: {.column width="40%"}
+![](./meme-test.jpg)
+:::
+
+::::
+
+## Github actions {auto-animate=true}
+
+Scrits (yaml) qui se déclenchent dans certaines conditions
+
+- pull requests
+- push
+- tous les jours à minuit
+
+<br>
+
+:::{.fragment .fade-in-then-semi-out}
+→ faire tourner les tests unitaires
+:::
+
+:::{.fragment .fade-in-then-semi-out}
+→ sur plusieurs versions de Python (open source ?)
+:::
+
+:::{data-id="os" .fragment .fade-in-then-semi-out}
+→ sur plusieurs OS
+:::
+
+:::{.fragment .fade-in-then-semi-out}
+→ **Et cela tout le temps!**
+:::
+
+## Github actions  {auto-animate=true}
+
+::: {data-id="os" style="margin-top: 100px; font-size: 3em;"}
+sur plusieurs OS
+:::
+
+## Github actions  {auto-animate=true}
+
+::: {data-id="os" style="margin-top: 100px; font-size: 3.2em; color: red;"}
+sur plusieurs OS ???
+:::
+
+<br>
+
+:::{.fragment .callout-warning style="font-size: 1.4em;"}
+Python est interprété, mais peut se comporter différemment en fonction de l'OS
+
+- noms de fichiers
+- chemins
+- fichiers temporaires
+- permissions
+- modules spécifiques
+:::
+
+
+## Aller plus loin
+
+- [Python packaging essentials](https://y-sunflower.github.io/python-packaging-essentials/)
+- [Python package template](https://github.com/y-sunflower/python-package-template)
