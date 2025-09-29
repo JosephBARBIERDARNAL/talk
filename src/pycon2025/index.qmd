@@ -437,8 +437,121 @@ Python est interprété, mais peut se comporter différemment en fonction de l'O
 - modules spécifiques
 :::
 
+## *one ~~ring~~ **file** to rule them all*
+
+<br>
+
+Un package ça se décompose en :
+
+- du code Python
+
+- des méta données
+    - un nom, une description, des auteur.e.s
+    - des dépendances
+    - une license
+    - ...
+
+<br>
+
+<div style="display: flex; justify-content: center; font-size: 2em;" class="fragment">
+✨`pyproject.toml`✨
+</div>
+
+
+## *one ~~ring~~ **file** to rule them all*
+
+<br>
+
+<div style="display: flex; justify-content: center; font-size: 1.7em;">
+`pyproject.toml` + [uv](https://docs.astral.sh/uv/) = <3
+</div>
+
+<br>
+
+![](./meme-pyproject.jpg){fig-align="center" width="50%"}
+
+## Gestion des dépendances
+
+<br>
+
+![](./dependencies-scheme.png){width="50%" fig-align="center" }
+
+## Gestion des dépendances
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+![](./dependencies-fastapi.png)
+
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+
+![](./dependencies-numpy.png)
+
+:::
+
+::::
+
+## Gestion des dépendances
+
+<br>
+
+- open source → être convenient
+
+:::{.fragment}
+`numpy>=2.1.0`
+:::
+
+<br>
+<br>
+
+- closed source → restreindre autant que possible
+
+:::{.fragment}
+`numpy==2.1.3`
+:::
 
 ## Aller plus loin
 
 - [Python packaging essentials](https://y-sunflower.github.io/python-packaging-essentials/)
 - [Python package template](https://github.com/y-sunflower/python-package-template)
+
+    - des projets open source pour la communauté
+    - vous voulez contribuer ? c'est super facile !
+
+
+##
+
+<div style="display: flex; justify-content: center; font-size: 3em;">
+Merci !
+</div>
+
+J'ai dis des choses pertinentes ?
+
+::: {.nonincremental}
+- venez m'en parler
+:::
+
+J'ai dis des choses fausses ?
+
+::: {.nonincremental}
+- venez m'en parler (!!!)
+:::
+
+<br>
+
+Autres ?
+
+::: {.nonincremental}
+- venez me voir !
+- linkedin: Joseph Barbier
+- mail: `joseph.barbierdarnal@gmail.com`
+- slides: [github.com/JosephBARBIERDARNAL/talk](https://github.com/JosephBARBIERDARNAL/talk/tree/main/src/pycon2025)
+:::
