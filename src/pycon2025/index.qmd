@@ -518,6 +518,54 @@ Un package ça se décompose en :
 `numpy==2.1.3`
 :::
 
+## Documentation
+
+La première (et souvent la seule) chose que les gens verronts
+
+<br>
+
+Objectif: réduire au maximum l'effort requis pour comprendre le package.
+
+<br>
+
+Pour ça on a besoin de 2 choses:
+
+- Landing page
+- Diátaxis framework
+
+## Landing page
+
+- A quoi sert le package?
+- Dans quel contexte il s'inscrit (e.g., package Python)
+- Exemple usage minimaliste
+- Donner envie!
+
+## Landing page
+
+![](./doc-emacs.png){width=70% fig-align="center"}
+
+## Landing page
+
+![](./doc-vscode.png)
+
+## Landing page
+
+![](./doc-zed.png)
+
+## Landing page
+
+![](./doc-vim.png)
+
+## Diataxis
+
+![](./diataxis.png)
+
+## Plotnine
+
+<video controls width="100%" loop>
+  <source src="./plotnine.mov" type="video/webm" />
+</video>
+
 ## Aller plus loin
 
 - [Python packaging essentials](https://y-sunflower.github.io/python-packaging-essentials/)
@@ -536,13 +584,13 @@ Merci !
 J'ai dis des choses pertinentes ?
 
 ::: {.nonincremental}
-- venez m'en parler
+- venez m'en parler !
 :::
 
 J'ai dis des choses fausses ?
 
 ::: {.nonincremental}
-- venez m'en parler (!!!)
+- venez m'en parler !
 :::
 
 <br>
