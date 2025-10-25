@@ -9,6 +9,7 @@ dependencies = [
     "nbclient",
     "nbformat",
     "numpy",
+    "pyyaml>=6.0.2",
 ]
 
 [tool.ruff]

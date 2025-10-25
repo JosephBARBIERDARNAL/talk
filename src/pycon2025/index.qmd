@@ -69,13 +69,13 @@ Qui a déjà créé un package Python ?
 <br>
 
 ::: {.fragment .fade-in-then-semi-out}
-Qui a déjà mis sur PyPI un package Python ?
+Qui contribue à des packages Python open source ?
 :::
 
 <br>
 
 ::: {.fragment .fade-in-then-semi-out}
-Qui contribue à des packages Python open source ?
+Qui a déjà mis sur PyPI un package Python ?
 :::
 
 </div>
@@ -131,6 +131,8 @@ Facilement **distribuable** et donc **reutilisable** !
 
 <br>
 
+<div style="font-size: 2em">
+
 - Ne jamais commit une erreur
 
 - Tester dans les meilleures conditions
@@ -140,6 +142,8 @@ Facilement **distribuable** et donc **reutilisable** !
 ::: {.blur}
 - Créer la meilleure documentation
 :::
+
+</div>
 
 ## Parlons style de code !
 
@@ -203,7 +207,7 @@ def main( ) :
 <br>
 
 ::: {.fragment}
-Quelle est la première erreur qui va apparaître?
+A quelle ligne sera la première erreur?
 :::
 
 ::: {.fragment}
@@ -394,6 +398,7 @@ Scrits (yaml) qui se déclenchent dans certaines conditions
 - pull requests
 - push
 - tous les jours à minuit
+- ...
 
 <br>
 
@@ -474,7 +479,19 @@ Un package ça se décompose en :
 
 <br>
 
-![](./dependencies-scheme.png){width="50%" fig-align="center" }
+![](./dependencies-scheme-1.png){width="50%" fig-align="center" }
+
+## Gestion des dépendances
+
+<br>
+
+![](./dependencies-scheme-2.png){width="50%" fig-align="center" }
+
+## Gestion des dépendances
+
+<br>
+
+![](./dependencies-scheme-3.png){width="50%" fig-align="center" }
 
 ## Gestion des dépendances
 
