@@ -20,8 +20,8 @@ echo: true
 
 ::: {.column width="35%"}
 ![](joseph.png){.circle}
-<div style="font-size:0.6em;">
-   *Joseph Barbier*
+<div style="font-size:0.9em;">
+   *Joseph*
 
    <br><br>
 
@@ -37,7 +37,7 @@ echo: true
 
 ::: {.column width="50%"}
 <div style="font-size: 1.2em;">
-   Freelance
+   Consulting
 
    Open source
 
@@ -80,16 +80,6 @@ Qui a déjà mis sur PyPI un package Python ?
 
 </div>
 
-## Le bon package et le mauvais package
-
-![](./meme-bon-mauvais-package.png){width=40%}
-
-Un bon package **c'est pas (uniquement) une question de code**.
-
-- facile à comprendre ?
-- facile à utiliser ?
-- facile à développer ?
-
 ## TLDR: package Python
 
 ```python
@@ -121,6 +111,16 @@ def my_super_cool_function(arg):
 
 Facilement **distribuable** et donc **reutilisable** !
 
+## Le bon package et le mauvais package
+
+![](./meme-bon-mauvais-package.png){width=40%}
+
+Un bon package **c'est pas (uniquement) une question de code**.
+
+- facile à comprendre ?
+- facile à utiliser ?
+- facile à développer ?
+
 
 ## Sommaire
 
@@ -145,17 +145,13 @@ Facilement **distribuable** et donc **reutilisable** !
 
 </div>
 
-## Parlons style de code !
-
-![](meme-word-ide-2.png){fig-align="center" width="60%"}
-
-## {auto-animate="true"}
+## Style de code {auto-animate="true"}
 
 ```{python}
 def add_nums(  A ,B):return A+B
 ```
 
-## {auto-animate="true"}
+## Style de code {auto-animate="true"}
 
 ```{python}
 def add_nums(  A ,B):return A+B
@@ -165,7 +161,7 @@ def add_nums_numpy(  A ,B):
                     return np.sum([A, B])
 ```
 
-## {auto-animate="true"}
+## Style de code {auto-animate="true"}
 
 ```{python}
 def add_nums(  A ,B):return A+B
@@ -181,7 +177,7 @@ def multiply(a,b ):
  return  a *b
 ```
 
-## {auto-animate="true"}
+## Style de code {auto-animate="true"}
 
 ```{python}
 def add_nums(  A ,B):return A+B
@@ -220,7 +216,7 @@ A quelle ligne sera la première erreur?
 On prend le même code, mais on le standardise
 :::
 
-##
+## Style de code
 
 ```{python}
 import numpy as np
@@ -251,7 +247,7 @@ def main():
 - import ✅
 - sauts de ligne ✅
 
-##
+## Style de code
 
 :::: {.columns}
 
@@ -286,8 +282,6 @@ def main():
 ::::
 
 ## Git
-
-
 
 :::: {.columns}
 
@@ -334,7 +328,7 @@ Vous n'avez plus à penser à cela, tout est vérifié en amont
 :::
 
 
-## Tests
+## Tester son code
 
 :::: {.columns}
 
@@ -585,12 +579,15 @@ Pour ça on a besoin de 2 choses:
 
 ## Aller plus loin
 
-- [Python packaging essentials](https://y-sunflower.github.io/python-packaging-essentials/)
-- [Python package template](https://github.com/y-sunflower/python-package-template)
+<div style="font-size:2em;">
+
+- [github.com/y-sunflower/python-packaging-essentials](https://y-sunflower.github.io/python-packaging-essentials/)
+- [github.com/y-sunflower/python-package-template](https://github.com/y-sunflower/python-package-template)
 
     - des projets open source pour la communauté
     - vous voulez contribuer ? c'est super facile !
 
+</div>
 
 ##
 
@@ -598,13 +595,13 @@ Pour ça on a besoin de 2 choses:
 Merci !
 </div>
 
-J'ai dis des choses pertinentes ?
+J'ai dis des choses fausses ?
 
 ::: {.nonincremental}
 - venez m'en parler !
 :::
 
-J'ai dis des choses fausses ?
+J'ai dis des choses pertinentes ?
 
 ::: {.nonincremental}
 - venez m'en parler !
