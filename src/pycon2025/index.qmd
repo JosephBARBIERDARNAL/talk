@@ -127,13 +127,11 @@ Un bon package **c'est pas (uniquement) une question de code**.
 <br>
 <br>
 
-### Votre package a besoin de ces 4 choses, <b>la dernière va vous surprendre 😱</b> !
+### Votre package a besoin de ces 3 choses, <b>la dernière va vous surprendre 😱</b> !
 
 <br>
 
 <div style="font-size: 2em">
-
-- Ne jamais commit une erreur
 
 - Tester dans les meilleures conditions
 
@@ -144,188 +142,6 @@ Un bon package **c'est pas (uniquement) une question de code**.
 :::
 
 </div>
-
-## Style de code {auto-animate="true"}
-
-```{python}
-def add_nums(  A ,B):return A+B
-```
-
-## Style de code {auto-animate="true"}
-
-```{python}
-def add_nums(  A ,B):return A+B
-
-import numpy as np
-def add_nums_numpy(  A ,B):
-                    return np.sum([A, B])
-```
-
-## Style de code {auto-animate="true"}
-
-```{python}
-def add_nums(  A ,B):return A+B
-
-import numpy as np
-def add_nums_numpy(  A ,B):
-                    return np.sum([A, B])
-
-
-def divideNums( A , B):
-        return A/B
-def multiply(a,b ):
- return  a *b
-```
-
-## Style de code {auto-animate="true"}
-
-```{python}
-def add_nums(  A ,B):return A+B
-
-import numpy as np
-def add_nums_numpy(  A ,B):
-                    return np.sum([A, B])
-
-
-def divideNums( A , B):
-        return A/B
-def multiply(a,b ):
- return  a *b
-
-def main( ) :
-    x= add_nums(2,  3)
-#some comment
-    y=multiply( x ,4 )                            # in the middle of the sea
-    print( "sum:",x  )
-    print("product:" ,  y)
-```
-
-<br>
-
-::: {.fragment}
-A quelle ligne sera la première erreur?
-:::
-
-::: {.fragment}
-<div style="font-size: 1.5em;">
-    Code parfaitement valide ✅
-</div>
-:::
-
-::: {.fragment}
-On prend le même code, mais on le standardise
-:::
-
-## Style de code
-
-```{python}
-import numpy as np
-
-
-def add_nums(A, B):
-    return A + B
-
-def add_nums_numpy(A, B):
-    return np.sum([A, B])
-
-def divideNums(A, B):
-    return A / B
-
-def multiply(a, b):
-    return a * b
-
-def main():
-    x = add_nums(2, 3)
-    # some comment
-    y = multiply(x, 4)  # in the middle of the sea
-    print("sum:", x)
-    print("product:", y)
-```
-
-- indentation ✅
-- commentaires ✅
-- import ✅
-- sauts de ligne ✅
-
-## Style de code
-
-:::: {.columns}
-
-::: {.column width="50%"}
-![](./meme-formateur.jpg)
-:::
-
-::: {.column width="10%"}
-:::
-
-::: {.column width="40%"}
-<br>
-
-:::{.fragment}
-[ruff](https://docs.astral.sh/ruff/) est probablement la meilleure option
-:::
-
-<br>
-
-:::{.fragment}
-2 manières d'utiliser :
-:::
-
-- "on save"
-- pre-commit
-
-:::{.fragment}
-→ pre-commit est le plus important!
-:::
-:::
-
-::::
-
-## Git
-
-:::: {.columns}
-
-::: {.column width="40%"}
-<br>
-
-- Git c'est <b>Google Drive sous stéroïdes</b>, mais pour des fichiers légers
-- comme des fichiers textes par exemple...
-- ... et donc des fichiers de code!
-
-<br>
-<br>
-<br>
-
-- Git c'est surtout l'historique, avec les <b>commits</b>
-- Mais on veut que l'historique soit propre !
-:::
-
-::: {.column width="10%"}
-:::
-
-::: {.column width="50%"}
-![](./meme-git.jpg)
-:::
-
-::::
-
-## pre-commit
-
-<br>
-
-A chaque commit, fait tourner une série de check qu'on aura définit
-
-- [ruff](https://docs.astral.sh/ruff/)
-- [check added large files](https://github.com/pre-commit/pre-commit-hooks/blob/main/pre_commit_hooks/check_added_large_files.py)
-    - met une taille limite de fichier
-- [check yaml](https://github.com/pre-commit/pre-commit-hooks/blob/main/pre_commit_hooks/check_yaml.py)
-    - vérifie la parsabilité des fichiers yaml
-
-<br>
-
-:::{.fragment}
-Vous n'avez plus à penser à cela, tout est vérifié en amont
-:::
 
 
 ## Tester son code
@@ -567,15 +383,15 @@ Pour ça on a besoin de 2 choses:
 
 ![](./doc-vim.png)
 
-## Diataxis
-
-![](./diataxis.png)
-
 ## Plotnine
 
 <video controls width="100%" loop>
   <source src="./plotnine.mov" type="video/webm" />
 </video>
+
+## Diataxis
+
+![](./diataxis.png)
 
 ## Aller plus loin
 
