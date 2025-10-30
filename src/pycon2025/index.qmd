@@ -1,5 +1,5 @@
 ---
-title: "Tout ce dont votre package a besoin"
+title: "(presque) Tout ce dont votre package a besoin"
 author: "Joseph Barbier - *PyCon2025*"
 format:
   revealjs:
@@ -117,6 +117,7 @@ Facilement **distribuable** et donc **reutilisable** !
 
 Un bon package **c'est pas (uniquement) une question de code**.
 
+- facile à installer ?
 - facile à comprendre ?
 - facile à utiliser ?
 - facile à développer ?
@@ -133,9 +134,9 @@ Un bon package **c'est pas (uniquement) une question de code**.
 
 <div style="font-size: 2em">
 
-- Tester dans les meilleures conditions
+- `pyproject.toml` et gestion des dépendances
 
-- Configuration du `pyproject.toml`
+- Tester dans les meilleures conditions
 
 ::: {.blur}
 - Créer la meilleure documentation
@@ -143,6 +144,111 @@ Un bon package **c'est pas (uniquement) une question de code**.
 
 </div>
 
+# Gestion des dépendances
+
+## *one ~~ring~~ **file** to rule them all*
+
+<br>
+
+<div style="font-size: 1.4em;">
+
+Un package ça se décompose en :
+
+- du code Python
+
+- des méta données
+    - un nom, une description, des auteur.e.s
+    - des dépendances (numpy, pandas, etc)
+    - une license
+    - ...
+
+</div>
+
+<div style="display: flex; justify-content: center; font-size: 2em;" class="fragment">
+✨`pyproject.toml`✨
+</div>
+
+
+## *one ~~ring~~ **file** to rule them all*
+
+<br>
+
+<div style="display: flex; justify-content: center; font-size: 1.7em;">
+`pyproject.toml` + [uv](https://docs.astral.sh/uv/) = <3
+</div>
+
+<br>
+
+![](./meme-pyproject.jpg){fig-align="center" width="50%"}
+
+## Gestion des dépendances
+
+<br>
+
+![](./dependencies-scheme-1.png){width="50%" fig-align="center" }
+
+## Gestion des dépendances
+
+<br>
+
+![](./dependencies-scheme-2.png){width="50%" fig-align="center" }
+
+## Gestion des dépendances
+
+<br>
+
+![](./dependencies-scheme-3.png){width="50%" fig-align="center" }
+
+## Gestion des dépendances
+
+<br>
+
+:::: {.columns}
+
+::: {.fragment .column width="30%"}
+
+![](./dependencies-numpy.png)
+
+:::
+
+::: {.fragment .column width="30%"}
+
+![](./dependencies-fastapi.png)
+
+:::
+
+::: {.fragment .column width="30%"}
+
+![](./dependencies-morethemes.png)
+
+:::
+
+::::
+
+## Gestion des dépendances
+
+<br>
+
+<div style="font-size: 1.4em;">
+
+- open source → être convenient
+
+:::{.fragment}
+`numpy>=2.1.0`
+:::
+
+<br>
+<br>
+
+- closed source → restreindre autant que possible
+
+:::{.fragment}
+`numpy==2.1.3`
+:::
+
+</div>
+
+# Tester son code
 
 ## Tester son code
 
@@ -205,8 +311,8 @@ Il suffit de le faire tourner?
 
 Scrits (yaml) qui se déclenchent dans certaines conditions
 
-- pull requests
 - push
+- pull requests
 - tous les jours à minuit
 - ...
 
@@ -252,98 +358,7 @@ Python est interprété, mais peut se comporter différemment en fonction de l'O
 - modules spécifiques
 :::
 
-## *one ~~ring~~ **file** to rule them all*
-
-<br>
-
-Un package ça se décompose en :
-
-- du code Python
-
-- des méta données
-    - un nom, une description, des auteur.e.s
-    - des dépendances
-    - une license
-    - ...
-
-<br>
-
-<div style="display: flex; justify-content: center; font-size: 2em;" class="fragment">
-✨`pyproject.toml`✨
-</div>
-
-
-## *one ~~ring~~ **file** to rule them all*
-
-<br>
-
-<div style="display: flex; justify-content: center; font-size: 1.7em;">
-`pyproject.toml` + [uv](https://docs.astral.sh/uv/) = <3
-</div>
-
-<br>
-
-![](./meme-pyproject.jpg){fig-align="center" width="50%"}
-
-## Gestion des dépendances
-
-<br>
-
-![](./dependencies-scheme-1.png){width="50%" fig-align="center" }
-
-## Gestion des dépendances
-
-<br>
-
-![](./dependencies-scheme-2.png){width="50%" fig-align="center" }
-
-## Gestion des dépendances
-
-<br>
-
-![](./dependencies-scheme-3.png){width="50%" fig-align="center" }
-
-## Gestion des dépendances
-
-<br>
-
-:::: {.columns}
-
-::: {.column width="45%"}
-
-![](./dependencies-fastapi.png)
-
-:::
-
-::: {.column width="10%"}
-:::
-
-::: {.column width="45%"}
-
-![](./dependencies-numpy.png)
-
-:::
-
-::::
-
-## Gestion des dépendances
-
-<br>
-
-- open source → être convenient
-
-:::{.fragment}
-`numpy>=2.1.0`
-:::
-
-<br>
-<br>
-
-- closed source → restreindre autant que possible
-
-:::{.fragment}
-`numpy==2.1.3`
-:::
+# Documentation
 
 ## Documentation
 
@@ -362,10 +377,14 @@ Pour ça on a besoin de 2 choses:
 
 ## Landing page
 
+<div style="font-size: 1.5em;">
+
 - A quoi sert le package?
 - Dans quel contexte il s'inscrit (e.g., package Python)
 - Exemple usage minimaliste
 - Donner envie!
+
+</div>
 
 ## Landing page
 
@@ -383,13 +402,13 @@ Pour ça on a besoin de 2 choses:
 
 ![](./doc-vim.png)
 
-## Plotnine
+## Exemple parfait: `plotnine`
 
 <video controls width="100%" loop>
   <source src="./plotnine.mov" type="video/webm" />
 </video>
 
-## Diataxis
+## Diátaxis framework (**diataxis.fr**)
 
 ![](./diataxis.png)
 

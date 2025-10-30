@@ -65,7 +65,6 @@ $selection-bg: #26351c !default;
   .title {
     color: $body-color;
     font-size: 1.8em;
-    // font-weight: 350;
     font-weight: lighter;
   }
 
@@ -74,14 +73,6 @@ $selection-bg: #26351c !default;
     font-style: italic;
     margin-top: 0em;
     font-weight: lighter;
-  }
-
-  .institute,
-  .quarto-title-affiliation,
-  .quarto-title-author-email {
-    font-style: italic;
-    // font-size: 80%;
-    // color: #7F7F7F;
   }
 
   .author,
