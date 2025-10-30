@@ -360,13 +360,11 @@ Python est interprété, mais peut se comporter différemment en fonction de l'O
 
 # Documentation
 
+![](./boring.jpg)
+
 ## Documentation
 
-La première (et souvent la seule) chose que les gens verronts
-
-<br>
-
-Objectif: réduire au maximum l'effort requis pour comprendre le package.
+**La première (et la seule) chose que les gens verronts**
 
 <br>
 
