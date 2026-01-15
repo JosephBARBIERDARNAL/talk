@@ -1,5 +1,5 @@
 ---
-title: "10 raisons pour lesquelles j'adore R en tant que développeur Python"
+title: "5 raisons pour lesquelles j'adore R en tant que développeur Python"
 author:
   - Joseph Barbier^[Yellow Sunflower, joseph@ysunflower.com]
 format: typst
@@ -8,16 +8,19 @@ lang: fr
 ---
 
 ```{=typst}
+#show heading: set block(above: 1.5cm, below: 0.5cm)
+#show heading.where(level: 2): set heading(numbering: "1")
+#show heading.where(level: 1): set heading(numbering: none)
 #align(center)[#strong[Résumé]]
 ```
 
 Le langage R possède un grand nombre de particularités dans son fonctionnement qui semblent banales ou sont peu connus, alors qu'elles sont en fait particulièrement agréable à utiliser, notamment du point de vue d'un développeur Python.
 
-Dans cette présentation, j'exposerai une liste de 10 exemples de choses que R permet et qui me font adorer le langage R, et que je souhaite encourager les gens à utiliser davantage.
+Dans cette présentation, j'exposerai une liste de 5 exemples de choses que R permet et qui me font adorer le langage R, et que je souhaite encourager les gens à utiliser davantage.
 
-On parlera de méthodes S3, de la fonction `substitute()`, de l'opérateur pipe, de contrôle de l'état global, de lazy evaluation ou encore de retours invisibles. Pleins de choses qui me paraissaient bizarres en venant de Python, mais qui sont en fait géniales.
+On parlera de méthodes S3, de la fonction `substitute()` ou encore de lazy evaluation. Pleins de choses qui me paraissaient bizarres en venant de Python, mais qui sont en fait géniales.
 
-**Mots-clefs (3 à 5)** : Python - Syntaxe - Lazy - Environnement - Pipe
+**Mots-clefs (3 à 5)** : Python - Syntaxe - Lazy - Opérateurs
 
 ## Développement
 
@@ -87,34 +90,7 @@ x + y + z
 
 L'opérateur `+` détecte automatiquement qu'on travaille avec des objets `unit_val` et effectue la conversion nécessaire avant l'addition.
 
-### Retours invisibles
-
-La fonction `invisible()` permet de retourner une valeur qui ne s'affiche pas automatiquement dans la console, mais qui reste assignable. C'est parfait pour les fonctions à effet de bord (sauvegarde de fichier, modification d'environnement) qui retournent leur entrée pour permettre le chaînage.
-
-**Cas d'usage** : Les fonctions `<-`, `print()`, `plot()` retournent toutes invisiblement leur résultat. Le package `ggplot2` utilise cette technique pour que `ggsave()` retourne le graphique sans l'afficher. C'est aussi massivement utilisé dans les packages de validation de données comme `pointblank` pour chaîner les validations tout en conservant les rapports.
-
-```{r}
-save_plot <- function(plot, filename) {
-    ggsave(filename, plot)
-    invisible(plot) # Permet le chaînage sans afficher
-}
-
-assign_and_return <- function(name, value) {
-    assign(name, value, envir = parent.frame())
-    invisible(value)
-}
-```
-
-```{r}
-assign_and_return("other_var", 100)
-
-x <- assign_and_return("my_var", 42)
-x
-```
-
-La première ligne ne produit aucune sortie (retour invisible), mais la variable est bien créée. La deuxième assigne la valeur et on peut l'afficher ensuite.
-
-### La fonction substitute()
+### La fonction `substitute()`
 
 `substitute()` capture une expression sans l'évaluer, ce qui permet d'inspecter ou de modifier du code avant son exécution. C'est la base de la métaprogrammation en R : on peut analyser ce que l'utilisateur a écrit, le transformer, puis l'évaluer.
 
@@ -169,23 +145,6 @@ summary(p)
 
 R détecte automatiquement la classe de `p` et appelle les bonnes méthodes `print.individual` et `summary.individual`.
 
-### Tout est un vecteur
-
-En R, il n'existe pas de scalaires : tout est un vecteur, même les "nombres simples" sont des vecteurs de longueur 1. Les opérations sont vectorisées par défaut, ce qui permet d'écrire du code concis et performant. Le recyclage automatique étend les vecteurs plus courts pour correspondre aux plus longs.
-
-**Cas d'usage** : Cette philosophie est au cœur de la performance de R. Les packages comme `dplyr` et `data.table` exploitent la vectorisation pour des opérations ultra-rapides sur des colonnes entières. `purrr::map_*` généralise cette idée aux fonctions. En NumPy (Python), il faut explicitement utiliser des array et apprendre les broadcasting rules, alors qu'en R c'est le comportement par défaut.
-
-```{r}
-x <- 5
-y <- c(1, 2, 3)
-y + x
-
-x <- c(-1, 0, 1, 5, -3)
-ifelse(x > 0, "positif", "négatif ou nul")
-```
-
-Dans le premier exemple, le scalaire `5` est recyclé trois fois pour s'adapter à la longueur de `y`. Dans le second, `ifelse()` applique la condition à chaque élément du vecteur, ce qui serait une boucle en Python.
-
 ### Arguments par défaut dépendants
 
 En R, grâce à la lazy evaluation, les arguments par défaut d'une fonction peuvent référencer d'autres arguments de la même fonction. Ces valeurs sont évaluées au moment de l'appel, dans le contexte de la fonction, ce qui permet de créer des valeurs par défaut intelligentes et contextuelles.
@@ -194,34 +153,32 @@ En R, grâce à la lazy evaluation, les arguments par défaut d'une fonction peu
 
 ```{r}
 # Exemple : créer un intervalle de confiance
-create_interval <- function(
+interval <- function(
     mean,
     sd,
     confidence = 0.95,
     z_score = qnorm((1 + confidence) / 2),
     margin = z_score * sd
 ) {
-    list(
-        lower = mean - margin,
-        upper = mean + margin,
-        confidence = confidence
-    )
+    list(lower = mean - margin, upper = mean + margin, confidence = confidence)
 }
 
-create_interval(mean = 100, sd = 15)
-create_interval(mean = 100, sd = 15, confidence = 0.99)
+interval(mean = 100, sd = 15)
+interval(mean = 100, sd = 15, confidence = 0.99)
 ```
 
 Ici, `z_score` dépend de `confidence`, et `margin` dépend à la fois de `z_score` et `sd`. Tout est calculé automatiquement ! En Python, il faudrait écrire :
 
 ```python
-def create_interval(mean, sd, confidence=0.95,
+def interval(mean, sd, confidence=0.95,
                    z_score=None, margin=None):
     if z_score is None:
         z_score = norm.ppf((1 + confidence) / 2)
+    
     if margin is None:
         margin = z_score * sd
-    # ...
+    
+    return dict(lower = mean-margin, upper = mean + margin, confidence = confidence)
 ```
 
 La version R est beaucoup plus concise et expressive.
