@@ -1,5 +1,5 @@
 ---
-title: "5 raisons pour lesquelles j'adore R en tant que développeur Python"
+title: "Ce que j'adore dans R : 5 fonctionnalités qui séduisent un développeur Python"
 author:
   - Joseph Barbier^[Yellow Sunflower, joseph@ysunflower.com]
 format: typst
@@ -9,150 +9,86 @@ lang: fr
 
 ```{=typst}
 #show heading: set block(above: 1.5cm, below: 0.5cm)
-#show heading.where(level: 2): set heading(numbering: "1")
-#show heading.where(level: 1): set heading(numbering: none)
 #align(center)[#strong[Résumé]]
 ```
 
-Le langage R possède un grand nombre de particularités dans son fonctionnement qui semblent banales ou sont peu connus, alors qu'elles sont en fait particulièrement agréable à utiliser, notamment du point de vue d'un développeur Python.
+R possède de nombreuses particularités qui peuvent sembler étranges pour un développeur Python, mais qui rendent le langage particulièrement puissant et expressif. Dans cette présentation, je montrerai 5 fonctionnalités que j'apprécie particulièrement et qui peuvent transformer votre manière de coder en R.
 
-Dans cette présentation, j'exposerai une liste de 5 exemples de choses que R permet et qui me font adorer le langage R, et que je souhaite encourager les gens à utiliser davantage.
+Vous découvrirez comment créer des opérateurs personnalisés, surcharger des fonctions, utiliser la métaprogrammation, tirer parti du système S3 et profiter de la lazy evaluation pour des arguments par défaut intelligents.
 
-On parlera de méthodes S3, de la fonction `substitute()` ou encore de lazy evaluation. Pleins de choses qui me paraissaient bizarres en venant de Python, mais qui sont en fait géniales.
-
-**Mots-clefs (3 à 5)** : Python - Syntaxe - Lazy - Opérateurs
+**Mots-clés (3 à 5)** : R - Python - S3 - Métaprogrammation - Lazy Evaluation
 
 ## Développement
 
-### Créer ses propres opérateurs
+### 1. Créer ses propres opérateurs
 
-En R, n'importe quelle fonction entourée de backticks et de symboles `%` devient un opérateur infixe personnalisé. Cette syntaxe permet de créer des DSL (Domain Specific Languages) intuitifs et expressifs.
-
-**Cas d'usage** : Le package `magrittr` utilise `%>%` pour le pipe, `dplyr` propose `%>%` et `%in%`, tandis que `data.table` utilise `%between%` pour tester si une valeur est dans un intervalle. Cette fonctionnalité permet de rendre le code plus lisible en exprimant des opérations métier dans un langage naturel.
+En R, toute fonction entourée de backticks et de `%` devient un opérateur infixe. Cela permet de créer des DSL clairs et intuitifs.
 
 ```{r}
-`%within%` <- function(x, range) {
-    x >= range[1] & x <= range[2]
-}
+`%within%` <- function(x, range) x >= range[1] & x <= range[2]
 
 5 %within% c(1, 10)
 12 %within% c(1, 10)
 ```
 
-### Surcharge d'opérateurs
+### 2. Surcharge d'opérateurs
 
-Le système de méthodes S3 permet de surcharger les opérateurs arithmétiques (`+`, `-`, `*`, `/`) en définissant des fonctions nommées `+.ma_classe`. Cela permet de définir un comportement personnalisé pour vos objets tout en conservant une syntaxe naturelle.
-
-**Cas d'usage** : Le package `lubridate` surcharge les opérateurs pour les dates (ajouter des jours, soustraire des heures), `units` gère automatiquement les conversions d'unités physiques, et `vctrs` utilise massivement cette fonctionnalité pour créer des types de vecteurs personnalisés avec des règles de combinaison spécifiques.
+Grâce aux méthodes S3, vous pouvez redéfinir le comportement des opérateurs pour vos objets personnalisés.
 
 ```{r}
-# Crée un objet avec une unité
-weight <- function(x, unit) {
-    structure(x, unit = unit, class = "unit_val")
-}
+weight <- function(x, unit) structure(x, unit = unit, class = "unit_val")
 
-convert_to <- function(x, target_unit) {
-    if (attr(x, "unit") == target_unit) {
-        return(x)
-    }
-
-    value <- unclass(x)
-    new_value <- switch(
-        paste(attr(x, "unit"), target_unit, sep = "->"),
-        "g->kg" = value / 1000,
-        "kg->g" = value * 1000,
-        stop("Conversion non supportée")
-    )
-    weight(new_value, target_unit)
-}
-
-# Surcharge de l'addition pour unit_val
 `+.unit_val` <- function(a, b) {
     if (inherits(b, "unit_val")) {
-        # Convert b vers l'unité de a
-        b_conv <- convert_to(b, attr(a, "unit"))
-        res <- unclass(a) + unclass(b_conv)
-        weight(res, attr(a, "unit"))
-    } else {
-        res <- unclass(a) + b
-        weight(res, attr(a, "unit"))
+        b <- weight(unclass(b), attr(a, "unit"))
     }
+    weight(unclass(a) + unclass(b), attr(a, "unit"))
 }
 
 x <- weight(5, "kg")
 y <- weight(300, "g")
 z <- weight(2, "kg")
-
-x + z
 x + y
+x + z
 x + y + z
 ```
 
-L'opérateur `+` détecte automatiquement qu'on travaille avec des objets `unit_val` et effectue la conversion nécessaire avant l'addition.
+### 3. Métaprogrammation avec `substitute()`
 
-### La fonction `substitute()`
-
-`substitute()` capture une expression sans l'évaluer, ce qui permet d'inspecter ou de modifier du code avant son exécution. C'est la base de la métaprogrammation en R : on peut analyser ce que l'utilisateur a écrit, le transformer, puis l'évaluer.
-
-**Cas d'usage** : Le package `rlang` utilise massivement `substitute()` et ses variantes pour implémenter la non-standard evaluation. `ggplot2` l'utilise pour les aesthetic mappings (`aes(x = var)`), et `data.table` s'en sert pour permettre la syntaxe `dt[, .(mean_x = mean(x))]` sans guillemets autour des noms de colonnes. C'est aussi la base de `bquote()` pour le templating de code.
+`substitute()` capture une expression sans l'évaluer, permettant d'analyser ou de transformer le code.
 
 ```{r}
 log_call <- function(expr) {
     call_expr <- substitute(expr)
     result <- log(eval(expr, envir = parent.frame()))
-    cat("Expression évaluée: log(", deparse(call_expr), ")\n", sep = "")
-    cat("Résultat:", result, "\n")
+    cat("Expression évaluée:", deparse(call_expr), "\nRésultat:", result, "\n")
 }
 
 log_call(1 + 3)
 ```
 
-La fonction capture l'expression `1 + 3` sans l'évaluer immédiatement, l'affiche, puis calcule son logarithme.
+### 4. Méthodes S3 et fonctions génériques
 
-### Méthodes S3 et génériques
-
-Le système S3 est un système de programmation orientée objet simple et élégant. En créant des méthodes nommées `fonction.classe`, vous définissez le comportement de fonctions génériques (`print`, `summary`, `plot`, etc.) pour vos objets personnalisés. Le dispatch est automatique basé sur la classe de l'objet.
-
-**Cas d'usage** : Presque tous les packages R utilisent S3 ! `lm()` retourne un objet de classe `lm` avec des méthodes `print.lm`, `summary.lm`, `plot.lm`, `predict.lm`. Le package `sf` définit des méthodes géométriques pour les objets géospatiaux, et `tibble` étend les data.frames avec des méthodes d'affichage améliorées. C'est beaucoup plus simple que les classes en Python tout en étant très puissant.
+Le système S3 permet de définir des méthodes spécifiques pour des classes personnalisées.
 
 ```{r}
-# Créer une classe personnalisée
 individual <- function(name, age) {
-    structure(
-        list(name = name, age = age),
-        class = "individual"
-    )
+    structure(list(name = name, age = age), class = "individual")
 }
 
-# Méthode print pour individual
 print.individual <- function(x, ...) {
     cat(sprintf("%s a %d ans\n", x$name, x$age))
-    invisible(x)
 }
 
-# Méthode summary pour individual
-summary.individual <- function(object, ...) {
-    cat("Résumé de la personne:\n")
-    cat("  Nom:", object$name, "\n")
-    cat("  Age:", object$age, "ans\n")
-    cat("  Statut:", ifelse(object$age >= 18, "Adulte", "Mineur"), "\n")
-}
-
-p <- individual("Alice", 25)
+p <- individual("Justine", 24)
 print(p)
-summary(p)
 ```
 
-R détecte automatiquement la classe de `p` et appelle les bonnes méthodes `print.individual` et `summary.individual`.
+### 5. Arguments par défaut dépendants
 
-### Arguments par défaut dépendants
-
-En R, grâce à la lazy evaluation, les arguments par défaut d'une fonction peuvent référencer d'autres arguments de la même fonction. Ces valeurs sont évaluées au moment de l'appel, dans le contexte de la fonction, ce qui permet de créer des valeurs par défaut intelligentes et contextuelles.
-
-**Cas d'usage** : C'est massivement utilisé dans l'écosystème R ! Dans `ggplot2`, `geom_point(size = 2, stroke = size/2)` définit l'épaisseur du contour en fonction de la taille. Le package `dplyr` permet avec `mutate(x = a + 1, y = x * 2)` de référencer les colonnes créées précédemment. La fonction native `matrix(data, nrow, ncol = length(data)/nrow)` calcule automatiquement le nombre de colonnes. En Python, il faudrait utiliser `None` puis tester et calculer dans le corps de la fonction.
+La lazy evaluation permet de référencer d'autres arguments dans les valeurs par défaut.
 
 ```{r}
-# Exemple : créer un intervalle de confiance
 interval <- function(
     mean,
     sd,
@@ -164,21 +100,4 @@ interval <- function(
 }
 
 interval(mean = 100, sd = 15)
-interval(mean = 100, sd = 15, confidence = 0.99)
-```
-
-Ici, `z_score` dépend de `confidence`, et `margin` dépend à la fois de `z_score` et `sd`. Tout est calculé automatiquement ! En Python, il faudrait écrire :
-
-```python
-def interval(mean, sd, confidence=0.95,
-                   z_score=None, margin=None):
-    if z_score is None:
-        z_score = norm.ppf((1 + confidence) / 2)
-    
-    if margin is None:
-        margin = z_score * sd
-    
-    return dict(lower = mean-margin, upper = mean + margin, confidence = confidence)
-```
-
-La version R est beaucoup plus concise et expressive.
+``` 
