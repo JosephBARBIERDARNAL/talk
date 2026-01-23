@@ -1,0 +1,191 @@
+---
+title: "Typst in production: turning data into deliverables"
+author: "Joseph Barbier - *Typst meetup, 2026*"
+format:
+  revealjs:
+    theme: [default, style.scss]
+    transition: slide
+    background-transition: fade
+    incremental: true
+    auto-stretch: false
+embed-resources: true
+echo: true
+---
+
+## About
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="35%"}
+![](joseph.png){.circle}
+<div style="font-size:0.9em;">
+   *Joseph*
+
+   <br><br>
+
+   <a href="https://barbierjoseph.com">barbierjoseph.com</a>
+
+   <a href="https://ysunflower.com">ysunflower.com</a>
+
+</div>
+:::
+
+::: {.column width="15%"}
+:::
+
+::: {.column width="50%"}
+<div style="font-size: 1.2em;">
+   Consulting
+
+   Open source
+
+   Data(viz)
+
+   ![](viz.png)
+</div>
+:::
+
+::::
+
+
+## 2 data projects
+
+- Johns Hopkins about child vaccination in the US
+- EvalPsy: a tool for measuring psychological health at work, in France
+
+## But... "typst in production"?
+
+- in the data world, "production" can be confusing
+- it means many different things
+- here we're talking about:
+  - generate 50+ parametrized pdfs and put them in a drive service
+  - a web server
+- very different use cases, but both generate pdf dynamically with typst
+
+# Child vaccination in the US
+
+## Project description
+
+- Johns Hopkins University
+- 51 reports (1 per US state)
+- Reports are 4 pages long, with a bunch of charts, statistics, text, etc
+- Open source + open data + public reports
+- Project made with [claritydatastudio.com](https://claritydatastudio.com/)
+
+## Tech stack
+
+- **R**: all data work (fetch, clean and analyze data)
+- **Typst**: pdf engine
+- **Quarto**: interface between R and Typst that lets us "parametrize" reports
+
+Quarto is developed by Posit, a company that financially supports Typst (https://posit.co/blog/posit-and-typst/).
+
+## Parametrized reporting
+
+- You define a template with fields that depend on a parameter (e.g., a US state)
+- You dynamically generate the content (charts, statistics, logos, etc)
+- You pass this content to the field
+- You repeat this for each possible parameter (e.g., all US states)
+
+In practice: we make a Typst template + Quarto handles the parametrized stuff. The only parameter here is the state name that we then use to fetch only specific data and generate all the content.
+
+## Learn more about this project
+
+- Right now project is finished: folks at Johns Hopkins are internally rendering the reports every once in a while with new data.
+- Code + data + doc: [github.com/claritydatastudio/state-immunization-reports](https://github.com/claritydatastudio/state-immunization-reports)
+
+# EvalPsy: measuring psychological health in France
+
+## Project description
+
+- Personal project with a friend of mine who's an expert in the topic
+- Legal obligation in France for all businesses and public org to measure it every year, but:
+  - no consequences if you don't do it
+  - not clear how to do it
+  - expensive if you hire consultants
+- Goal: make this free, accessible, almost not time consuming and very simple
+
+## How it works
+
+- Someone from HR creates an account on our website
+- get a link of a survey to share to all of his/her coworkers
+- When everybody answered, he/she can generate a pdf with all results
+
+## Tech stack (PoC, not stable)
+
+- Backend: Python (fastapi for the API, matplotlib for dataviz, polars & sqlalchemy for data, ...)
+- Frontend: native HTML/CSS/JS
+- DB: Postgres
+
+--> Future stack:
+
+- React/Next for the frontend for simplicity
+- Rust (framework TBD) for the backend because performance and memory usage can be issues here
+
+## The PDF they get
+
+- 50+ pages with dozens of charts, explanations and suggestions on what to do next
+
+## Constraints
+
+- Content must be entirely automatable and dynamic: charts, explanations, suggestions
+- Run on a server
+- Fully anonymous: we don't have any non-anynonymous data, but people may still be recognized in some charts small organizations. In this case, we replace the chart with a generic text placeholder.
+
+## In practice
+
+- Generate all content in Python
+- Use https://github.com/messense/typst-py for direct Typst bindings
+- Serve this to the client
+
+# What Typst lets me do
+
+## I'm not a software developer
+
+- I _love_ to code, but...
+- My clients do not care about my tech stack, they just want to "consume" data easily
+- I don't want code to be a limiting factor of what I'm trying to do
+
+## Typst makes me forget about how the report is made
+
+- I create a Typst template with the design I want, and that's it!
+  - it's fast
+  - easy to code (and to maintain!)
+  - bindings everywhere
+- I can just focus on what matters to the clients/users
+
+##
+
+<div style="display: flex; justify-content: center; font-size: 3em;">
+Thanks for listening !
+</div>
+
+Did I say something wrong?
+
+::: {.nonincremental}
+
+- come chat !
+
+:::
+
+Did I say anything relevant?
+
+::: {.nonincremental}
+
+- come chat !
+
+:::
+
+<br>
+
+Other ?
+
+::: {.nonincremental}
+
+- linkedin: Joseph Barbier
+- email: `joseph@ysunflower.com`
+- slides: [github.com/JosephBARBIERDARNAL/talk](https://github.com/JosephBARBIERDARNAL/talk/tree/main/src/typst-meetup-2026)
+
+:::
