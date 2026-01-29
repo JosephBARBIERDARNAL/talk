@@ -38,7 +38,6 @@ $presentation-heading-font-weight: lighter;
 $presentation-font-size-root: 28px;
 
 // colors
-//$body-bg: #f0f1eb !default;
 $body-color: $jet !default;
 $link-color: $accent !default;
 $selection-bg: #26351c !default;
@@ -93,9 +92,8 @@ $selection-bg: #26351c !default;
 }
 
 .reveal h2 {
-  // font-weight: 350;
-  font-weight: lighter;
   font-size: 1.4em;
+  font-weight: 500;
 }
 
 .reveal h3 {

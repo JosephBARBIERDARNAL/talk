@@ -6,11 +6,30 @@ format:
     theme: [default, style.scss]
     transition: slide
     background-transition: fade
-    incremental: true
     auto-stretch: false
 embed-resources: true
 echo: true
+execute: 
+  cache: true
 ---
+
+## But... "typst in production"?
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](./meme-is-this-production.png)
+:::
+
+
+::: {.column width="45%"}
+- Generate PDF files locally and send them by email to the client
+- Generate PDF in a web server
+:::
+
+::::
+
+<center>PRODUCTION = WHERE USERS ARE</center>
 
 ## About
 
@@ -49,54 +68,73 @@ echo: true
 
 ::::
 
+## This is not about Typst*...
 
-## 2 data projects
+*(\*thanks to Typst!)*
 
-- Johns Hopkins about child vaccination in the US
-- EvalPsy: a tool for measuring psychological health at work, in France
+<center>![](./meme-show-typst-code.png){width="35%"}</center>
 
-## But... "typst in production"?
-
-- in the data world, "production" can be confusing
-- it means many different things
-- here we're talking about:
-  - generate 50+ parametrized pdfs and put them in a drive service
-  - a web server
-- very different use cases, but both generate pdf dynamically with typst
+- I don't have any tips
+- No best practices recommendation
+- TLDR: if you're here, you likely know more Typst than me!
 
 # Child vaccination in the US
 
 ## Project description
 
-- Johns Hopkins University
-- 51 reports (1 per US state)
-- Reports are 4 pages long, with a bunch of charts, statistics, text, etc
+:::: {.columns}
+
+::: {.column width="40%"}
+![](./jhu-logo.png)
+:::
+
+::: {.column width="20%"}
+:::
+
+::: {.column width="25%"}
+![](./cds-logo.png)
+***made with Clarity Data Studio***
+:::
+
+::::
+
+<br>
+
+- 50 reports (1 per US state)
 - Open source + open data + public reports
-- Project made with [claritydatastudio.com](https://claritydatastudio.com/)
+- Stack: R + Quarto
 
-## Tech stack
+## Reports
 
-- **R**: all data work (fetch, clean and analyze data)
-- **Typst**: pdf engine
-- **Quarto**: interface between R and Typst that lets us "parametrize" reports
+![](./parametrized-report.png)
 
-Quarto is developed by Posit, a company that financially supports Typst (https://posit.co/blog/posit-and-typst/).
+## How it works
 
-## Parametrized reporting
+![](./jhp-pipeline.png)
 
-- You define a template with fields that depend on a parameter (e.g., a US state)
-- You dynamically generate the content (charts, statistics, logos, etc)
-- You pass this content to the field
-- You repeat this for each possible parameter (e.g., all US states)
+# Fun fact
 
-In practice: we make a Typst template + Quarto handles the parametrized stuff. The only parameter here is the state name that we then use to fetch only specific data and generate all the content.
+<div style="font-size:2rem;">
+  When we finished the code to generate the reports, we were told that they couldn't use them because they were **not fully accessible**.
+  
+  At the **exact same time**, Typst 0.14.0rc1 was just released with tons of accessibility work, which saved us!
+</div>
 
 ## Learn more about this project
 
-- Right now project is finished: folks at Johns Hopkins are internally rendering the reports every once in a while with new data.
-- Code + data + doc: [github.com/claritydatastudio/state-immunization-reports](https://github.com/claritydatastudio/state-immunization-reports)
+<br>
+<br>
+<br>
 
-# EvalPsy: measuring psychological health in France
+<div style="font-size: 2.5rem;">
+
+Code + Data + Doc
+
+[github.com/claritydatastudio/state-immunization-reports](https://github.com/claritydatastudio/state-immunization-reports)
+
+</div>
+
+# Measuring psychological health in France
 
 ## Project description
 
