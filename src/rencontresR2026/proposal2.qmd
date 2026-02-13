@@ -1,0 +1,36 @@
+---
+title: "R et Rust : une histoire d'amour naissante"
+author:
+  - Joseph Barbier^[Yellow Sunflower, [joseph@ysunflower.com](mailto:joseph@ysunflower.com)]
+format: typst
+indent: true
+lang: fr
+---
+
+```{=typst}
+#align(center)[#strong[Résumé]]
+```
+
+L'écosystème R est en train de vivre un vrai tournant. En coulisses, une nouvelle génération d'outils et d'infrastructures écrits en **Rust** est en train de transformer en profondeur notre façon de travailler : meilleure expérience développeur, outils plus rapides et plus fiables, gestion des dépendances repensée… bref, des fondations plus solides pour l'avenir.
+
+Dans cette présentation, nous verrons un **tour d'horizon des projets Rust qui font déjà bouger les lignes** dans les écosystèmes R et data science, avant de se projeter sur ce que Rust peut apporter, très concrètement, à vos projets et au futur de R.
+
+**Mots-clés (3 à 5)** : Rust - outils modernes - productivité - data science
+
+## Développement
+
+### Partie 1 – Rust et la data science
+
+Sans forcément le savoir, vous utilisez peut-être déjà des outils écrits en Rust dans vos projets data. Ce n'est pas un hasard : Rust combine **performance, sécurité et ergonomie**, et s'intègre très bien avec d'autres langages grâce à des mécanismes de binding efficaces.
+
+Cette dynamique est particulièrement visible côté Python, avec des outils devenus incontournables comme **uv**, **ruff**, **pyrefly**, ou plus récemment **monty**, qui montrent à quel point Rust peut servir de socle à des outils modernes et performants.
+
+### Partie 2 – R ❤️ Rust : ça existe déjà (et ça marche)
+
+Bonne nouvelle : l'écosystème R n'est pas en reste. Un grand nombre de projets récents montrent que l'alliance R + Rust est déjà bien engagée : **Ark** (kernel R), **Air** (formatter de code et serveur de langage), **rv** (gestion des dépendances), **Jarl** (linter R), et pleins d'autres !
+
+### Partie 3 – Et si vous utilisiez Rust dans vos prochains projets R ?
+
+Rust vous intrigue mais vous semble encore intimidant ? Bonne nouvelle là aussi : il existe aujourd'hui des outils et des abstractions qui rendent son adoption **beaucoup plus simple qu'on ne l'imagine**, même sans être expert du langage.
+
+On verra comment Rust peut s'intégrer progressivement dans vos projets R, quels cas d'usage sont les plus pertinents, et pourquoi cette combinaison pourrait bien devenir un atout majeur dans les années à venir.
