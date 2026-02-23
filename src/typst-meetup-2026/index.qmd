@@ -13,23 +13,6 @@ execute:
   cache: true
 ---
 
-## But... "typst in production"?
-
-:::: {.columns}
-
-::: {.column width="50%"}
-![](./meme-is-this-production.png)
-:::
-
-
-::: {.column width="45%"}
-- Generate PDF files locally and send them by email to the client
-- Generate PDF in a web server
-:::
-
-::::
-
-<center>PRODUCTION = WHERE USERS ARE</center>
 
 ## About
 
@@ -68,6 +51,27 @@ execute:
 
 ::::
 
+# Data science in production
+
+## But... "typst in production"?
+
+<br><br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](./meme-is-this-production.png)
+:::
+
+
+::: {.column width="50%"}
+<br>
+<br>
+<span style="font-size: 2rem;">PRODUCTION = WHERE USERS ARE</span>
+:::
+
+::::
+
 ## This is not about Typst*...
 
 *(\*thanks to Typst!)*
@@ -77,6 +81,21 @@ execute:
 - I don't have any tips
 - No best practices recommendation
 - TLDR: if you're here, you likely know more Typst than me!
+
+## ... it's all about reproductibility
+
+<br><br>
+
+<div style="font-size:2.5rem;"> 
+
+::: {.incremental}
+- Will it work on someone's else machine?
+- Will it work 1 year from now?
+- Will it work with new data?
+- Can someone less technical run it too?
+:::
+
+</div>
 
 # Child vaccination in the US
 
@@ -136,20 +155,70 @@ Code + Data + Doc
 
 # Measuring psychological health in France
 
-## Project description
+## Context: mental health in workforce
 
-- Personal project with a friend of mine who's an expert in the topic
-- Legal obligation in France for all businesses and public org to measure it every year, but:
-  - no consequences if you don't do it
-  - not clear how to do it
-  - expensive if you hire consultants
-- Goal: make this free, accessible, almost not time consuming and very simple
+
+<div style="font-size: 2.5rem;">
+  - Legal obligation in France, but:
+    - no consequences if you don't do it
+    - not clear how to do it
+    - expensive if you hire consultants
+</div>
+
+<img src="./hr-meme.png" width="500">
+
+
+## Solution
+
+<div style="font-size: 2.5rem;">
+- Send a survey to all employees
+- Make a report based on the answers
+
+That's it!
+</div>
+
+<img src="./meme-typst-consultants.png" width="450">
+
+## Well, it's a bit more complicated...
+
+<div style="font-size: 2.5rem;">
+- Survey is long (70+ questions)
+- Needs to be easy to consume (charts, summary, etc)
+- Fully anonymous
+- Applicable (what to do next?!)
+</div>
+
+## What about Typst?
+
+We run Typst on the backend using [typst-py](https://github.com/messense/typst-py)
+
+```python
+import json
+import typst
+
+# ID of the company
+companyid = get_company_id() 
+
+# create PNG files for the report
+generate_all_chart(companyid) 
+
+# summary, what to do next, etc
+insights = generate_insights(companyid) 
+
+sys_inputs = {
+  "companyid": json.dumps(companyid)
+  "insights": json.dumps(insights)
+}
+typst.compile(
+    "src/document/template.typ",
+    output="report.pdf",
+    sys_inputs=sys_inputs,
+)
+```
 
 ## How it works
 
-- Someone from HR creates an account on our website
-- get a link of a survey to share to all of his/her coworkers
-- When everybody answered, he/she can generate a pdf with all results
+<img src="./how-it-works-erps.png" width="80%">
 
 ## Tech stack (PoC, not stable)
 
@@ -157,26 +226,13 @@ Code + Data + Doc
 - Frontend: native HTML/CSS/JS
 - DB: Postgres
 
---> Future stack:
+--> Future stack (?):
 
 - React/Next for the frontend for simplicity
 - Rust (framework TBD) for the backend because performance and memory usage can be issues here
 
-## The PDF they get
+> Have thoughts? Please share them!
 
-- 50+ pages with dozens of charts, explanations and suggestions on what to do next
-
-## Constraints
-
-- Content must be entirely automatable and dynamic: charts, explanations, suggestions
-- Run on a server
-- Fully anonymous: we don't have any non-anynonymous data, but people may still be recognized in some charts small organizations. In this case, we replace the chart with a generic text placeholder.
-
-## In practice
-
-- Generate all content in Python
-- Use https://github.com/messense/typst-py for direct Typst bindings
-- Serve this to the client
 
 # What Typst lets me do
 
@@ -186,6 +242,8 @@ Code + Data + Doc
 - My clients do not care about my tech stack, they just want to "consume" data easily
 - I don't want code to be a limiting factor of what I'm trying to do
 
+<img src="./meme-rust-safe.png" width="400">
+
 ## Typst makes me forget about how the report is made
 
 - I create a Typst template with the design I want, and that's it!
@@ -194,11 +252,22 @@ Code + Data + Doc
   - bindings everywhere
 - I can just focus on what matters to the clients/users
 
+## Typst in Production
+
+<br>
+
+<div style="font-size: 1.5em;">
+  - Check out [typst-in-production.com](https://typst-in-production.com/)
+  - Source on Github: [github.com/y-sunflower/typst-in-production](https://github.com/y-sunflower/typst-in-production)
+</div>
+
 ##
 
 <div style="display: flex; justify-content: center; font-size: 3em;">
 Thanks for listening !
 </div>
+
+<br>
 
 Did I say something wrong?
 
