@@ -53,25 +53,6 @@ execute:
 
 # Data science in production
 
-## But... "typst in production"?
-
-<br><br>
-
-:::: {.columns}
-
-::: {.column width="50%"}
-![](./meme-is-this-production.png)
-:::
-
-
-::: {.column width="50%"}
-<br>
-<br>
-<span style="font-size: 2rem;">PRODUCTION = WHERE USERS ARE</span>
-:::
-
-::::
-
 ## This is not about Typst*...
 
 *(\*thanks to Typst!)*
@@ -79,17 +60,17 @@ execute:
 <center>![](./meme-show-typst-code.png){width="35%"}</center>
 
 - I don't have any tips
-- No best practices recommendation
+- No best-practice recommendations
 - TLDR: if you're here, you likely know more Typst than me!
 
-## ... it's all about reproductibility
+## ... it's all about reproducibility
 
 <br><br>
 
 <div style="font-size:2.5rem;"> 
 
 ::: {.incremental}
-- Will it work on someone's else machine?
+- Will it work on someone else's machine?
 - Will it work 1 year from now?
 - Will it work with new data?
 - Can someone less technical run it too?
@@ -131,6 +112,18 @@ execute:
 
 ![](./jhp-pipeline.png)
 
+## Now
+
+<br>
+
+<div style="font-size:2rem;">
+Single R script that:
+
+  - install dependencies
+  - render 50 reports
+  - put them into a Google Drive
+</div>
+
 # Fun fact
 
 <div style="font-size:2rem;">
@@ -155,7 +148,7 @@ Code + Data + Doc
 
 # Measuring psychological health in France
 
-## Context: mental health in workforce
+## Context: mental health in the workforce
 
 
 <div style="font-size: 2.5rem;">
@@ -188,6 +181,10 @@ That's it!
 - Applicable (what to do next?!)
 </div>
 
+## Solution
+
+![](./how-it-works-2.png)
+
 ## What about Typst?
 
 We run Typst on the backend using [typst-py](https://github.com/messense/typst-py)
@@ -216,10 +213,6 @@ typst.compile(
 )
 ```
 
-## How it works
-
-<img src="./how-it-works-erps.png" width="80%">
-
 ## Tech stack (PoC, not stable)
 
 - Backend: Python (fastapi for the API, matplotlib for dataviz, polars & sqlalchemy for data, ...)
@@ -240,7 +233,7 @@ typst.compile(
 
 - I _love_ to code, but...
 - My clients do not care about my tech stack, they just want to "consume" data easily
-- I don't want code to be a limiting factor of what I'm trying to do
+- I don't want code to be a limiting factor for what I'm trying to do
 
 <img src="./meme-rust-safe.png" width="400">
 
@@ -264,7 +257,7 @@ typst.compile(
 ##
 
 <div style="display: flex; justify-content: center; font-size: 3em;">
-Thanks for listening !
+Thanks for listening!
 </div>
 
 <br>
@@ -273,7 +266,7 @@ Did I say something wrong?
 
 ::: {.nonincremental}
 
-- come chat !
+- come chat!
 
 :::
 
@@ -281,13 +274,13 @@ Did I say anything relevant?
 
 ::: {.nonincremental}
 
-- come chat !
+- come chat!
 
 :::
 
 <br>
 
-Other ?
+Other?
 
 ::: {.nonincremental}
 
