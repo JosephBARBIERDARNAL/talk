@@ -13,6 +13,8 @@ execute:
   cache: true
 ---
 
+## josephbarbierdarnal.github.io/talk
+
 
 # ~~*Typst*~~ Data science in production
 
