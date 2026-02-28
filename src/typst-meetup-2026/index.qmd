@@ -78,6 +78,17 @@ execute:
 
 ::::
 
+## Projects
+
+<br>
+<br>
+
+<div style="font-size:2.5rem;">
+  - 1 - Typst on the client
+  - 2 - Typst on the server
+</div>
+
+
 # 1 - Child vaccination in the US
 
 ## Project description
@@ -105,6 +116,15 @@ execute:
   - **Stack**: R + Quarto
 </div>
 
+## Quarto
+
+<br>
+<br>
+<br>
+<br>
+
+<center><img src="./quarto.png" width="900"></center>
+
 ## Reports
 
 ![](./parametrized-report.png)
@@ -120,9 +140,9 @@ execute:
 <div style="font-size:2rem;">
 Single R script that:
 
-  - install dependencies
-  - render 50 reports
-  - put them into a Google Drive
+  - installs dependencies
+  - renders 50 reports
+  - puts them into a Google Drive
 </div>
 
 ## Learn more about this project
@@ -208,13 +228,13 @@ typst.compile(
 
 ## Tech stack (PoC, not stable)
 
-- Backend: Python (fastapi for the API, matplotlib for dataviz, polars & sqlalchemy for data, ...)
+- Backend: Python (FastAPI for the API, matplotlib for dataviz, polars & sqlalchemy for data, ...)
 - Frontend: native HTML/CSS/JS
 - DB: Postgres
 
 --> Future stack (?):
 
-- React/Next for the frontend for simplicity
+- React/Next on the frontend, for simplicity
 - Rust (framework TBD) for the backend because performance and memory usage can be issues here
 
 > Have thoughts? Please share them!
@@ -229,6 +249,63 @@ typst.compile(
 - I don't want code to be a limiting factor for what I'm trying to do
 
 <img src="./meme-rust-safe.png" width="400">
+
+## How I used to make PDFs\*
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```css
+.toc a::after {
+  content: target-counter(attr(href), page);
+  float: right;
+  background: var(--background-color);
+}
+```
+:::
+
+::: {.column width="45%"}
+```css
+.toc .leaders::before {
+  content: "";
+}
+.toc-section-number {
+  margin-right: 15px;
+  font-family: var(--secondary-font);
+}
+```
+:::
+
+::::
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```css
+#TOC li {
+  border-top: 1px solid #ccc !important;
+  padding: 5pt;
+  list-style-type: none;
+}
+#TOC li a {
+  color: var(--primary-color) !important;
+  text-decoration: none;
+}
+```
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="30%"}
+![](./wtf.png)
+:::
+
+::::
+
+<br>
+
+*\*real code used by some of my clients*
 
 ## Typst makes me forget about the report
 
@@ -280,7 +357,7 @@ Other?
 
 ::: {.nonincremental}
 
-- linkedin: Joseph Barbier
+- LinkedIn: Joseph Barbier
 - email: `joseph@ysunflower.com`
 - slides: [github.com/JosephBARBIERDARNAL/talk](https://github.com/JosephBARBIERDARNAL/talk/tree/main/src/typst-meetup-2026)
 
