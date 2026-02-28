@@ -14,6 +14,33 @@ execute:
 ---
 
 
+# ~~*Typst*~~ Data science in production
+
+## This is not about Typst*...
+
+*(\*thanks to Typst!)*
+
+<center>![](./meme-show-typst-code.png){width="35%"}</center>
+
+- I don't have any tips
+- No best-practice recommendations
+- TLDR: if you're here, you likely know more Typst than me!
+
+## ... it's all about reproducibility
+
+<br><br>
+
+<div style="font-size:2.5rem;"> 
+
+::: {.incremental}
+- Will it work on someone else's machine?
+- Will it work 1 year from now?
+- Will it work with new data?
+- Can someone less technical run it too?
+:::
+
+</div>
+
 ## About
 
 <br>
@@ -51,34 +78,7 @@ execute:
 
 ::::
 
-# Data science in production
-
-## This is not about Typst*...
-
-*(\*thanks to Typst!)*
-
-<center>![](./meme-show-typst-code.png){width="35%"}</center>
-
-- I don't have any tips
-- No best-practice recommendations
-- TLDR: if you're here, you likely know more Typst than me!
-
-## ... it's all about reproducibility
-
-<br><br>
-
-<div style="font-size:2.5rem;"> 
-
-::: {.incremental}
-- Will it work on someone else's machine?
-- Will it work 1 year from now?
-- Will it work with new data?
-- Can someone less technical run it too?
-:::
-
-</div>
-
-# Child vaccination in the US
+# 1 - Child vaccination in the US
 
 ## Project description
 
@@ -100,9 +100,10 @@ execute:
 
 <br>
 
-- 50 reports (1 per US state)
-- Open source + open data + public reports
-- Stack: R + Quarto
+<div style="font-size: 2.5rem;">
+  - 50 reports (1 per US state)
+  - **Stack**: R + Quarto
+</div>
 
 ## Reports
 
@@ -124,14 +125,6 @@ Single R script that:
   - put them into a Google Drive
 </div>
 
-# Fun fact
-
-<div style="font-size:2rem;">
-  When we finished the code to generate the reports, we were told that they couldn't use them because they were **not fully accessible**.
-  
-  At the **exact same time**, Typst 0.14.0rc1 was just released with tons of accessibility work, which saved us!
-</div>
-
 ## Learn more about this project
 
 <br>
@@ -146,39 +139,39 @@ Code + Data + Doc
 
 </div>
 
-# Measuring psychological health in France
+# 2 - Assessing psychosocial risks among French workers
 
-## Context: mental health in the workforce
+## Context: psychosocial risk assessment at work
 
 
 <div style="font-size: 2.5rem;">
-  - Legal obligation in France, but:
-    - no consequences if you don't do it
-    - not clear how to do it
-    - expensive if you hire consultants
+  - French employers are legally required to assess psychosocial risks, but:
+    - enforcement is limited
+    - practical guidance is often unclear
+    - external consulting can be expensive
 </div>
 
 <img src="./hr-meme.png" width="500">
 
 
-## Solution
+## Approach
 
 <div style="font-size: 2.5rem;">
-- Send a survey to all employees
-- Make a report based on the answers
+- Run an anonymous survey across the company
+- Build a report from the responses
 
-That's it!
+That's the core idea.
 </div>
 
 <img src="./meme-typst-consultants.png" width="450">
 
-## Well, it's a bit more complicated...
+## In practice, it's more complex...
 
 <div style="font-size: 2.5rem;">
 - Survey is long (70+ questions)
-- Needs to be easy to consume (charts, summary, etc)
+- Results must be easy to consume (charts, summary, etc.)
 - Fully anonymous
-- Applicable (what to do next?!)
+- Actionable (what should we do next?)
 </div>
 
 ## Solution
@@ -237,21 +230,24 @@ typst.compile(
 
 <img src="./meme-rust-safe.png" width="400">
 
-## Typst makes me forget about how the report is made
+## Typst makes me forget about the report
 
-- I create a Typst template with the design I want, and that's it!
-  - it's fast
-  - easy to code (and to maintain!)
-  - bindings everywhere
-- I can just focus on what matters to the clients/users
+<div style="font-size: 2rem;">
+  - I create a Typst template with the design I want, and that's it!
+    - it's easy and fast
+    - bindings everywhere
+  - I can just focus on what matters to the clients/users
+</div>
 
-## Typst in Production
+<img src="./iq-typst.png" width="500">
+
+## Related projects
 
 <br>
 
 <div style="font-size: 1.5em;">
-  - Check out [typst-in-production.com](https://typst-in-production.com/)
-  - Source on Github: [github.com/y-sunflower/typst-in-production](https://github.com/y-sunflower/typst-in-production)
+  - Check out [typst-in-production.com](https://typst-in-production.com/) (**github.com/y-sunflower/typst-in-production**)
+  - `r2typ`: an R package for generating Typst and compiling from R (**github.com/y-sunflower/r2typ**)
 </div>
 
 ##
