@@ -1,6 +1,6 @@
 ---
 title: "**Less iteration, better charts**<br><span style='font-size: 0.7em;'>Rethinking how we create visualizations</span>"
-author: "Joseph Barbier - *Rome R Users Group, 2026*"
+author: "<br><br>Joseph Barbier - *Rome R Users Group, 2026*"
 format:
   revealjs:
     theme: [default, style.scss]
@@ -10,7 +10,6 @@ format:
 embed-resources: true
 echo: false
 execute: 
-  cache: true
   warning: false
   message: false
 ---
@@ -18,6 +17,7 @@ execute:
 
 ```{r}
 library(tidyverse)
+library(gt)
 
 set.seed(123)
 
@@ -43,9 +43,10 @@ sales <- round(pmax(sales, 50))
 df <- data.frame(
     date = dates,
     price = round(price, 2),
-    sales = sales
+    unit_sold = sales
 ) |>
-    as_tibble()
+    as_tibble() |>
+    mutate(sales = price * unit_sold)
 ```
 
 ## About
@@ -123,18 +124,20 @@ df <- data.frame(
 ## Design before code
 
 ```{r}
-df |> head()
+df |> head() |> gt()
 ```
 
-- **Message**: Sales dropped after price increase
-- **Chart**: Time series? Comparison? Before/after? Something else?
-- **Design details**:
-   - Highlight the drop
-   - Annotate the pricing change
-   - Keep only what matters
-   - Use relevant fonts and colors
-   - Axis choices
-   - Key annotations
+**Info**: price changed a few months ago
+
+<br>
+
+What should we do?
+
+## What should we do now?
+
+- **Look for impact** on volume and sales
+- **Chart**: Line chart? Bar chart? Both? Something else?
+- **Design details**: axis, scales, colors, etc
 
 ## What do we have now?
 
