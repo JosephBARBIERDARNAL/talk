@@ -1,0 +1,212 @@
+---
+title: "**Less iteration, better charts**<br><span style='font-size: 0.7em;'>Rethinking how we create visualizations</span>"
+author: "Joseph Barbier - *Rome R Users Group, 2026*"
+format:
+  revealjs:
+    theme: [default, style.scss]
+    transition: slide
+    background-transition: fade
+    auto-stretch: false
+embed-resources: true
+echo: false
+execute: 
+  cache: true
+  warning: false
+  message: false
+---
+
+
+```{r}
+library(tidyverse)
+
+set.seed(123)
+
+n_weeks <- 52 * 3
+end_date <- Sys.Date()
+start_date <- end_date - (n_weeks - 1) * 7
+
+dates <- seq.Date(from = start_date, by = "week", length.out = n_weeks)
+
+price_change_date <- end_date - 90
+price_change_idx <- which(dates >= price_change_date)[1]
+sales_drop_idx <- price_change_idx + 1
+
+base_price <- 100
+price <- rep(base_price, n_weeks)
+price[price_change_idx:n_weeks] <- 120
+price <- price + rnorm(n_weeks, 0, 1.5)
+
+sales <- 500 - 1.5 * (price - base_price) + rnorm(n_weeks, 0, 20)
+sales[sales_drop_idx] <- sales[sales_drop_idx] * 0.55
+sales <- round(pmax(sales, 50))
+
+df <- data.frame(
+    date = dates,
+    price = round(price, 2),
+    sales = sales
+) |>
+    as_tibble()
+```
+
+## About
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="35%"}
+![](joseph.png){.circle}
+<div style="font-size:0.9em;">
+   *Joseph*
+
+   <br><br>
+
+   <a href="https://barbierjoseph.com">barbierjoseph.com</a>
+
+   <a href="https://ysunflower.com">ysunflower.com</a>
+
+</div>
+:::
+
+::: {.column width="15%"}
+:::
+
+::: {.column width="50%"}
+<div style="font-size: 1.2em;">
+   Consulting
+
+   Open source
+
+   Data(viz)
+
+   ![](viz.png)
+</div>
+:::
+
+::::
+
+
+## We're doing things all wrong...
+
+- "Most charts are not bad because of poor coding… they're bad because no one asked _why they exist_."
+
+**Context**
+
+- Iteration has always been part of chart-making
+- AI has accelerated this loop dramatically
+- But faster iteration ≠ better outcomes
+
+**Thesis**
+
+- We should invert the process:
+  → **design first, code last**
+- This reduces iteration _and_ improves clarity, storytelling, and code quality
+
+## The default workflow
+
+<center><img src="./wrong-wokflow.png" width="900"></center>
+
+## Why this feels natural
+
+- Tools/AI encourage it: *"I'll just ask AI to do it to see how it looks"*
+- Immediate feedback loop
+- Feels productive (but is it?)
+
+## Instead
+
+> *Why does this chart need to exist?*
+
+- **Audience** → who is this for?
+- **Message** → what should they understand?
+- **Decision / action** → what changes after seeing it?
+
+## Design before code
+
+```{r}
+df |> head()
+```
+
+- **Message**: Sales dropped after price increase
+- **Chart**: Time series? Comparison? Before/after? Something else?
+- **Design details**:
+   - Highlight the drop
+   - Annotate the pricing change
+   - Keep only what matters
+   - Use relevant fonts and colors
+   - Axis choices
+   - Key annotations
+
+## What do we have now?
+
+😱 Zero line of code! Are we not productive???
+
+But: an extremely well defined goal --> very high value, **this is the hard part**
+
+If you're a good R coder or a vibe coder, this will easy to implement!
+
+- Weak prompt:
+  - "Make a nice chart of this dataset"
+
+- Strong prompt:
+  - "Create a line chart showing X, highlight Y, annotate Z, minimize gridlines…"
+
+## Framework
+
+1. **Define intent**
+   - Who? What? Why?
+
+2. **Write the message in one sentence**
+   - If you can't, you're not ready
+
+3. **Design the chart**
+   - Structure, emphasis, annotations
+
+4. **Then code**
+   - Implement, don't explore
+
+## When is it okay to code first?
+
+## Takeaways
+
+- Most people start with code → leads to iteration
+- Start with intent → leads to clarity
+- Design → then code
+
+> If your chart requires a lot of iteration, it's probably because you didn't decide what it should say.
+
+##
+
+<div style="display: flex; justify-content: center; font-size: 3em;">
+Thanks for listening!
+</div>
+
+<br>
+
+Did I say something wrong?
+
+::: {.nonincremental}
+
+- come chat!
+
+:::
+
+Did I say anything relevant?
+
+::: {.nonincremental}
+
+- come chat!
+
+:::
+
+<br>
+
+Other?
+
+::: {.nonincremental}
+
+- LinkedIn: Joseph Barbier
+- email: `joseph@ysunflower.com`
+- slides: [github.com/JosephBARBIERDARNAL/talk](https://github.com/JosephBARBIERDARNAL/talk/tree/main/src/rome-r-users-group)
+
+:::
+
