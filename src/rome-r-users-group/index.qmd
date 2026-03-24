@@ -8,15 +8,17 @@ format:
     background-transition: fade
     auto-stretch: false
 embed-resources: true
-echo: false
 execute: 
-  warning: false
-  message: false
+   echo: true
+   warning: false
+   message: false
 ---
 
 
 ```{r}
+#| echo: false
 library(tidyverse)
+library(patchwork)
 library(gt)
 
 set.seed(123)
@@ -27,25 +29,26 @@ start_date <- end_date - (n_weeks - 1) * 7
 
 dates <- seq.Date(from = start_date, by = "week", length.out = n_weeks)
 
-price_change_date <- end_date - 90
+price_change_date <- end_date - 120
 price_change_idx <- which(dates >= price_change_date)[1]
-sales_drop_idx <- price_change_idx + 1
 
 base_price <- 100
 price <- rep(base_price, n_weeks)
-price[price_change_idx:n_weeks] <- 120
-price <- price + rnorm(n_weeks, 0, 1.5)
+price[price_change_idx:n_weeks] <- 115 # stronger increase
 
-sales <- 500 - 1.5 * (price - base_price) + rnorm(n_weeks, 0, 20)
-sales[sales_drop_idx] <- sales[sales_drop_idx] * 0.55
-sales <- round(pmax(sales, 50))
+price <- price + rnorm(n_weeks, 0, 1)
 
-df <- data.frame(
+unit_sold <- 320 - 1.1 * (price - base_price) + rnorm(n_weeks, 0, 5)
+
+# force a visible drop right after change
+unit_sold[price_change_idx:n_weeks] <- unit_sold[price_change_idx:n_weeks] *
+    0.96
+
+df <- tibble(
     date = dates,
     price = round(price, 2),
-    unit_sold = sales
+    unit_sold = unit_sold
 ) |>
-    as_tibble() |>
     mutate(sales = price * unit_sold)
 ```
 
@@ -127,17 +130,72 @@ df <- data.frame(
 df |> head() |> gt()
 ```
 
-**Info**: price changed a few months ago
+**Context**:
+
+- The company increased price a few months ago
+- Management wants to know the impact
 
 <br>
 
 What should we do?
 
-## What should we do now?
+## Let's check units sold
 
-- **Look for impact** on volume and sales
-- **Chart**: Line chart? Bar chart? Both? Something else?
-- **Design details**: axis, scales, colors, etc
+```{r}
+ggplot(df, aes(x = date, y = unit_sold)) + geom_line()
+```
+
+## How about sales?
+
+```{r}
+ggplot(df, aes(x = date, y = sales)) + geom_line()
+```
+
+## Let's compare them!
+
+```{r}
+ggplot(df, aes(x = date)) +
+    geom_line(aes(y = unit_sold)) +
+    geom_line(aes(y = sales))
+```
+
+**Wait, what?**
+
+## Let's put them next to each other
+
+```{r}
+units_sold <- ggplot(df, aes(x = date, y = unit_sold)) + geom_line()
+sales <- ggplot(df, aes(x = date, y = sales)) + geom_line()
+
+units_sold + sales
+```
+
+What a diff! Oh wait, the scale is weird!
+
+## Adjust the scale
+
+```{r}
+units_sold <- ggplot(df, aes(x = date, y = unit_sold)) +
+    geom_line() +
+    ylim(0, NA)
+sales <- ggplot(df, aes(x = date, y = sales)) + geom_line() + ylim(0, NA)
+
+units_sold + sales
+```
+
+##
+
+```{r}
+ggplot(df, aes(x = date)) +
+    geom_line(aes(y = unit_sold, color = "Units sold")) +
+    geom_line(aes(y = sales / 100, color = "Sales")) +
+    scale_y_continuous(
+        name = "Units sold",
+        sec.axis = sec_axis(~ . * 100, name = "Sales")
+    ) +
+    scale_color_manual(values = c("Units sold" = "blue", "Sales" = "red")) +
+    labs(x = NULL, color = NULL)
+```
 
 ## What do we have now?
 
