@@ -7,8 +7,10 @@ format:
     transition: slide
     background-transition: fade
     auto-stretch: false
+    incremental: true
 embed-resources: true
 execute: 
+   cache: true
    echo: true
    warning: false
    message: false
@@ -16,8 +18,10 @@ execute:
 
 
 ```{r}
+#| fig-height: 5
 #| echo: false
 library(tidyverse)
+library(scales)
 library(patchwork)
 library(gt)
 
@@ -34,7 +38,7 @@ price_change_idx <- which(dates >= price_change_date)[1]
 
 base_price <- 100
 price <- rep(base_price, n_weeks)
-price[price_change_idx:n_weeks] <- 115 # stronger increase
+price[price_change_idx:n_weeks] <- 120 # stronger increase
 
 price <- price + rnorm(n_weeks, 0, 1)
 
@@ -51,6 +55,38 @@ df <- tibble(
 ) |>
     mutate(sales = price * unit_sold)
 ```
+
+
+## We're doing things all wrong...
+
+- Iteration has always been part of chart-making
+- AI has accelerated this loop dramatically
+- **But faster iteration ≠ better outcomes**
+
+<br>
+
+- We should invert the process → **design first, code last**
+
+## The default workflow
+
+<center><img src="./wrong-wokflow.png" width="900"></center>
+
+## Why this feels natural
+
+- Tools/AI encourage it: *"I'll just ask AI to do it to see how it looks"*
+- Immediate feedback loop
+- Feels productive (but is it?)
+
+## Instead
+
+> *Why does this chart need to exist?*
+
+- **Audience** → who is this for?
+- **Message** → what should they understand?
+- **Decision / action** → what changes after seeing it?
+
+# Design before code
+
 
 ## About
 
@@ -89,84 +125,54 @@ df <- tibble(
 
 ::::
 
-
-## We're doing things all wrong...
-
-- "Most charts are not bad because of poor coding… they're bad because no one asked _why they exist_."
-
-**Context**
-
-- Iteration has always been part of chart-making
-- AI has accelerated this loop dramatically
-- But faster iteration ≠ better outcomes
-
-**Thesis**
-
-- We should invert the process:
-  → **design first, code last**
-- This reduces iteration _and_ improves clarity, storytelling, and code quality
-
-## The default workflow
-
-<center><img src="./wrong-wokflow.png" width="900"></center>
-
-## Why this feels natural
-
-- Tools/AI encourage it: *"I'll just ask AI to do it to see how it looks"*
-- Immediate feedback loop
-- Feels productive (but is it?)
-
-## Instead
-
-> *Why does this chart need to exist?*
-
-- **Audience** → who is this for?
-- **Message** → what should they understand?
-- **Decision / action** → what changes after seeing it?
-
-## Design before code
+## Example
 
 ```{r}
+#| fig-height: 5
 df |> head() |> gt()
 ```
 
 **Context**:
 
-- The company increased price a few months ago
+- The company increased price a few months ago from ~$100 to ~$115
 - Management wants to know the impact
-
-<br>
-
-What should we do?
+- *What should we do?*
 
 ## Let's check units sold
 
 ```{r}
+#| fig-height: 5
 ggplot(df, aes(x = date, y = unit_sold)) + geom_line()
 ```
+
+Much less units sold!
 
 ## How about sales?
 
 ```{r}
+#| fig-height: 5
 ggplot(df, aes(x = date, y = sales)) + geom_line()
 ```
+
+But much more sales!
 
 ## Let's compare them!
 
 ```{r}
+#| fig-height: 5
 ggplot(df, aes(x = date)) +
     geom_line(aes(y = unit_sold)) +
     geom_line(aes(y = sales))
 ```
 
-**Wait, what?**
+Wait, what?
 
 ## Let's put them next to each other
 
 ```{r}
+#| fig-height: 5
 units_sold <- ggplot(df, aes(x = date, y = unit_sold)) + geom_line()
 sales <- ggplot(df, aes(x = date, y = sales)) + geom_line()
-
 units_sold + sales
 ```
 
@@ -175,18 +181,35 @@ What a diff! Oh wait, the scale is weird!
 ## Adjust the scale
 
 ```{r}
+#| fig-height: 5
 units_sold <- ggplot(df, aes(x = date, y = unit_sold)) +
     geom_line() +
     ylim(0, NA)
 sales <- ggplot(df, aes(x = date, y = sales)) + geom_line() + ylim(0, NA)
-
 units_sold + sales
 ```
 
-##
+Better, but most data is useless here
+
+## Reduce time period
 
 ```{r}
-ggplot(df, aes(x = date)) +
+#| fig-height: 5
+df_filter <- df |> filter(date >= "2025-01-01")
+units_sold <- ggplot(df_filter, aes(x = date, y = unit_sold)) +
+    geom_line() +
+    ylim(0, NA)
+sales <- ggplot(df_filter, aes(x = date, y = sales)) + geom_line() + ylim(0, NA)
+units_sold + sales
+```
+
+The trend isn't really obvious now...
+
+## Let's try to put them on the same chart
+
+```{r}
+#| fig-height: 5
+ggplot(df_filter, aes(x = date)) +
     geom_line(aes(y = unit_sold, color = "Units sold")) +
     geom_line(aes(y = sales / 100, color = "Sales")) +
     scale_y_continuous(
@@ -197,7 +220,185 @@ ggplot(df, aes(x = date)) +
     labs(x = NULL, color = NULL)
 ```
 
-## What do we have now?
+## Are dual axis a bad idea?
+
+::: {.panel-tabset}
+
+### Scenario 1
+
+![](./scenario-1.png)
+
+### Scenario 2
+
+![](./scenario-2.png)
+
+### Scenario 3
+
+![](./scenario-3.png)
+
+### Scenario 4
+
+![](./scenario-4.png)
+
+### Scenario 5
+
+![](./scenario-5.png)
+
+:::
+
+Sources:
+
+::: {.nonincremental}
+- [react-graph-gallery.com](https://www.react-graph-gallery.com/example/dual-y-axis-interactive)
+- [datawrapper.com](https://www.datawrapper.de/blog/dualaxis)
+:::
+
+## But how do I compare them now?
+
+<br>
+<br>
+
+### "Your scientists were so preoccupied with whether or not they could that they didn't stop to think if they should." *Jurassic Park*
+
+## Maybe we don't need to?
+
+```{r}
+#| fig-height: 5
+p <- ggplot(df_filter, aes(x = date, y = sales)) +
+    geom_line() +
+    ylim(30000, 36500)
+p
+```
+
+This chart with some better styling and annotations should work
+
+## Change the theme
+
+```{r}
+#| fig-height: 5
+p <- p + theme_minimal()
+p
+```
+
+## Remove labels
+
+```{r}
+#| fig-height: 5
+p <- p + xlab("") + ylab("")
+p
+```
+
+## Update labels
+
+```{r}
+p <- p +
+    scale_y_continuous(labels = label_dollar(scale = 1e-3, suffix = "K")) +
+    scale_x_date(labels = label_date("%b, %Y"), date_breaks = "3 months")
+p
+```
+
+## Increase their size
+
+```{r}
+p <- p +
+    theme(
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 12, face = "bold")
+    )
+p
+```
+
+## Highlight new price
+
+<br>
+
+```{r}
+#| echo: false
+p <- p +
+    annotate(
+        "rect",
+        xmin = as.Date("2025-11-15"),
+        xmax = Inf,
+        ymin = -Inf,
+        ymax = Inf,
+        fill = "lightblue",
+        alpha = 0.2
+    ) +
+    annotate(
+        "text",
+        x = as.Date("2026-02-01"),
+        y = 35700,
+        label = "Price went from $100 to $115",
+        color = "#457b9d"
+    )
+
+p
+```
+
+## Remove x grid
+
+<br>
+
+```{r}
+#| echo: false
+p <- p +
+    theme(
+        panel.grid.minor = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.major.y = element_line(
+            color = "#caf0f8",
+            size = 0.5,
+            alpha = 0.5,
+            linetype = 1
+        )
+    )
+p
+```
+
+## Move to the right
+
+```{r}
+p <- p +
+    scale_y_continuous(
+        labels = label_dollar(scale = 1e-3, suffix = "K"),
+        position = "right"
+    )
+p
+```
+
+Getting better!
+
+## A colleague comes...
+
+<br>
+
+*"I think it's important to compare units sold and sales in the same chart, let's do a barplot instead!"*
+
+<br>
+<br>
+
+::: {.incremental}
+- Wait, so we need to start over?
+- Ok let's do a barplot then!
+
+- <span style="font-size: 1.4em; color: red;">No! Design first, code second</span>
+:::
+
+## Let's remove all code we written
+
+- Define the goal
+- Decide on a chart type
+- Make a nice style
+
+## Define the goal
+
+- Goal impact of price change on:
+   - units sold --> are we selling less? and by how much?
+   - sales --> are we making more/less? and by how much?
+
+## Decide on a chart type
+
+## Make a nice style
 
 😱 Zero line of code! Are we not productive???
 
@@ -210,6 +411,131 @@ If you're a good R coder or a vibe coder, this will easy to implement!
 
 - Strong prompt:
   - "Create a line chart showing X, highlight Y, annotate Z, minimize gridlines…"
+
+## Results
+
+```{r}
+#| fig-height: 7
+#| echo: false
+
+library(tidyverse)
+library(scales)
+library(patchwork)
+library(gt)
+
+change_date <- dates[price_change_idx]
+df_filter <- df |> filter(date > "2025-07-01")
+
+summary_df <- df |>
+    mutate(period = if_else(date < change_date, "Before", "After")) |>
+    group_by(period) |>
+    summarise(
+        avg_units = mean(unit_sold),
+        avg_sales = mean(sales),
+        .groups = "drop"
+    )
+
+impact <- summary_df |>
+    summarise(
+        units_pct = avg_units[period == "After"] /
+            avg_units[period == "Before"] -
+            1,
+        sales_pct = avg_sales[period == "After"] /
+            avg_sales[period == "Before"] -
+            1,
+        units_abs = avg_units[period == "After"] -
+            avg_units[period == "Before"],
+        sales_abs = avg_sales[period == "After"] - avg_sales[period == "Before"]
+    )
+
+p_units <- ggplot(df_filter, aes(date, unit_sold)) +
+    geom_line(linewidth = 0.7) +
+    geom_vline(xintercept = change_date, linetype = "dashed") +
+    annotate(
+        "label",
+        x = change_date,
+        y = max(df$unit_sold),
+        label = paste0(
+            "Price change\n",
+            comma(base_price),
+            " → ",
+            comma(120)
+        ),
+        vjust = 1,
+        hjust = -0.05,
+        size = 3
+    ) +
+    geom_smooth(
+        data = ~ filter(.x, date < change_date),
+        method = "lm",
+        se = FALSE,
+        linewidth = 0.8
+    ) +
+    geom_smooth(
+        data = ~ filter(.x, date >= change_date),
+        method = "lm",
+        se = FALSE,
+        linewidth = 0.8
+    ) +
+    labs(
+        subtitle = paste0(
+            "Avg before: ",
+            comma(round(summary_df$avg_units[summary_df$period == "Before"])),
+            " | Avg after: ",
+            comma(round(summary_df$avg_units[summary_df$period == "After"])),
+            " | Change: ",
+            comma(round(impact$units_abs, 1)),
+            " (",
+            percent(impact$units_pct, accuracy = 0.1),
+            ")"
+        ),
+        x = NULL,
+        y = "Units sold"
+    ) +
+    scale_y_continuous(labels = comma) +
+    theme_minimal()
+
+p_sales <- ggplot(df_filter, aes(date, sales)) +
+    geom_line(linewidth = 0.7) +
+    geom_vline(xintercept = change_date, linetype = "dashed") +
+    geom_smooth(
+        data = ~ filter(.x, date < change_date),
+        method = "lm",
+        se = FALSE,
+        linewidth = 0.8
+    ) +
+    geom_smooth(
+        data = ~ filter(.x, date >= change_date),
+        method = "lm",
+        se = FALSE,
+        linewidth = 0.8
+    ) +
+    labs(
+        subtitle = paste0(
+            "Avg before: ",
+            dollar(round(
+                summary_df$avg_sales[summary_df$period == "Before"],
+                -2
+            )),
+            " | Avg after: ",
+            dollar(round(
+                summary_df$avg_sales[summary_df$period == "After"],
+                -2
+            )),
+            " | Change: ",
+            dollar(round(impact$sales_abs, -2)),
+            " (+",
+            percent(impact$sales_pct, accuracy = 0.1),
+            ")"
+        ),
+        x = NULL,
+        y = "Sales"
+    ) +
+    scale_y_continuous(labels = dollar) +
+    theme_minimal()
+
+p_units / p_sales
+```
 
 ## Framework
 
