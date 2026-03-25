@@ -358,6 +358,7 @@ p
 ## Move to the right
 
 ```{r}
+#| echo: false
 p <- p +
     scale_y_continuous(
         labels = label_dollar(scale = 1e-3, suffix = "K"),
@@ -372,7 +373,7 @@ Getting better!
 
 <br>
 
-*"I think it's important to compare units sold and sales in the same chart, let's do a barplot instead!"*
+*"I think it's important to also show units sold and management want a barplot!"*
 
 <br>
 <br>
@@ -380,15 +381,12 @@ Getting better!
 ::: {.incremental}
 - Wait, so we need to start over?
 - Ok let's do a barplot then!
-
-- <span style="font-size: 1.4em; color: red;">No! Design first, code second</span>
+- But what if management change their mind?
 :::
 
-## Let's remove all code we written
+## Let's do it differently
 
-- Define the goal
-- Decide on a chart type
-- Make a nice style
+![](./better-workflow.png)
 
 ## Define the goal
 
@@ -396,170 +394,63 @@ Getting better!
    - units sold --> are we selling less? and by how much?
    - sales --> are we making more/less? and by how much?
 
-## Decide on a chart type
+## Make some design
 
-## Make a nice style
+<br>
+
+::: {.incremental}
+*Only rule: don't rush it!*
+:::
+
+- Figma
+- Canva
+- Excalidraw (personal preference)
+- Pen and paper
+- <span style="color: red; font-weight: normal;">It doesn't matter! Use whatever you prefer</span>
+
+## Make some design
+
+<center><img src="./design-example.png" height="400"></center>
+
+- This takes much less time
+- Ask for feedback
+- And repeat!
+
+## Make some design
+
+<br>
+<br>
 
 😱 Zero line of code! Are we not productive???
 
-But: an extremely well defined goal --> very high value, **this is the hard part**
+- We just did **the hard part**
 
-If you're a good R coder or a vibe coder, this will easy to implement!
+## Now we can code
 
-- Weak prompt:
-  - "Make a nice chart of this dataset"
-
-- Strong prompt:
-  - "Create a line chart showing X, highlight Y, annotate Z, minimize gridlines…"
-
-## Results
-
-```{r}
-#| fig-height: 7
-#| echo: false
-
-library(tidyverse)
-library(scales)
-library(patchwork)
-library(gt)
-
-change_date <- dates[price_change_idx]
-df_filter <- df |> filter(date > "2025-07-01")
-
-summary_df <- df |>
-    mutate(period = if_else(date < change_date, "Before", "After")) |>
-    group_by(period) |>
-    summarise(
-        avg_units = mean(unit_sold),
-        avg_sales = mean(sales),
-        .groups = "drop"
-    )
-
-impact <- summary_df |>
-    summarise(
-        units_pct = avg_units[period == "After"] /
-            avg_units[period == "Before"] -
-            1,
-        sales_pct = avg_sales[period == "After"] /
-            avg_sales[period == "Before"] -
-            1,
-        units_abs = avg_units[period == "After"] -
-            avg_units[period == "Before"],
-        sales_abs = avg_sales[period == "After"] - avg_sales[period == "Before"]
-    )
-
-p_units <- ggplot(df_filter, aes(date, unit_sold)) +
-    geom_line(linewidth = 0.7) +
-    geom_vline(xintercept = change_date, linetype = "dashed") +
-    annotate(
-        "label",
-        x = change_date,
-        y = max(df$unit_sold),
-        label = paste0(
-            "Price change\n",
-            comma(base_price),
-            " → ",
-            comma(120)
-        ),
-        vjust = 1,
-        hjust = -0.05,
-        size = 3
-    ) +
-    geom_smooth(
-        data = ~ filter(.x, date < change_date),
-        method = "lm",
-        se = FALSE,
-        linewidth = 0.8
-    ) +
-    geom_smooth(
-        data = ~ filter(.x, date >= change_date),
-        method = "lm",
-        se = FALSE,
-        linewidth = 0.8
-    ) +
-    labs(
-        subtitle = paste0(
-            "Avg before: ",
-            comma(round(summary_df$avg_units[summary_df$period == "Before"])),
-            " | Avg after: ",
-            comma(round(summary_df$avg_units[summary_df$period == "After"])),
-            " | Change: ",
-            comma(round(impact$units_abs, 1)),
-            " (",
-            percent(impact$units_pct, accuracy = 0.1),
-            ")"
-        ),
-        x = NULL,
-        y = "Units sold"
-    ) +
-    scale_y_continuous(labels = comma) +
-    theme_minimal()
-
-p_sales <- ggplot(df_filter, aes(date, sales)) +
-    geom_line(linewidth = 0.7) +
-    geom_vline(xintercept = change_date, linetype = "dashed") +
-    geom_smooth(
-        data = ~ filter(.x, date < change_date),
-        method = "lm",
-        se = FALSE,
-        linewidth = 0.8
-    ) +
-    geom_smooth(
-        data = ~ filter(.x, date >= change_date),
-        method = "lm",
-        se = FALSE,
-        linewidth = 0.8
-    ) +
-    labs(
-        subtitle = paste0(
-            "Avg before: ",
-            dollar(round(
-                summary_df$avg_sales[summary_df$period == "Before"],
-                -2
-            )),
-            " | Avg after: ",
-            dollar(round(
-                summary_df$avg_sales[summary_df$period == "After"],
-                -2
-            )),
-            " | Change: ",
-            dollar(round(impact$sales_abs, -2)),
-            " (+",
-            percent(impact$sales_pct, accuracy = 0.1),
-            ")"
-        ),
-        x = NULL,
-        y = "Sales"
-    ) +
-    scale_y_continuous(labels = dollar) +
-    theme_minimal()
-
-p_units / p_sales
-```
+- With AI
+    - Weak prompt: *"Show sales evolution"*
+    - Strong prompt: *"Create a barplot for period X, highlight Y, remove Z, compare A and B, ..."*
+- Without AI
+    - Much easier too!
 
 ## Framework
 
-1. **Define intent**
+-  <span style="font-weight: normal">Define intent</span>
    - Who? What? Why?
 
-2. **Write the message in one sentence**
-   - If you can't, you're not ready
+-  <span style="font-weight: normal">Define the design</span>
+   - If you can't visualize it, you're not ready to code yet!
 
-3. **Design the chart**
-   - Structure, emphasis, annotations
+-  <span style="font-weight: normal">Feedback</span>
+   - Ask colleagues, managers, etc
 
-4. **Then code**
-   - Implement, don't explore
+-  <span style="font-weight: normal">Code</span>
 
 ## When is it okay to code first?
 
-## Takeaways
-
-- Most people start with code → leads to iteration
-- Start with intent → leads to clarity
-- Design → then code
-
-> If your chart requires a lot of iteration, it's probably because you didn't decide what it should say.
+- Get an overview of the data
+    - AI can be very useful here
+- Design is already clear
 
 ##
 
