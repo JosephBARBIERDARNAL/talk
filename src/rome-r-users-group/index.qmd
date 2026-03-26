@@ -10,7 +10,7 @@ format:
     incremental: true
 embed-resources: true
 execute: 
-   cache: true
+   cache: false
    echo: true
    warning: false
    message: false
@@ -181,7 +181,7 @@ What a diff! Oh wait, the scale is weird!
 ## Adjust the scale
 
 ```{r}
-#| fig-height: 5
+#| fig-height: 4
 units_sold <- ggplot(df, aes(x = date, y = unit_sold)) +
     geom_line() +
     ylim(0, NA)
@@ -194,7 +194,7 @@ Better, but most data is useless here
 ## Reduce time period
 
 ```{r}
-#| fig-height: 5
+#| fig-height: 4
 df_filter <- df |> filter(date >= "2025-01-01")
 units_sold <- ggplot(df_filter, aes(x = date, y = unit_sold)) +
     geom_line() +
@@ -209,6 +209,7 @@ The trend isn't really obvious now...
 
 ```{r}
 #| fig-height: 5
+#| echo: false
 ggplot(df_filter, aes(x = date)) +
     geom_line(aes(y = unit_sold, color = "Units sold")) +
     geom_line(aes(y = sales / 100, color = "Sales")) +
@@ -220,7 +221,7 @@ ggplot(df_filter, aes(x = date)) +
     labs(x = NULL, color = NULL)
 ```
 
-## Are dual axis a bad idea?
+##
 
 ::: {.panel-tabset}
 
@@ -258,7 +259,7 @@ Sources:
 <br>
 <br>
 
-### "Your scientists were so preoccupied with whether or not they could that they didn't stop to think if they should." *Jurassic Park*
+### "Your scientists were so preoccupied with whether or not they could, that they didn't stop to think if they should." *Jurassic Park*
 
 ## Maybe we don't need to?
 
@@ -390,7 +391,7 @@ Getting better!
 
 ## Define the goal
 
-- Goal impact of price change on:
+- **Goal**: impact of price change on:
    - units sold --> are we selling less? and by how much?
    - sales --> are we making more/less? and by how much?
 
