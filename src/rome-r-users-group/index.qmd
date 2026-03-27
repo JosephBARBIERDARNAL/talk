@@ -44,7 +44,7 @@ price <- price + rnorm(n_weeks, 0, 1)
 
 unit_sold <- 320 - 1.1 * (price - base_price) + rnorm(n_weeks, 0, 5)
 
-# force a visible drop right after change
+# force a visible drop right after the change
 unit_sold[price_change_idx:n_weeks] <- unit_sold[price_change_idx:n_weeks] *
     0.96
 
@@ -134,7 +134,7 @@ df |> head() |> gt()
 
 **Context**:
 
-- The company increased price a few months ago from ~$100 to ~$115
+- The company increased its price a few months ago from ~$100 to ~$115
 - Management wants to know the impact
 - *What should we do?*
 
@@ -145,7 +145,7 @@ df |> head() |> gt()
 ggplot(df, aes(x = date, y = unit_sold)) + geom_line()
 ```
 
-Much less units sold!
+Far fewer units sold!
 
 ## How about sales?
 
@@ -154,7 +154,7 @@ Much less units sold!
 ggplot(df, aes(x = date, y = sales)) + geom_line()
 ```
 
-But much more sales!
+But much higher sales!
 
 ## Let's compare them!
 
@@ -189,7 +189,7 @@ sales <- ggplot(df, aes(x = date, y = sales)) + geom_line() + ylim(0, NA)
 units_sold + sales
 ```
 
-Better, but most data is useless here
+Better, but most of the data is useless here
 
 ## Reduce time period
 
@@ -271,7 +271,7 @@ p <- ggplot(df_filter, aes(x = date, y = sales)) +
 p
 ```
 
-This chart with some better styling and annotations should work
+This chart should work with better styling and annotations
 
 ## Change the theme
 
@@ -370,19 +370,19 @@ p
 
 Getting better!
 
-## A colleague comes...
+## A colleague arrives...
 
 <br>
 
-*"I think it's important to also show units sold and management want a barplot!"*
+*"I think it's important to also show units sold, and management wants a bar plot!"*
 
 <br>
 <br>
 
 ::: {.incremental}
 - Wait, so we need to start over?
-- Ok let's do a barplot then!
-- But what if management change their mind?
+- OK, let's do a bar plot then!
+- But what if management changes its mind?
 :::
 
 ## Let's do it differently
@@ -391,11 +391,11 @@ Getting better!
 
 ## Define the goal
 
-- **Goal**: impact of price change on:
-   - units sold --> are we selling less? and by how much?
-   - sales --> are we making more/less? and by how much?
+- **Goal**: impact of the price change on:
+   - units sold --> are we selling fewer units, and by how much?
+   - sales --> are sales higher or lower, and by how much?
 
-## Make some design
+## Create a design
 
 <br>
 
@@ -409,7 +409,7 @@ Getting better!
 - Pen and paper
 - <span style="color: red; font-weight: normal;">It doesn't matter! Use whatever you prefer</span>
 
-## Make some design
+## Create a design
 
 <center><img src="./design-example.png" height="400"></center>
 
@@ -417,12 +417,12 @@ Getting better!
 - Ask for feedback
 - And repeat!
 
-## Make some design
+## Create a design
 
 <br>
 <br>
 
-😱 Zero line of code! Are we not productive???
+😱 Zero lines of code! Are we not productive???
 
 - We just did **the hard part**
 
@@ -430,7 +430,7 @@ Getting better!
 
 - With AI
     - Weak prompt: *"Show sales evolution"*
-    - Strong prompt: *"Create a barplot for period X, highlight Y, remove Z, compare A and B, ..."*
+    - Strong prompt: *"Create a bar plot for period X, highlight Y, remove Z, compare A and B, ..."*
 - Without AI
     - Much easier too!
 
@@ -465,7 +465,7 @@ Did I say something wrong?
 
 ::: {.nonincremental}
 
-- come chat!
+- Come chat!
 
 :::
 
@@ -473,7 +473,7 @@ Did I say anything relevant?
 
 ::: {.nonincremental}
 
-- come chat!
+- Come chat!
 
 :::
 
