@@ -1,5 +1,7 @@
 # talk
 
+- (WIP): _"An introduction to Typst"_
+  - [Slide](https://josephbarbierdarnal.github.io/talk/src/introduction-to-typst/)
 - **Rome R Users Group**: _"Less iteration, better charts: rethinking how we create visualizations"_
   - [Video](https://www.youtube.com/watch?v=wjQcUf6xuHA)
   - [Slide](https://josephbarbierdarnal.github.io/talk/src/rome-r-users-group/)
