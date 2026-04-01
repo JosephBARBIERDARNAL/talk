@@ -1,4 +1,4 @@
-#set page(fill: rgb("#f8f9fa"), width: 15cm, height: 10cm, margin: 0.5cm)
+#set page(fill: rgb("#f8f9face"), width: 15cm, height: 10cm, margin: 0.5cm)
 
 #let banner(label, fill) = {
   rect(
