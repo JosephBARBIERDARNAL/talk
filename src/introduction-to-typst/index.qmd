@@ -52,6 +52,8 @@ Typst is very fast, thanks to Rust
 
 ![](./migration.png)
 
+- Typst is also a Rust library! Which means there are bindings to it (Python, R, JavaScript & Rust itself)
+
 ## A bit of context
 
 <br>
