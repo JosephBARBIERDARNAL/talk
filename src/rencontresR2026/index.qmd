@@ -118,9 +118,11 @@ Et c'est le cas de pleins d'autres language. Exemple avec Pyo3 qui permet d'avoi
 
 ## Comment on appelle Rust depuis R
 
+
+
 <br>
 
-<center><span style="font-size: 2em;">✨extendr✨</span></center>
+## ✨extendr✨
 
 - Ecrire une fonction en Rust
 - Exposer cette fonction à R
