@@ -1,0 +1,156 @@
+---
+title: "R et Rust : une histoire d'amour naissante"
+author: "Joseph Barbier - *Rencontres R 2026*"
+format:
+  revealjs:
+    theme: [default, style.scss]
+    transition: slide
+    background-transition: fade
+    incremental: true
+    auto-stretch: false
+embed-resources: true
+echo: true
+---
+
+## A propos
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="35%"}
+![](joseph.png){.circle}
+<div style="font-size:0.9em;">
+   *Joseph*
+
+   <br><br>
+
+   <a href="https://barbierjoseph.com">barbierjoseph.com</a>
+
+   <a href="https://ysunflower.com">ysunflower.com</a>
+
+</div>
+:::
+
+::: {.column width="15%"}
+:::
+
+::: {.column width="50%"}
+<div style="font-size: 1.2em;">
+   Consulting
+
+   Open source
+
+   Data(viz)
+
+   ![](viz.png)
+</div>
+:::
+
+::::
+
+## R ce n'est pas que R
+
+<center><img src="./r-source.png" width="900"></center>
+
+> *Languages utilisés dans le code source du language R*
+
+
+# Rust et la data science
+
+## Ecosystème Python
+
+- `uv`: package/project manager
+- `ruff`: linter & formatter
+- `ty`: type checker
+- `pyrefly`: type checker
+- `polars`: data manipulation
+- `pydandic`: data validation
+- `monty`: interpreter
+- `prek`: pre-commit hook
+- **et plein d'autres!**
+
+## D'où ça vient?
+
+- Performance
+- Sûreté: beaucoup moins de bugs liés à la gestion de la mémoire
+- Ecosystème: écrire du Rust c'est une bonne expérience développeur
+   - message d'erreurs claires
+   - batteries incluses (serveur de language, format/lint, tests, etc)
+   - pas mal de ressources
+- Bindings
+
+Beaucoup de projets ont été développés en Rust pour une approche plus "moderne".
+
+## Bindings
+
+Appeler du code depuis un language (e.g., R) issue d'un autre language (e.g., C).
+
+Par exemple, R a une API C, cad un moyen d'appeler des fonctions C (performance ++) depuis R !  Si vous avez déjà vu la fonction `.Call()`, c'est ça !
+
+Et c'est le cas de pleins d'autres language. Exemple avec Pyo3 qui permet d'avoir du code Python qui appelle Rust.
+
+--> On va en reparler
+
+# R ❤️ Rust : ça existe déjà<br>(et ça marche)
+
+## Rust dans l'écosystème R
+
+- `Ark`: kernel R (utilisé principalement dans Positron)
+- `Air`: formatter et serveur de language
+- `Jarl`: linter
+- `yaml12`: YAML parser
+- `polars`: R interface à polars
+- **et plein d'autres !**
+
+## Projet en développement
+
+- `Quarto v2`: réecriture de Quarto en Rust
+- `rv`: package manager
+- `ggsql`: SQL et grammaire des graphiques
+
+# Et si vous utilisiez Rust ?
+
+## 2 manières différentes d'utiliser Rust
+
+- Créer un programme en Rust qu'on peut appeler depuis R 
+- Créer un programme qu'on ne peut **pas** appeler depuis R --> Plus dur et concerne souvent des outils "fondations"
+
+## Comment on appelle Rust depuis R
+
+<br>
+
+<center><span style="font-size: 2em;">✨extendr✨</span></center>
+
+- Ecrire une fonction en Rust
+- Exposer cette fonction à R
+- Appeler la fonction depuis R
+
+##
+
+<div style="display: flex; justify-content: center; font-size: 3em;">
+Merci !
+</div>
+
+J'ai dis des choses fausses ?
+
+::: {.nonincremental}
+- venez m'en parler !
+:::
+
+J'ai dis des choses pertinentes ?
+
+::: {.nonincremental}
+- venez m'en parler !
+:::
+
+<br>
+
+Autres ?
+
+::: {.nonincremental}
+- venez me voir !
+- linkedin: Joseph Barbier
+- mail: `joseph@ysunflower.com`
+- slides: [github.com/JosephBARBIERDARNAL/talk](https://github.com/JosephBARBIERDARNAL/talk/tree/main/src/rencontresR2026)
+:::
