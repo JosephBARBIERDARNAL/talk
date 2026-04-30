@@ -49,14 +49,132 @@ echo: true
 
 ::::
 
+## Pourquoi venir parler de Rust ?
+
+<br>
+
+
+:::: {.columns}
+
+::: {.column width="60%"}
+<img src="./reddit-question.png" width="700">
+:::
+
+
+::: {.column width="40%"}
+<img src="./reddit-answer.png" width="700">
+:::
+::::
+
+Language qui gagne en popularité
+
+- sur des gros projets (Linux, Firefox, Windows, Deno, ...)
+- et dans l'industrie
+
 ## R ce n'est pas que R
 
 <center><img src="./r-source.png" width="900"></center>
 
-> *Languages utilisés dans le code source du language R*
+<br>
+
+<center><span style="font-size: 1.2em; background-color: #caf0f8">R est principalement écrit en C et Fortran</span></center>
 
 
-# Rust et la data science
+## Les languages se parlent: R et C
+
+```c
+#include <R.h>
+#include <Rinternals.h>
+
+SEXP add_two(SEXP x) {
+    double val = REAL(x)[0];
+    SEXP result = PROTECT(Rf_allocVector(REALSXP, 1));
+    REAL(result)[0] = val + 2.0;
+    UNPROTECT(1);
+    return result;
+}
+```
+
+<br>
+
+Ensuite on compile avec `R CMD SHLIB example.c`, puis on utilise `.Call()`:
+
+<br>
+
+```R
+dyn.load("example.so")
+
+.Call("add_two", 41)
+#> 43
+```
+
+- Un peu compliqué...
+- Mais techniquement possible
+
+## R et C++ avec `{Rcpp}`
+
+```cpp
+#include <Rcpp.h>
+using namespace Rcpp;
+
+// [[Rcpp::export]]
+double add_two(double x) {
+  return x + 2;
+}
+```
+
+<br>
+
+Et côté R :
+
+<br>
+
+```R
+library(Rcpp)
+sourceCpp("example.cpp")
+
+add_two(42)
+```
+
+<br>
+
+- Beaucoup plus simple !
+- Utilisé par pleins de packages R (~2 millions installations/mois)
+
+## R et Rust
+
+```rs
+use std::os::raw::c_double;
+
+#[no_mangle]
+pub extern "C" fn add_two(x: *mut c_double) {
+    unsafe {
+        *x = *x + 2.0;
+    }
+}
+```
+
+<br>
+
+On compile avec `cargo build`, et ensuite:
+
+<br>
+
+```R
+dyn.load("target/release/libexample.dylib")
+
+add_two <- function(x) {
+    .C("add_two", as.double(x))[[1]]
+}
+
+add_two(41)
+```
+
+- Compliqué et très "hacky"
+- Pas très R friendly
+- Pas safe
+
+# Essor de Rust
 
 ## Ecosystème Python
 
@@ -70,33 +188,32 @@ echo: true
 - `prek`: pre-commit hook
 - **et plein d'autres!**
 
-## D'où ça vient?
+# D'où ça vient?
 
-- Performance
-- Sûreté: beaucoup moins de bugs liés à la gestion de la mémoire
-- Ecosystème: écrire du Rust c'est une bonne expérience développeur
-   - message d'erreurs claires
-   - batteries incluses (serveur de language, format/lint, tests, etc)
-   - pas mal de ressources
-- Bindings
+## Performance
 
-Beaucoup de projets ont été développés en Rust pour une approche plus "moderne".
+<center><img src="./performance-benchmark.png" width="900"></center>
 
-## Bindings
+## Safety
 
-Appeler du code depuis un language (e.g., R) issue d'un autre language (e.g., C).
+<br>
 
-Par exemple, R a une API C, cad un moyen d'appeler des fonctions C (performance ++) depuis R !  Si vous avez déjà vu la fonction `.Call()`, c'est ça !
+- Mémoire
+- Type
 
-Et c'est le cas de pleins d'autres language. Exemple avec Pyo3 qui permet d'avoir du code Python qui appelle Rust.
+  - Pleins de bugs classiques sont attrapés **avant** de lancer le programme
 
---> On va en reparler
+## Expérience développeur
+
+<video autoplay loop>
+  <source src="./rust-usage.mp4" type="video/mp4">
+</video>
 
 # R ❤️ Rust : ça existe déjà<br>(et ça marche)
 
 ## Rust dans l'écosystème R
 
-- `Ark`: kernel R (utilisé principalement dans Positron)
+- `Ark`: kernel R (utilisé dans Positron)
 - `Air`: formatter et serveur de language
 - `Jarl`: linter
 - `yaml12`: YAML parser
@@ -127,6 +244,8 @@ Et c'est le cas de pleins d'autres language. Exemple avec Pyo3 qui permet d'avoi
 - Ecrire une fonction en Rust
 - Exposer cette fonction à R
 - Appeler la fonction depuis R
+
+## Est-ce que je dois arrêter R pour faire du Rust ?
 
 ##
 
