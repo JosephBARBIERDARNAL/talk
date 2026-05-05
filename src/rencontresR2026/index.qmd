@@ -66,10 +66,9 @@ echo: true
 :::
 ::::
 
-Language qui gagne en popularité
-
-- sur des gros projets (Linux, Firefox, Windows, Deno, ...)
-- et dans l'industrie
+- Language qui gagne en popularité
+  - sur des gros très projets (Linux, Firefox, Windows, Deno, ...)
+  - et dans l'industrie
 
 ## R ce n'est pas que R
 
@@ -140,6 +139,7 @@ add_two(42)
 
 - Beaucoup plus simple !
 - Utilisé par pleins de packages R (~2 millions installations/mois)
+- La référence pour un package qui a besoin de performance++
 
 ## R et Rust
 
@@ -194,14 +194,72 @@ add_two(41)
 
 <center><img src="./performance-benchmark.png" width="900"></center>
 
-## Safety
+## Memory safety
+
+```{.rs code-line-numbers="|2|3|5-6"}
+fn main() {
+    let s1 = String::from("hello");
+    let s2 = s1;
+
+    println!("{}", s1);
+    println!("{}", s2);
+}
+```
 
 <br>
 
-- Mémoire
-- Type
 
-  - Pleins de bugs classiques sont attrapés **avant** de lancer le programme
+```rs
+error[E0382]: borrow of moved value: `s1`
+ --> /Users/josephbarbier/l/talk/src/rencontresR2026/script.rs:5:20
+  |
+2 |     let s1 = String::from("hello");
+  |         -- move occurs because `s1` has type `String`, which does not implement the `Copy` trait
+3 |     let s2 = s1;
+  |              -- value moved here
+4 |
+5 |     println!("{}", s1);
+  |                    ^^ value borrowed here after move
+  |
+help: consider cloning the value if the performance cost is acceptable
+  |
+3 |     let s2 = s1.clone();
+  |                ++++++++
+```
+
+## Type safety
+
+```{.rs code-line-numbers="|2|3|5"}
+fn main() {
+    let x: i32 = 10;
+    let y: &str = "20";
+
+    let result = x + y;
+}
+```
+
+<br>
+
+```rs
+error[E0277]: cannot add `&str` to `i32`
+ --> /Users/josephbarbier/l/talk/src/rencontresR2026/script2.rs:5:20
+  |
+5 |     let result = x + y;
+  |                    ^ no implementation for `i32 + &str`
+  |
+  = help: the trait `Add<&str>` is not implemented for `i32`
+  = help: the following other types implement trait `Add<Rhs>`:
+            `&i32` implements `Add<i32>`
+            `&i32` implements `Add`
+            `i32` implements `Add<&i32>`
+            `i32` implements `Add`
+```
+
+<br>
+<br>
+
+- *"Oui mais en R aussi j'aurai une erreur"*
+
 
 ## Expérience développeur
 
@@ -235,15 +293,41 @@ add_two(41)
 
 ## Comment on appelle Rust depuis R
 
+<center style="border: 1px solid black"><img src="./extendr.png" width="650"></center>
 
+## Comment on appelle Rust depuis R
 
 <br>
 
-## ✨extendr✨
+::: {.panel-tabset}
 
-- Ecrire une fonction en Rust
-- Exposer cette fonction à R
-- Appeler la fonction depuis R
+### Rust
+
+```rs
+use extendr_api::prelude::*;
+
+/// @export
+#[extendr]
+fn hello() -> &'static str {
+    "Hello RencontresR 2026 !"
+}
+
+extendr_module! {
+    mod helloextendr;
+    fn hello;
+}
+```
+
+### R
+
+```r
+devtools::document()
+
+hello()
+#> "Hello RencontresR 2026 !"
+```
+
+:::
 
 ## Est-ce que je dois arrêter R pour faire du Rust ?
 
