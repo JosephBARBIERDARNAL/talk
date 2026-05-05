@@ -66,127 +66,9 @@ echo: true
 :::
 ::::
 
-- Language qui gagne en popularité
-  - sur des gros très projets (Linux, Firefox, Windows, Deno, ...)
-  - et dans l'industrie
-
-## R ce n'est pas que R
-
-<center><img src="./r-source.png" width="900"></center>
-
-<br>
-
-<center><span style="font-size: 1.2em; background-color: #caf0f8">R est principalement écrit en C et Fortran</span></center>
-
-
-## Les languages se parlent: R et C
-
-```c
-#include <R.h>
-#include <Rinternals.h>
-
-SEXP add_two(SEXP x) {
-    double val = REAL(x)[0];
-    SEXP result = PROTECT(Rf_allocVector(REALSXP, 1));
-    REAL(result)[0] = val + 2.0;
-    UNPROTECT(1);
-    return result;
-}
-```
-
-<br>
-
-Ensuite on compile avec `R CMD SHLIB example.c`, puis on utilise `.Call()`:
-
-<br>
-
-```R
-dyn.load("example.so")
-
-.Call("add_two", 41)
-#> 43
-```
-
-- Un peu compliqué...
-- Mais techniquement possible
-
-## R et C++ avec `{Rcpp}`
-
-```cpp
-#include <Rcpp.h>
-using namespace Rcpp;
-
-// [[Rcpp::export]]
-double add_two(double x) {
-  return x + 2;
-}
-```
-
-<br>
-
-Et côté R :
-
-<br>
-
-```R
-library(Rcpp)
-sourceCpp("example.cpp")
-
-add_two(42)
-```
-
-<br>
-
-- Beaucoup plus simple !
-- Utilisé par pleins de packages R (~2 millions installations/mois)
-- La référence pour un package qui a besoin de performance++
-
-## R et Rust
-
-```rs
-use std::os::raw::c_double;
-
-#[no_mangle]
-pub extern "C" fn add_two(x: *mut c_double) {
-    unsafe {
-        *x = *x + 2.0;
-    }
-}
-```
-
-<br>
-
-On compile avec `cargo build`, et ensuite:
-
-<br>
-
-```R
-dyn.load("target/release/libexample.dylib")
-
-add_two <- function(x) {
-    .C("add_two", as.double(x))[[1]]
-}
-
-add_two(41)
-```
-
-- Compliqué et très "hacky"
-- Pas très R friendly
-- Pas safe
-
-# Essor de Rust
-
-## Ecosystème Python
-
-- `uv`: package/project manager
-- `ruff`: linter & formatter
-- `ty`: type checker
-- `pyrefly`: type checker
-- `polars`: data manipulation
-- `pydandic`: data validation
-- `monty`: interpreter
-- `prek`: pre-commit hook
-- **et plein d'autres!**
+- Langage qui gagne en popularité
+  - sur des gros projets (Linux, Firefox, Windows, Deno, ...)
+  - et dans des grosses entreprises (AWS, Dropbox, Cloudflare, Discord...)
 
 # D'où ça vient?
 
@@ -267,11 +149,24 @@ error[E0277]: cannot add `&str` to `i32`
   <source src="./rust-usage.mp4" type="video/mp4">
 </video>
 
+## Ecosystème Python
+
+- `uv`: package/project manager
+- `ruff`: linter & formatter
+- `ty`: type checker
+- `pyrefly`: type checker
+- `polars`: data manipulation
+- `pydantic`: data validation
+- `monty`: interpreter
+- `prek`: pre-commit hook
+- **et plein d'autres!**
+
+
 # R ❤️ Rust : ça existe déjà<br>(et ça marche)
 
 ## Rust dans l'écosystème R
 
-- `Ark`: kernel R (utilisé dans Positron)
+- `Ark`: kernel R (utilisé dans Positron IDE)
 - `Air`: formatter et serveur de language
 - `Jarl`: linter
 - `yaml12`: YAML parser
@@ -280,9 +175,126 @@ error[E0277]: cannot add `&str` to `i32`
 
 ## Projet en développement
 
-- `Quarto v2`: réecriture de Quarto en Rust
-- `rv`: package manager
-- `ggsql`: SQL et grammaire des graphiques
+::: {.panel-tabset}
+
+### `q2`
+
+<center><img src="./q2.png" width="500"></center>
+
+### `rv`
+
+<center><img src="./rv.png" width="500"></center>
+
+### `ggsql`
+
+<center><img src="./ggsql.png" width="500"></center>
+
+:::
+
+
+## R ce n'est pas que R
+
+<center><img src="./r-source.png" width="900"></center>
+
+<br>
+
+<center><span style="font-size: 1.2em; background-color: #caf0f8">R est principalement écrit en C et Fortran</span></center>
+
+
+## Les languages se parlent: R et C
+
+```c
+#include <R.h>
+#include <Rinternals.h>
+
+SEXP add_two(SEXP x) {
+    double val = REAL(x)[0];
+    SEXP result = PROTECT(Rf_allocVector(REALSXP, 1));
+    REAL(result)[0] = val + 2.0;
+    UNPROTECT(1);
+    return result;
+}
+```
+
+<br>
+
+Ensuite on compile avec `R CMD SHLIB example.c`, puis on utilise `.Call()`:
+
+<br>
+
+```R
+dyn.load("example.so")
+
+.Call("add_two", 41)
+#> 43
+```
+
+- Un peu compliqué...
+- Mais techniquement possible
+
+## R et C++ avec `{Rcpp}`
+
+```cpp
+#include <Rcpp.h>
+using namespace Rcpp;
+
+// [[Rcpp::export]]
+double add_two(double x) {
+  return x + 2;
+}
+```
+
+<br>
+
+Et côté R :
+
+<br>
+
+```R
+library(Rcpp)
+sourceCpp("example.cpp")
+
+add_two(42)
+```
+
+<br>
+
+- Beaucoup plus simple !
+- Utilisé par pleins de packages R (~2 millions installations/mois)
+- La référence pour un package qui a besoin de performance+
+
+## R et Rust
+
+```rs
+use std::os::raw::c_double;
+
+#[no_mangle]
+pub extern "C" fn add_two(x: *mut c_double) {
+    unsafe {
+        *x = *x + 2.0;
+    }
+}
+```
+
+<br>
+
+On compile avec `cargo build`, et ensuite:
+
+<br>
+
+```R
+dyn.load("target/release/libexample.dylib")
+
+add_two <- function(x) {
+    .C("add_two", as.double(x))[[1]]
+}
+
+add_two(41)
+```
+
+- On perd la safety
+- Et pas d'abstraction R
+
 
 # Et si vous utilisiez Rust ?
 
@@ -329,18 +341,28 @@ hello()
 
 :::
 
-## Est-ce que je dois arrêter R pour faire du Rust ?
+## Est-ce que je dois arrêter R pour faire du Rust ? (non)
 
+<br>
 
-<center><img src="./meme-language-war.png" width="700"></center>
+:::: {.columns}
 
-##
+::: {.column width="50%"}
+<img src="./meme-language-war.png">
+:::
 
-### Rust ne remplace pas R
+::: {.column width="50%"}
+- Rust ne remplace(ra) pas R
+- Rust <u>peut</u> remplacer C/C++
+- Rust ne résoudra pas tous vos problèmes
+- Il est probable que vous n'ayez même **pas besoin de Rust** 😳
+- Mais c'est bien de savoir comment fonctionne les outils qu'on utilise
+  - rien n'est magique !
+- Et peut-être que ça vous donnera envie d'essayer
+:::
+::::
 
-### Rust ne remplace pas C/C++
-
-
+# Un mot sur l'IA
 
 ##
 
