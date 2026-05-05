@@ -331,6 +331,17 @@ hello()
 
 ## Est-ce que je dois arrêter R pour faire du Rust ?
 
+
+<center><img src="./meme-language-war.png" width="700"></center>
+
+##
+
+### Rust ne remplace pas R
+
+### Rust ne remplace pas C/C++
+
+
+
 ##
 
 <div style="display: flex; justify-content: center; font-size: 3em;">
