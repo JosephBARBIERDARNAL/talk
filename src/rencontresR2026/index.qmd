@@ -58,17 +58,24 @@ echo: true
 
 ::: {.column width="60%"}
 <img src="./reddit-question.png" width="700">
+<img src="./rust-hn.png" width="700">
 :::
 
 
-::: {.column width="40%"}
+::: {.column width="40%" .nonincremental}
 <img src="./reddit-answer.png" width="700">
+
+<span style="font-size: 1.4em">
+  
+  - Open source : Linux, Firefox, Windows, Deno, ...
+
+  - Industrie : AWS, Dropbox, Cloudflare, Discord, Datadog, ...
+
+</span>
 :::
 ::::
 
-- Langage qui gagne en popularité
-  - sur des gros projets (Linux, Firefox, Windows, Deno, ...)
-  - et dans des grosses entreprises (AWS, Dropbox, Cloudflare, Discord...)
+
 
 # D'où ça vient?
 
@@ -90,6 +97,7 @@ fn main() {
 
 <br>
 
+::: {.fragment}
 
 ```rs
 error[E0382]: borrow of moved value: `s1`
@@ -109,6 +117,8 @@ help: consider cloning the value if the performance cost is acceptable
   |                ++++++++
 ```
 
+:::
+
 ## Type safety
 
 ```{.rs code-line-numbers="|2|3|5"}
@@ -121,6 +131,8 @@ fn main() {
 ```
 
 <br>
+
+::: {.fragment}
 
 ```rs
 error[E0277]: cannot add `&str` to `i32`
@@ -137,6 +149,8 @@ error[E0277]: cannot add `&str` to `i32`
             `i32` implements `Add`
 ```
 
+:::
+
 <br>
 <br>
 
@@ -151,6 +165,8 @@ error[E0277]: cannot add `&str` to `i32`
 
 ## Ecosystème Python
 
+::: {.nonincremental}
+
 - `uv`: package/project manager
 - `ruff`: linter & formatter
 - `ty`: type checker
@@ -161,10 +177,13 @@ error[E0277]: cannot add `&str` to `i32`
 - `prek`: pre-commit hook
 - **et plein d'autres!**
 
+:::
 
 # R ❤️ Rust : ça existe déjà<br>(et ça marche)
 
 ## Rust dans l'écosystème R
+
+::: {.nonincremental}
 
 - `Ark`: kernel R (utilisé dans Positron IDE)
 - `Air`: formatter et serveur de language
@@ -172,6 +191,8 @@ error[E0277]: cannot add `&str` to `i32`
 - `yaml12`: YAML parser
 - `polars`: R interface à polars
 - **et plein d'autres !**
+
+:::
 
 ## Projet en développement
 
@@ -191,6 +212,7 @@ error[E0277]: cannot add `&str` to `i32`
 
 :::
 
+# Tuto : faire son premier projet R et Rust
 
 ## R ce n'est pas que R
 
@@ -229,8 +251,12 @@ dyn.load("example.so")
 #> 43
 ```
 
+<br>
+
+::: {.nonincremental}
 - Un peu compliqué...
 - Mais techniquement possible
+:::
 
 ## R et C++ avec `{Rcpp}`
 
@@ -296,14 +322,7 @@ add_two(41)
 - Et pas d'abstraction R
 
 
-# Et si vous utilisiez Rust ?
-
-## 2 manières différentes d'utiliser Rust
-
-- Créer un programme en Rust qu'on peut appeler depuis R 
-- Créer un programme qu'on ne peut **pas** appeler depuis R --> Plus dur et concerne souvent des outils "fondations"
-
-## Comment on appelle Rust depuis R
+## Extendr
 
 <center style="border: 1px solid black"><img src="./extendr.png" width="650"></center>
 
@@ -311,11 +330,8 @@ add_two(41)
 
 <br>
 
-::: {.panel-tabset}
 
-### Rust
-
-```rs
+```{.rs code-line-numbers="|1|3-7|9-12"}
 use extendr_api::prelude::*;
 
 /// @export
@@ -330,16 +346,20 @@ extendr_module! {
 }
 ```
 
-### R
+<br>
 
-```r
-devtools::document()
+::: {.fragment}
+
+```{.r code-line-numbers="1-2|4-5"}
+devtools::document() # build package
+devtools::load_all() # load package
 
 hello()
 #> "Hello RencontresR 2026 !"
 ```
 
 :::
+
 
 ## Est-ce que je dois arrêter R pour faire du Rust ? (non)
 
@@ -353,6 +373,7 @@ hello()
 
 ::: {.column width="50%"}
 - Rust ne remplace(ra) pas R
+- Rust fonctionne très bien avec R
 - Rust <u>peut</u> remplacer C/C++
 - Rust ne résoudra pas tous vos problèmes
 - Il est probable que vous n'ayez même **pas besoin de Rust** 😳

@@ -1,5 +1,7 @@
 # talk
 
+- **Recontres R 2026 (in French)**: _"R et Rust : une histoire d'amour naissante"_
+  - [Slide](https://josephbarbierdarnal.github.io/talk/src/rencontresR2026/)
 - _"An introduction to Typst"_
   - [Slide](https://josephbarbierdarnal.github.io/talk/src/introduction-to-typst/)
 - **Rome R Users Group**: _"Less iteration, better charts: rethinking how we create visualizations"_
