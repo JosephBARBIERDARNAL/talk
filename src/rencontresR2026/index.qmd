@@ -52,7 +52,22 @@ echo: true
 ## Pourquoi venir parler de Rust ?
 
 <br>
+<br>
 
+<div style="font-size: 1.3em">
+
+- *Pas pour vous dire que c'est mieux que R*
+- *Pas pour vous dire que vous devez re-écrire vos projets en Rust*
+
+</div>
+
+::: {.fragment}
+<center><img src="./google-trend.png" width="600"></center>
+:::
+
+## Pourquoi venir parler de Rust ?
+
+<br>
 
 :::: {.columns}
 
@@ -64,22 +79,17 @@ echo: true
 
 ::: {.column width="40%" .nonincremental}
 <img src="./reddit-answer.png" width="700">
-
-<span style="font-size: 1.4em">
   
-  - Open source : Linux, Firefox, Windows, Deno, ...
+- Open source : Linux, Firefox, Windows, Deno, ...
 
-  - Industrie : AWS, Dropbox, Cloudflare, Discord, Datadog, ...
+- Industrie : AWS, Dropbox, Cloudflare, Discord, Datadog, ...
 
-</span>
 :::
 ::::
 
+# D'où ça vient ?
 
-
-# D'où ça vient?
-
-## Performance
+## Performance (⚠️⚠️⚠️)
 
 <center><img src="./performance-benchmark.png" width="900"></center>
 
@@ -159,7 +169,7 @@ error[E0277]: cannot add `&str` to `i32`
 
 ## Expérience développeur
 
-<video autoplay loop>
+<video autoplay loop muted>
   <source src="./rust-usage.mp4" type="video/mp4">
 </video>
 
@@ -186,7 +196,7 @@ error[E0277]: cannot add `&str` to `i32`
 ::: {.nonincremental}
 
 - `Ark`: kernel R (utilisé dans Positron IDE)
-- `Air`: formatter et serveur de language
+- `Air`: formatter et serveur de langage
 - `Jarl`: linter
 - `yaml12`: YAML parser
 - `polars`: R interface à polars
@@ -212,84 +222,10 @@ error[E0277]: cannot add `&str` to `i32`
 
 :::
 
-# Tuto : faire son premier projet R et Rust
-
-## R ce n'est pas que R
-
-<center><img src="./r-source.png" width="900"></center>
-
-<br>
-
-<center><span style="font-size: 1.2em; background-color: #caf0f8">R est principalement écrit en C et Fortran</span></center>
+# **Tuto**<br>Faire son premier projet R et Rust
 
 
-## Les languages se parlent: R et C
-
-```c
-#include <R.h>
-#include <Rinternals.h>
-
-SEXP add_two(SEXP x) {
-    double val = REAL(x)[0];
-    SEXP result = PROTECT(Rf_allocVector(REALSXP, 1));
-    REAL(result)[0] = val + 2.0;
-    UNPROTECT(1);
-    return result;
-}
-```
-
-<br>
-
-Ensuite on compile avec `R CMD SHLIB example.c`, puis on utilise `.Call()`:
-
-<br>
-
-```R
-dyn.load("example.so")
-
-.Call("add_two", 41)
-#> 43
-```
-
-<br>
-
-::: {.nonincremental}
-- Un peu compliqué...
-- Mais techniquement possible
-:::
-
-## R et C++ avec `{Rcpp}`
-
-```cpp
-#include <Rcpp.h>
-using namespace Rcpp;
-
-// [[Rcpp::export]]
-double add_two(double x) {
-  return x + 2;
-}
-```
-
-<br>
-
-Et côté R :
-
-<br>
-
-```R
-library(Rcpp)
-sourceCpp("example.cpp")
-
-add_two(42)
-```
-
-<br>
-
-- Beaucoup plus simple !
-- Utilisé par pleins de packages R (~2 millions installations/mois)
-- La référence pour un package qui a besoin de performance+
-
-## R et Rust
+## Appeler Rust depuis R
 
 ```rs
 use std::os::raw::c_double;
@@ -377,7 +313,7 @@ hello()
 - Rust <u>peut</u> remplacer C/C++
 - Rust ne résoudra pas tous vos problèmes
 - Il est probable que vous n'ayez même **pas besoin de Rust** 😳
-- Mais c'est bien de savoir comment fonctionne les outils qu'on utilise
+- Mais c'est bien de savoir comment fonctionnent les outils qu'on utilise
   - rien n'est magique !
 - Et peut-être que ça vous donnera envie d'essayer
 :::
@@ -391,13 +327,13 @@ hello()
 Merci !
 </div>
 
-J'ai dis des choses fausses ?
+J'ai dit des choses fausses ?
 
 ::: {.nonincremental}
 - venez m'en parler !
 :::
 
-J'ai dis des choses pertinentes ?
+J'ai dit des choses pertinentes ?
 
 ::: {.nonincremental}
 - venez m'en parler !
