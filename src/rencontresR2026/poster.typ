@@ -28,7 +28,7 @@
 #let rule(color: line) = rect(width: 100%, height: 1.1pt, fill: color, stroke: none)
 
 #let label(body, color: r-blue) = text(
-  size: 17pt,
+  size: 29pt,
   weight: "bold",
   fill: color,
   tracking: 0.06em,
@@ -49,12 +49,12 @@
   radius: 6pt,
   inset: 14pt,
 )[
-  #set text(font: "Menlo", size: 17.5pt, fill: ink)
+  #set text(font: "Menlo", size: 20pt, fill: ink)
   #raw(code, block: true, lang: lang)
 ]
 
 #let micro(title, body, color: r-blue) = {
-  box(fill: navy, inset: 25pt, radius: 15%)[
+  box(width: 100%, fill: navy, inset: 25pt, radius: 15%)[
     #show raw: set text(fill: black)
     #set text(top-edge: 0.4em, bottom-edge: 0em)
     #text(size: 18pt, weight: "bold", fill: gold, tracking: 0.04em)[#upper(title)]
@@ -66,7 +66,7 @@
 #let card(num, title, hook, code-r, code-py, usage, works, python, color: r-blue) = {
   block(
     width: 100%,
-    height: 211mm,
+    height: 230mm,
     fill: white,
     stroke: 1pt + line,
     radius: 8pt,
@@ -78,9 +78,9 @@
     #text(size: 23pt, weight: "bold", fill: color)[#num]
     #h(12pt)
     #text(size: 36pt, weight: "bold", fill: ink)[#title]
-    #v(5pt)
+    #v(2pt)
     #text(size: 21pt, fill: muted)[#hook]
-    #v(15pt)
+    #v(5pt)
     #grid(
       columns: 2,
       column-gutter: 1cm,
@@ -123,46 +123,24 @@
   radius: 10pt,
   inset: 35pt,
 )[
-  #grid(
-    columns: (1fr, 118mm),
-    column-gutter: 24mm,
-    [
-      #label("Rencontres R 2026")
-      #v(9pt)
-      #text(size: 74pt, weight: "bold", fill: ink)[Ce qui rend R unique]
-      #v(3pt)
-      #text(
-        size: 40pt,
-        fill: muted,
-      )[5 fonctionnalités qui séduisent un développeur Python]
-    ],
-    [
-      #block(
-        width: 100%,
-        fill: rgb("#edf4ff"),
-        stroke: none,
-        radius: 9pt,
-        inset: (x: 16pt, y: 17pt),
-      )[
-        #align(center)[
-          #text(size: 92pt, weight: "bold", fill: r-blue)[R]
-          #v(-4pt)
-          #text(size: 17pt, weight: "bold", fill: navy)[expressif]
-          #v(2pt)
-          #text(size: 15pt, fill: muted)[compact - dynamique - extensible]
-        ]
-      ]
-    ],
-  )
+  #label("Rencontres R 2026")
+  #v(9pt)
+  #text(size: 74pt, weight: "bold", fill: ink)[Ce qui rend R unique]
+  #v(3pt)
+  #text(
+    size: 40pt,
+    fill: muted,
+  )[5 fonctionnalités qui _séduisent_ un développeur Python]
 ]
 
 #v(13mm)
 
 #label("Résumé")
 #v(6pt)
-#text(size: 28pt)[
+#text(size: 34pt)[
   R possède des particularités qui peuvent surprendre quand on vient de Python,
-  mais qui rendent le langage particulièrement puissant pour l'analyse de données.
+  mais qui rendent le langage particulièrement puissant, notamment de par sa *flexibilité*.
+
   Ce poster présente *5 mécanismes* qui changent la manière d'écrire du code :
   des opérateurs lisibles, du dispatch léger, des expressions que l'on peut capturer,
   un système objet simple et des arguments évalués seulement quand ils sont utilisés.
@@ -187,11 +165,17 @@
 
 5 %within% c(1, 10)    # TRUE
 12 %within% c(1, 10)   # FALSE",
-    "def within(x, range_):
-    return range_[0] <= x <= range_[1]
+    "class Infix:
+    def __init__(self, f):
+        self.f = f
+    def __ror__(self, x):
+        return Infix(lambda y: self.f(x, y))
+    def __or__(self, y):
+        return self.f(y)
 
-within(5, (1, 10))     # True
-within(12, (1, 10))    # False",
+within = Infix(lambda x, r: r[0] <= x <= r[1])
+
+5 |within| (1, 10)     # True",
     "Rendre le code plus proche du vocabulaire métier et du langage naturel.",
     "Un opérateur infixe est une fonction dont le nom est entouré par des %.",
     "Souvent remplacé par une fonction nommée ; ici, l'intention reste dans l'appel.",
@@ -238,7 +222,7 @@ def label(expr):
 
 label('log(x + 1)')",
     "Créer des messages, formules, message de debug ou pipelines plus lisibles.",
-    "`substitute()` récupère l'expression avant son évaluation.",
+    "`substitute()` récupère l'expression *avant* son évaluation.",
     "Proche d'une manipulation d'AST, avec beaucoup moins de cérémonie.",
     color: green,
   ),
@@ -298,52 +282,22 @@ def _(x: LinearModel):
     inset: 20pt,
     breakable: false,
   )[
-    #label("À retenir", color: navy)
-    #v(8pt)
-    #text(size: 34pt, weight: "bold", fill: ink)[
-      R est plus qu'une syntaxe pour manipuler des tableaux.
-    ]
-    #v(10pt)
-    #text(size: 25pt, fill: muted)[
-      Ces mécanismes expliquent pourquoi beaucoup de packages R peuvent proposer
-      une interface concise, expressive et agréable à lire. Les comprendre permet
-      d'écrire du code plus clair, pas forcément plus complexe.
-    ]
-    #v(13pt)
+    #v(0.5cm)
+    #label("PDF en ligne", color: navy)
     #rule(color: rgb("#d9c8a5"))
-    #v(12pt)
-    #grid(
-      columns: (1fr, 1fr),
-      column-gutter: 12pt,
-      [
-        #text(size: 17pt, weight: "bold", fill: navy, tracking: 0.04em)[PUBLIC]
-        #v(3pt)
-        #text(size: 22pt)[Utilisateurs R débutants ou confirmés.]
-      ],
-      [
-        #text(size: 17pt, weight: "bold", fill: navy, tracking: 0.04em)[OBJECTIF]
-        #v(3pt)
-        #text(size: 22pt)[Démystifier les mécanismes dits « avancés ».]
-      ],
-    )
+    #align(horizon + center)[
+      #image("qrcode.svg", width: 11cm, alt: "QR code du PDF en question")
+    ]
   ],
 )
 
-#v(1fr)
-#rule()
-#v(5mm)
-#grid(
-  columns: (1fr, auto),
-  column-gutter: 16mm,
-  [
-    #text(size: 20pt, weight: "bold")[Joseph Barbier]
-    #h(7pt)
-    #text(size: 19pt, fill: muted)[Yellow Sunflower - joseph\@ysunflower.com]
-  ],
-  [
-    #text(
-      size: 18pt,
-      fill: muted,
-    )[Mots-clés : S3 - Métaprogrammation - Lazy evaluation - Syntaxe]
-  ],
-)
+
+
+#align(bottom)[
+  #rule()
+  #v(5mm)
+  #text(size: 20pt, weight: "bold")[Joseph Barbier]
+  #h(7pt)
+  #text(size: 19pt, fill: muted)[Yellow Sunflower - joseph\@ysunflower.com]
+
+]
