@@ -42,7 +42,7 @@
   text(size: 16pt, weight: "bold", fill: white, body),
 )
 
-#let codeblock(code) = block(
+#let codeblock(code, lang: "r") = block(
   width: 100%,
   fill: code-bg,
   stroke: 0.9pt + line,
@@ -50,7 +50,7 @@
   inset: 14pt,
 )[
   #set text(font: "Menlo", size: 17.5pt, fill: ink)
-  #raw(code, block: true, lang: "r")
+  #raw(code, block: true, lang: lang)
 ]
 
 #let micro(title, body, color: r-blue) = {
@@ -63,7 +63,7 @@
   ]
 }
 
-#let card(num, title, hook, code-r, usage, works, python, color: r-blue) = {
+#let card(num, title, hook, code-r, code-py, usage, works, python, color: r-blue) = {
   block(
     width: 100%,
     height: 211mm,
@@ -80,18 +80,29 @@
     #text(size: 36pt, weight: "bold", fill: ink)[#title]
     #v(5pt)
     #text(size: 21pt, fill: muted)[#hook]
+    #v(15pt)
     #grid(
       columns: 2,
       column-gutter: 1cm,
       [
-        #text(fill: color, size: 25pt)[R]
+        #text(fill: color, size: 25pt)[#underline(
+          "R",
+          stroke: 0.8pt,
+          extent: 1pt,
+          offset: 6pt,
+        )]
         #v(-0.5cm)
         #codeblock(code-r)
       ],
       [
-        #text(fill: color, size: 25pt)[Python]
+        #text(fill: color, size: 25pt)[#underline(
+          "Python",
+          stroke: 0.8pt,
+          extent: 1pt,
+          offset: 6pt,
+        )]
         #v(-0.5cm)
-        #codeblock(code-r)
+        #codeblock(code-py, lang: "python")
       ],
     )
 
@@ -176,6 +187,12 @@
 
 5 %within% c(1, 10)    # TRUE
 12 %within% c(1, 10)   # FALSE",
+    "`%within%` <- function(x, range) {
+    x >= range[1] & x <= range[2]
+}
+
+5 %within% c(1, 10)    # TRUE
+12 %within% c(1, 10)   # FALSE",
     "Rendre le code plus proche du vocabulaire métier et du langage naturel.",
     "Un opérateur infixe est une fonction dont le nom est entouré par des %.",
     "Souvent remplacé par une fonction nommée ; ici, l'intention reste dans l'appel.",
@@ -191,6 +208,11 @@
 }
 
 p1 + p2",
+    "`+.vec2` <- function(a, b) {
+  vec2(a$x + b$x, a$y + b$y)
+}
+
+p1 + p2",
     "Garder une API naturelle pour des objets spécialisés.",
     "R cherche une méthode S3 nommée comme l'opérateur et la classe.",
     "Même idée que `__add__`, mais portée par le système de méthodes de R.",
@@ -201,6 +223,11 @@ p1 + p2",
     "03",
     "Capturer une expression",
     "Traiter du code comme une donnée manipulable.",
+    "label <- function(expr) {
+  deparse(substitute(expr))
+}
+
+label(log(x + 1))",
     "label <- function(expr) {
   deparse(substitute(expr))
 }
@@ -223,6 +250,13 @@ label(log(x + 1))",
 describe.lm <- function(x) {
   'un modèle linéaire'
 }",
+    "describe <- function(x) {
+  UseMethod('describe')
+}
+
+describe.lm <- function(x) {
+  'un modèle linéaire'
+}",
     "Écrire une fonction générique puis spécialiser son comportement.",
     "Le dispatch appelle `describe.<classe>()` selon la classe de l'objet.",
     "Pas besoin de définir une hiérarchie complète pour un comportement polymorphe.",
@@ -233,13 +267,16 @@ describe.lm <- function(x) {
     "05",
     "Profiter de la lazy evaluation",
     "Définir des valeurs par défaut qui dépendent des autres arguments.",
-    "scale2 <- function(
-  x,
-  mu = mean(x),
-  sigma = sd(x)
-) {
+    "scale2 <- function(x, mu = mean(x), sigma = sd(x)) {
   (x - mu) / sigma
 }",
+    "def scale2(x, mu = None, sigma = None):
+    if mu is None:
+        mu = mean(x)
+    if sigma is None:
+        sigma = sd(x)
+
+    return (x - mu) / sigma",
     "Offrir des defaults intelligents sans demander plus à l'utilisateur.",
     "Les arguments sont des promesses : ils sont évalués seulement si nécessaire.",
     "Évite souvent les sentinelles du type `None` puis les tests manuels.",
