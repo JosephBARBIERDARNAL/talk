@@ -55,7 +55,7 @@
   radius: 6pt,
   inset: 14pt,
 )[
-  #set text(font: "Menlo", size: 20pt, fill: ink)
+  #set text(font: "Menlo", size: 18pt, fill: ink)
   #raw(code, block: true, lang: lang)
 ]
 
@@ -193,19 +193,22 @@ within = Infix(lambda x, r: r[0] <= x <= r[1])
     "02",
     "Surcharger des opérateurs",
     "Adapter une syntaxe connue à vos propres objets.",
-    "`+.vec2` <- function(a, b) {
-  vec2(a$x + b$x, a$y + b$y)
+    "euros <- function(x) {
+  structure(x, class = 'euros')
 }
 
-p1 + p2",
-    "class Vec2:
-    def __add__(self, other):
-        return Vec2(
-            self.x + other.x,
-            self.y + other.y,
-        )
+`+.euros` <- function(a, b) {
+  euros(unclass(a) + unclass(b))
+}
 
-p1 + p2",
+cat(euros(30) + euros(12), 'EUR')
+# 42 EUR",
+    "class Euros(int):
+    def __add__(self, other):
+        return Euros(int(self) + other)
+
+print(Euros(30) + Euros(12), 'EUR')
+# 42 EUR",
     "Garder une API naturelle pour des objets spécialisés.",
     "R cherche une méthode S3 nommée comme l'opérateur et la classe.",
     "Même idée que `__add__`, mais portée par le système de méthodes de R.",
@@ -220,16 +223,16 @@ p1 + p2",
   deparse(substitute(expr))
 }
 
-label(log(x + 1))",
-    "import ast
+label(log(x + 1))
+# log(x + 1)",
+    "# Pas vraiment possible
+def label(expr_src):
+    return expr_src
 
-def label(expr):
-    tree = ast.parse(expr, mode='eval')
-    return ast.unparse(tree)
-
-label('log(x + 1)')",
+label(\"log(x + 1)\")
+# log(x + 1)",
     "Créer des messages, des formules, des messages de débogage ou des pipelines plus lisibles.",
-    "`substitute()` récupère l'expression *avant* son évaluation.",
+    "`substitute()` récupère l'expression *avant* son évaluation. Python ne permet pas de passer une vraie expression en entrée.",
     "Proche d'une manipulation d'AST, avec beaucoup moins de cérémonie.",
     color: green,
   ),
@@ -244,10 +247,11 @@ label('log(x + 1)')",
 )
 
 format.order <- function(x, ...) {
-  paste(x$id, ':', x$total, 'EUR')
+  paste0(x$id, ': ', x$total, ' EUR')
 }
 
-format(order)",
+format(order)
+# A42: 89 EUR",
     "class Order:
     def __init__(self, id, total):
         self.id = id
@@ -256,7 +260,8 @@ format(order)",
     def label(self):
         return f'{self.id}: {self.total} EUR'
 
-Order('A42', 89).label()",
+Order('A42', 89).label()
+# A42: 89 EUR",
     "Personnaliser l'affichage d'objets réels : commandes, modèles ou résultats.",
     "`format()` appelle `format.<classe>()` selon la classe de l'objet.",
     "Le comportement vit souvent dans la classe ; S3 le garde à côté de la fonction.",
@@ -305,9 +310,16 @@ Order('A42', 89).label()",
 
 #align(bottom)[
   #rule()
-  #v(5mm)
-  #text(size: 20pt, weight: "bold")[Joseph Barbier]
-  #h(7pt)
-  #text(size: 19pt, fill: muted)[Yellow Sunflower - joseph\@ysunflower.com]
+  #align(horizon, box(width: 100%, grid(
+    columns: (20%, 70%, auto),
+    align(left)[
 
+      #v(5mm)
+      #text(size: 20pt, weight: "bold")[Joseph Barbier]
+      #h(7pt)
+      #text(size: 19pt, fill: muted)[_Yellow Sunflower_ joseph\@ysunflower.com]
+    ],
+    [],
+    align(right, image("logo.png", width: 3cm, alt: "Yellow Sunflower logo")),
+  )))
 ]
