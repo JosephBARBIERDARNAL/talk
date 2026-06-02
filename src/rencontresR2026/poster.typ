@@ -22,13 +22,19 @@
 #set par(leading: 0.62em, justify: false)
 #set list(marker: [--], indent: 18pt, body-indent: 9pt)
 #show raw: it => {
-  box(baseline: 20%, fill: rgb("#F4F7FA"), inset: 5pt, radius: 20%, it)
+  box(
+    baseline: 20%,
+    fill: rgb("#F4F7FA"),
+    inset: (bottom: 7pt, top: 10pt, x: 5pt),
+    radius: 20%,
+    it,
+  )
 }
 
 #let rule(color: line) = rect(width: 100%, height: 1.1pt, fill: color, stroke: none)
 
 #let label(body, color: r-blue) = text(
-  size: 29pt,
+  size: 34pt,
   weight: "bold",
   fill: color,
   tracking: 0.06em,
@@ -66,7 +72,7 @@
 #let card(num, title, hook, code-r, code-py, usage, works, python, color: r-blue) = {
   block(
     width: 100%,
-    height: 230mm,
+    height: 235mm,
     fill: white,
     stroke: 1pt + line,
     radius: 8pt,
@@ -139,7 +145,7 @@
 #v(6pt)
 #text(size: 34pt)[
   R possède des particularités qui peuvent surprendre quand on vient de Python,
-  mais qui rendent le langage particulièrement puissant, notamment de par sa *flexibilité*.
+  mais qui rendent le langage particulièrement puissant, notamment par sa *flexibilité*.
 
   Ce poster présente *5 mécanismes* qui changent la manière d'écrire du code :
   des opérateurs lisibles, du dispatch léger, des expressions que l'on peut capturer,
@@ -147,7 +153,7 @@
 ]
 
 #v(14mm)
-#label("Les 5 mécanismes", color: navy)
+#align(center, label("Les 5 mécanismes", color: navy))
 #v(7mm)
 
 #grid(
@@ -175,7 +181,8 @@
 
 within = Infix(lambda x, r: r[0] <= x <= r[1])
 
-5 |within| (1, 10)     # True",
+5 |within| (1, 10)   # True
+12 |within| (1, 10)  # False",
     "Rendre le code plus proche du vocabulaire métier et du langage naturel.",
     "Un opérateur infixe est une fonction dont le nom est entouré par des %.",
     "Souvent remplacé par une fonction nommée ; ici, l'intention reste dans l'appel.",
@@ -221,7 +228,7 @@ def label(expr):
     return ast.unparse(tree)
 
 label('log(x + 1)')",
-    "Créer des messages, formules, message de debug ou pipelines plus lisibles.",
+    "Créer des messages, des formules, des messages de débogage ou des pipelines plus lisibles.",
     "`substitute()` récupère l'expression *avant* son évaluation.",
     "Proche d'une manipulation d'AST, avec beaucoup moins de cérémonie.",
     color: green,
@@ -230,32 +237,35 @@ label('log(x + 1)')",
   card(
     "04",
     "Utiliser S3 simplement",
-    "Faire de l'orienté objet sans cérémonie.",
-    "describe <- function(x) {
-  UseMethod('describe')
+    "Spécialiser une fonction existante pour un objet métier.",
+    "order <- structure(
+    list(id = 'A42', total = 89),
+    class = 'order'
+)
+
+format.order <- function(x, ...) {
+  paste(x$id, ':', x$total, 'EUR')
 }
 
-describe.lm <- function(x) {
-  'un modèle linéaire'
-}",
-    "from functools import singledispatch
+format(order)",
+    "class Order:
+    def __init__(self, id, total):
+        self.id = id
+        self.total = total
 
-@singledispatch
-def describe(x):
-    raise NotImplementedError
+    def label(self):
+        return f'{self.id}: {self.total} EUR'
 
-@describe.register
-def _(x: LinearModel):
-    return 'un modèle linéaire'",
-    "Écrire une fonction générique puis spécialiser son comportement.",
-    "Le dispatch appelle `describe.<classe>()` selon la classe de l'objet.",
-    "Pas besoin de définir une hiérarchie complète pour un comportement polymorphe.",
+Order('A42', 89).label()",
+    "Personnaliser l'affichage d'objets réels : commandes, modèles ou résultats.",
+    "`format()` appelle `format.<classe>()` selon la classe de l'objet.",
+    "Le comportement vit souvent dans la classe ; S3 le garde à côté de la fonction.",
     color: violet,
   ),
 
   card(
     "05",
-    "Profiter de la lazy evaluation",
+    "Profiter de l'évaluation paresseuse",
     "Définir des valeurs par défaut qui dépendent des autres arguments.",
     "scale2 <- function(x, mu = mean(x), sigma = sd(x)) {
   (x - mu) / sigma
@@ -267,7 +277,7 @@ def _(x: LinearModel):
         sigma = sd(x)
 
     return (x - mu) / sigma",
-    "Offrir des defaults intelligents sans demander plus à l'utilisateur.",
+    "Offrir des valeurs par défaut intelligentes sans demander plus à l'utilisateur.",
     "Les arguments sont des promesses : ils sont évalués seulement si nécessaire.",
     "Évite souvent les sentinelles du type `None` puis les tests manuels.",
     color: gold,
