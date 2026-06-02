@@ -16,11 +16,14 @@
   author: "Joseph Barbier",
 )
 
-#set page(width: 841mm, height: 1189mm, margin: 34mm, fill: paper)
+#set page(paper: "a0", margin: 34mm, fill: paper)
 
 #set text(font: "Inter", size: 26pt, fill: ink, lang: "fr")
 #set par(leading: 0.62em, justify: false)
 #set list(marker: [--], indent: 18pt, body-indent: 9pt)
+#show raw: it => {
+  box(baseline: 20%, fill: rgb("#F4F7FA"), inset: 5pt, radius: 20%, it)
+}
 
 #let rule(color: line) = rect(width: 100%, height: 1.1pt, fill: color, stroke: none)
 
@@ -50,56 +53,64 @@
   #raw(code, block: true, lang: "r")
 ]
 
-#let micro(title, body, color: r-blue) = [
-  #text(size: 15pt, weight: "bold", fill: color, tracking: 0.04em)[#upper(title)]
-  #v(3pt)
-  #text(size: 20.5pt, fill: ink, body)
-]
-
-#let card(num, title, hook, code, usage, works, python, color: r-blue) = block(
-  width: 100%,
-  height: 211mm,
-  fill: white,
-  stroke: 1pt + line,
-  radius: 8pt,
-  inset: 20pt,
-  breakable: false,
-)[
-  #rect(width: 100%, height: 5pt, fill: color, stroke: none, radius: 2.5pt)
-  #v(10pt)
-  #text(size: 16pt, weight: "bold", fill: color)[#num]
-  #h(7pt)
-  #text(size: 32pt, weight: "bold", fill: ink)[#title]
-  #v(5pt)
-  #text(size: 21pt, fill: muted)[#hook]
-  #v(13pt)
-  #codeblock(code)
-  #v(14pt)
-  #grid(
-    columns: (1fr, 1fr),
-    column-gutter: 13pt,
-    micro("usage", usage, color: color), micro("comment ça marche", works, color: color),
-  )
-  #v(13pt)
-  #block(
-    width: 100%,
-    fill: paper,
-    stroke: 0.8pt + line,
-    radius: 6pt,
-    inset: (x: 12pt, y: 10pt),
-  )[
-    #text(size: 15pt, weight: "bold", fill: muted, tracking: 0.04em)[DEPUIS PYTHON]
-    #h(7pt)
-    #text(size: 20pt, fill: ink)[#python]
+#let micro(title, body, color: r-blue) = {
+  box(fill: navy, inset: 25pt, radius: 15%)[
+    #show raw: set text(fill: black)
+    #set text(top-edge: 0.4em, bottom-edge: 0em)
+    #text(size: 18pt, weight: "bold", fill: gold, tracking: 0.04em)[#upper(title)]
+    #v(3pt)
+    #text(size: 19pt, fill: white, eval(body, mode: "markup"))
   ]
-]
+}
+
+#let card(num, title, hook, code-r, usage, works, python, color: r-blue) = {
+  block(
+    width: 100%,
+    height: 211mm,
+    fill: white,
+    stroke: 1pt + line,
+    radius: 8pt,
+    inset: 20pt,
+    breakable: false,
+  )[
+    #rect(width: 100%, height: 5pt, fill: color, stroke: none, radius: 2.5pt)
+    #v(10pt)
+    #text(size: 23pt, weight: "bold", fill: color)[#num]
+    #h(12pt)
+    #text(size: 36pt, weight: "bold", fill: ink)[#title]
+    #v(5pt)
+    #text(size: 21pt, fill: muted)[#hook]
+    #grid(
+      columns: 2,
+      column-gutter: 1cm,
+      [
+        #text(fill: color, size: 25pt)[R]
+        #v(-0.5cm)
+        #codeblock(code-r)
+      ],
+      [
+        #text(fill: color, size: 25pt)[Python]
+        #v(-0.5cm)
+        #codeblock(code-r)
+      ],
+    )
+
+    #v(14pt)
+    #align(bottom, grid(
+      columns: (1fr, 1fr),
+      column-gutter: 13pt,
+      micro("usage", usage, color: color),
+      micro("comment ça marche", works, color: color),
+    ))
+  ]
+}
 
 #block(
   width: 100%,
   fill: white,
   stroke: 1pt + line,
   radius: 10pt,
-  inset: 25pt,
+  inset: 35pt,
 )[
   #grid(
     columns: (1fr, 118mm),
@@ -113,12 +124,6 @@
         size: 40pt,
         fill: muted,
       )[5 fonctionnalités qui séduisent un développeur Python]
-      #v(18pt)
-      #rule()
-      #v(14pt)
-      #text(size: 24pt, weight: "bold")[Joseph Barbier]
-      #h(7pt)
-      #text(size: 22pt, fill: muted)[Yellow Sunflower - joseph\@ysunflower.com]
     ],
     [
       #block(
@@ -142,39 +147,15 @@
 
 #v(13mm)
 
-#grid(
-  columns: (1.38fr, 0.62fr),
-  column-gutter: 15mm,
-  [
-    #label("Résumé")
-    #v(6pt)
-    #text(size: 28pt)[
-      R possède des particularités qui peuvent surprendre quand on vient de Python,
-      mais qui rendent le langage particulièrement puissant pour l'analyse de données.
-      Ce poster présente cinq mécanismes qui changent la manière d'écrire du code :
-      des opérateurs lisibles, du dispatch léger, des expressions que l'on peut capturer,
-      un système objet simple et des arguments évalués seulement quand ils sont utilisés.
-    ]
-  ],
-  [
-    #label("Idée centrale", color: rust)
-    #v(6pt)
-    #block(fill: white, stroke: 1pt + line, radius: 8pt, inset: 15pt)[
-      #text(size: 25pt, weight: "bold")[L'« avancé » n'a pas à être compliqué.]
-      #v(5pt)
-      #text(
-        size: 21pt,
-        fill: muted,
-      )[Ces outils sont petits, composables, et souvent déjà présents dans les packages que l'on utilise tous les jours.]
-      #v(10pt)
-      #chip("S3", color: r-blue)
-      #h(4pt)
-      #chip("métaprogrammation", color: green)
-      #h(4pt)
-      #chip("lazy evaluation", color: rust)
-    ]
-  ],
-)
+#label("Résumé")
+#v(6pt)
+#text(size: 28pt)[
+  R possède des particularités qui peuvent surprendre quand on vient de Python,
+  mais qui rendent le langage particulièrement puissant pour l'analyse de données.
+  Ce poster présente *5 mécanismes* qui changent la manière d'écrire du code :
+  des opérateurs lisibles, du dispatch léger, des expressions que l'on peut capturer,
+  un système objet simple et des arguments évalués seulement quand ils sont utilisés.
+]
 
 #v(14mm)
 #label("Les 5 mécanismes", color: navy)
@@ -189,13 +170,14 @@
     "01",
     "Créer ses opérateurs",
     "Nommer une intention directement dans la syntaxe.",
-    "`%||%` <- function(x, y) {
-  if (is.null(x)) y else x
+    "`%within%` <- function(x, range) {
+    x >= range[1] & x <= range[2]
 }
 
-NULL %||% 10",
-    "Rendre le code plus proche du vocabulaire métier.",
-    "Un opérateur infixe est une fonction dont le nom est entouré par des `%`.",
+5 %within% c(1, 10)    # TRUE
+12 %within% c(1, 10)   # FALSE",
+    "Rendre le code plus proche du vocabulaire métier et du langage naturel.",
+    "Un opérateur infixe est une fonction dont le nom est entouré par des %.",
     "Souvent remplacé par une fonction nommée ; ici, l'intention reste dans l'appel.",
     color: r-blue,
   ),

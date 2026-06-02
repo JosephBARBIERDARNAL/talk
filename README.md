@@ -1,5 +1,7 @@
 # talk
 
+- **Recontres R 2026 (in French)**: _"Ce qui rend R unique : 5 fonctionnalités qui séduisent un développeur Python"_
+  - [Poster](https://josephbarbierdarnal.github.io/talk/src/rencontresR2026/poster.pdf)
 - **Recontres R 2026 (in French)**: _"R et Rust : une histoire d'amour naissante"_
   - [Slide](https://josephbarbierdarnal.github.io/talk/src/rencontresR2026/)
 - _"An introduction to Typst"_
