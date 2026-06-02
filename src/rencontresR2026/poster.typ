@@ -187,12 +187,11 @@
 
 5 %within% c(1, 10)    # TRUE
 12 %within% c(1, 10)   # FALSE",
-    "`%within%` <- function(x, range) {
-    x >= range[1] & x <= range[2]
-}
+    "def within(x, range_):
+    return range_[0] <= x <= range_[1]
 
-5 %within% c(1, 10)    # TRUE
-12 %within% c(1, 10)   # FALSE",
+within(5, (1, 10))     # True
+within(12, (1, 10))    # False",
     "Rendre le code plus proche du vocabulaire métier et du langage naturel.",
     "Un opérateur infixe est une fonction dont le nom est entouré par des %.",
     "Souvent remplacé par une fonction nommée ; ici, l'intention reste dans l'appel.",
@@ -208,9 +207,12 @@
 }
 
 p1 + p2",
-    "`+.vec2` <- function(a, b) {
-  vec2(a$x + b$x, a$y + b$y)
-}
+    "class Vec2:
+    def __add__(self, other):
+        return Vec2(
+            self.x + other.x,
+            self.y + other.y,
+        )
 
 p1 + p2",
     "Garder une API naturelle pour des objets spécialisés.",
@@ -228,12 +230,14 @@ p1 + p2",
 }
 
 label(log(x + 1))",
-    "label <- function(expr) {
-  deparse(substitute(expr))
-}
+    "import ast
 
-label(log(x + 1))",
-    "Créer des messages, formules ou pipelines plus lisibles.",
+def label(expr):
+    tree = ast.parse(expr, mode='eval')
+    return ast.unparse(tree)
+
+label('log(x + 1)')",
+    "Créer des messages, formules, message de debug ou pipelines plus lisibles.",
     "`substitute()` récupère l'expression avant son évaluation.",
     "Proche d'une manipulation d'AST, avec beaucoup moins de cérémonie.",
     color: green,
@@ -250,13 +254,15 @@ label(log(x + 1))",
 describe.lm <- function(x) {
   'un modèle linéaire'
 }",
-    "describe <- function(x) {
-  UseMethod('describe')
-}
+    "from functools import singledispatch
 
-describe.lm <- function(x) {
-  'un modèle linéaire'
-}",
+@singledispatch
+def describe(x):
+    raise NotImplementedError
+
+@describe.register
+def _(x: LinearModel):
+    return 'un modèle linéaire'",
     "Écrire une fonction générique puis spécialiser son comportement.",
     "Le dispatch appelle `describe.<classe>()` selon la classe de l'objet.",
     "Pas besoin de définir une hiérarchie complète pour un comportement polymorphe.",
