@@ -360,3 +360,63 @@ img.circle {
 .blur {
   filter: blur(10px);
 }
+
+.why-rust-points {
+  height: calc(100% - 2.5em);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reveal .why-rust-points ul {
+  margin: 0;
+}
+
+.reveal .why-rust-points li {
+  font-size: 1.35em;
+  margin: 0.45em 0;
+}
+
+.reveal .ecosystem-list li {
+  font-size: 1em;
+  line-height: 1.25;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+  align-items: stretch;
+  margin-top: 1em;
+}
+
+.project-card {
+  min-width: 0;
+  padding: 0.65em;
+  border: 1px solid rgba($accent, 0.35);
+  border-radius: 0.4em;
+  background: rgba($accent, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reveal .project-card h3 {
+  margin: 0 0 0.5em;
+  font-size: 1.15em;
+  font-style: normal;
+}
+
+.reveal .project-card p {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.reveal .project-card img {
+  width: 100%;
+  height: 9em;
+  object-fit: contain;
+  margin: 0;
+}

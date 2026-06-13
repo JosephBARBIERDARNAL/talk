@@ -85,8 +85,12 @@ echo: true
 
 ## Pourquoi venir parler de Rust ?
 
+::: {.why-rust-points .nonincremental}
+
 - Comprendre les outils qu'on utilise
 - Donner envie d'essayer
+
+:::
 
 
 # D'où ça vient ?
@@ -94,6 +98,41 @@ echo: true
 ## Performance (⚠️⚠️⚠️)
 
 <center><img src="./performance-benchmark.png" width="900"></center>
+
+## Langage interprété ou compilé ?
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+```{mermaid}
+%%| echo: false
+flowchart LR
+    subgraph interpreted["Langage interprété (R, Python)"]
+        direction TB
+        source_i["Code source"] --> interpreter["Interpréteur"]
+        interpreter --> execution_i["Exécution"]
+    end
+```
+
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="40%"}
+
+```{mermaid}
+%%| echo: false
+flowchart LR
+    subgraph compiled["Langage compilé (Rust, C++)"]
+        direction TB
+        source_c["Code source"] --> compiler["Compilateur"]
+        compiler --> binary["Programme natif (.exe)"]
+        binary --> execution_c["Exécution"]
+    end
+```
+
+:::
+::::
 
 ## Memory safety
 
@@ -177,7 +216,7 @@ error[E0277]: cannot add `&str` to `i32`
 
 ## Ecosystème Python
 
-::: {.nonincremental}
+::: {.nonincremental .ecosystem-list}
 
 - `uv`: package/project manager
 - `ruff`: linter & formatter
@@ -195,7 +234,7 @@ error[E0277]: cannot add `&str` to `i32`
 
 ## Rust dans l'écosystème R
 
-::: {.nonincremental}
+::: {.nonincremental .ecosystem-list}
 
 - `Ark`: kernel R (utilisé dans Positron IDE)
 - `Air`: formatter et serveur de langage
@@ -208,21 +247,33 @@ error[E0277]: cannot add `&str` to `i32`
 
 ## Projet en développement
 
-::: {.panel-tabset}
+:::: {.project-grid .nonincremental}
+
+::: {.project-card}
 
 ### `q2`
 
-<center><img src="./q2.png" width="500"></center>
+![](./q2.png)
+
+:::
+
+::: {.project-card}
 
 ### `rv`
 
-<center><img src="./rv.png" width="500"></center>
+![](./rv.png)
+
+:::
+
+::: {.project-card}
 
 ### `ggsql`
 
-<center><img src="./ggsql.png" width="500"></center>
+![](./ggsql.png)
 
 :::
+
+::::
 
 ## Connecter R et Rust avec `extendr`
 
