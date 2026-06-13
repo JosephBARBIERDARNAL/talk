@@ -192,26 +192,29 @@ within = Infix(lambda x, r: r[0] <= x <= r[1])
   card(
     "02",
     "Surcharger des opérateurs",
-    "Adapter une syntaxe connue à vos propres objets.",
-    "euros <- function(x) {
-  structure(x, class = 'euros')
+    "Faire agir un objet métier sur tout un vecteur.",
+    "percent <- function(x) {
+  structure(x / 100, class = 'percent')
 }
 
-`+.euros` <- function(a, b) {
-  euros(unclass(a) + unclass(b))
+`*.percent` <- function(x, prices) {
+  unclass(x) * prices
 }
 
-cat(euros(30) + euros(12), 'EUR')
-# 42 EUR",
-    "class Euros(int):
-    def __add__(self, other):
-        return Euros(int(self) + other)
+percent(20) * c(100, 80, 50)
+# 20 16 10",
+    "class Percent:
+    def __init__(self, x):
+        self.value = x / 100
 
-print(Euros(30) + Euros(12), 'EUR')
-# 42 EUR",
-    "Garder une API naturelle pour des objets spécialisés.",
-    "R cherche une méthode S3 nommée comme l'opérateur et la classe.",
-    "Même idée que `__add__`, mais portée par le système de méthodes de R.",
+    def __mul__(self, prices):
+        return [self.value * p for p in prices]
+
+Percent(20) * [100, 80, 50]
+# [20.0, 16.0, 10.0]",
+    "Exprimer « 20 % de ces prix » sans boucle ni appel technique.",
+    "R appelle `*.percent()` puis applique naturellement le calcul au vecteur.",
+    "Il faut définir une classe, stocker l'état et vectoriser explicitement l'opération.",
     color: rust,
   ),
 
@@ -235,31 +238,31 @@ label(log(x + 1))
   card(
     "04",
     "Utiliser S3 simplement",
-    "Spécialiser une fonction existante pour un objet métier.",
+    "Apprendre à `print()` comment afficher votre objet.",
     "order <- structure(
     list(id = 'A42', total = 89),
     class = 'order'
 )
 
-format.order <- function(x, ...) {
-  paste0(x$id, ': ', x$total, ' EUR')
+print.order <- function(x, ...) {
+  cat(x$id, ':', x$total, 'EUR')
 }
 
-format(order)
+print(order)
 # A42: 89 EUR",
     "class Order:
     def __init__(self, id, total):
         self.id = id
         self.total = total
 
-    def label(self):
+    def __str__(self):
         return f'{self.id}: {self.total} EUR'
 
-Order('A42', 89).label()
+print(Order('A42', 89))
 # A42: 89 EUR",
     "Personnaliser l'affichage d'objets réels : commandes, modèles ou résultats.",
-    "`format()` appelle `format.<classe>()` selon la classe de l'objet.",
-    "Le comportement vit souvent dans la classe ; S3 le garde à côté de la fonction.",
+    "`print()` appelle `print.<classe>()` selon la classe de l'objet.",
+    "Une simple fonction suffit ; pas besoin de définir une classe complète.",
     color: violet,
   ),
 
