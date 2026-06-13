@@ -20,12 +20,7 @@ echo: true
 
 ::: {.column width="35%"}
 ![](joseph.png){.circle}
-<div style="font-size:0.9em;">
-   *Joseph*
-
-   <br><br>
-
-   <a href="https://barbierjoseph.com">barbierjoseph.com</a>
+<div style="font-size:1.3em;">
 
    <a href="https://ysunflower.com">ysunflower.com</a>
 
@@ -37,11 +32,9 @@ echo: true
 
 ::: {.column width="50%"}
 <div style="font-size: 1.2em;">
-   Consulting
+   Consulting 
 
-   Open source
-
-   Data(viz)
+   Open source 
 
    ![](viz.png)
 </div>
@@ -62,7 +55,7 @@ echo: true
 </div>
 
 ::: {.fragment}
-<center><img src="./google-trend.png" width="600"></center>
+<center><img src="./google-trend.png" width="800"></center>
 :::
 
 ## Pourquoi venir parler de Rust ?
@@ -79,13 +72,22 @@ echo: true
 
 ::: {.column width="40%" .nonincremental}
 <img src="./reddit-answer.png" width="700">
-  
-- Open source : Linux, Firefox, Deno, ...
 
-- Industrie : Windows, AWS, Dropbox, Cloudflare, Discord, Datadog, ...
+<br>
+<br>
+  
+- **Open source** : Linux, Firefox, Deno, ...
+
+- **Industrie** : Windows, AWS, Dropbox, Cloudflare, Discord, Datadog, ...
 
 :::
 ::::
+
+## Pourquoi venir parler de Rust ?
+
+- Comprendre les outils qu'on utilise
+- Donner envie d'essayer
+
 
 # D'où ça vient ?
 
@@ -222,47 +224,11 @@ error[E0277]: cannot add `&str` to `i32`
 
 :::
 
-# **Tuto**<br>Faire son premier projet R et Rust
-
-
-## Appeler Rust depuis R
-
-```rs
-use std::os::raw::c_double;
-
-#[no_mangle]
-pub extern "C" fn add_two(x: *mut c_double) {
-    unsafe {
-        *x = *x + 2.0;
-    }
-}
-```
-
-<br>
-
-On compile avec `cargo build`, et ensuite:
-
-<br>
-
-```R
-dyn.load("target/release/libexample.dylib")
-
-add_two <- function(x) {
-    .C("add_two", as.double(x))[[1]]
-}
-
-add_two(41)
-```
-
-- On perd la safety
-- Et pas d'abstraction R
-
-
-## Extendr
+## Connecter R et Rust avec `extendr`
 
 <center style="border: 1px solid black"><img src="./extendr.png" width="650"></center>
 
-## Comment on appelle Rust depuis R
+## 
 
 <br>
 
@@ -297,7 +263,7 @@ hello()
 :::
 
 
-## Est-ce que je dois arrêter R pour faire du Rust ? (non)
+## Est-ce que je dois arrêter R pour faire du Rust ?
 
 <br>
 
@@ -313,13 +279,12 @@ hello()
 - Rust <u>peut</u> remplacer C/C++
 - Rust ne résoudra pas tous vos problèmes
 - Il est probable que vous n'ayez même **pas besoin de Rust** 😳
-- Mais c'est bien de savoir comment fonctionnent les outils qu'on utilise
-  - rien n'est magique !
-- Et peut-être que ça vous donnera envie d'essayer
 :::
 ::::
 
-# Un mot sur l'IA
+## Un mot sur l'IA
+
+<center><img src="./robot-ai.png"></center>
 
 ##
 

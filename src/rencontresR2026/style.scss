@@ -32,7 +32,7 @@ $font-family-sans-serif: "Roboto", sans-serif !default;
 $presentation-heading-font: "Roboto", sans-serif !default;
 
 $presentation-heading-color: $jet !default;
-$presentation-heading-font-weight: lighter;
+$presentation-heading-font-weight: light;
 //$presentation-heading-line-height: 2;
 //$presentation-block-margin: 28px;
 $presentation-font-size-root: 28px;
@@ -50,8 +50,7 @@ $selection-bg: #26351c !default;
 }
 
 .reveal p {
-  // font-weight: 300;
-  font-weight: lighter;
+  font-weight: light;
   margin-top: 0.2em;
   line-height: 1;
   font-size: 0.8em;
@@ -65,14 +64,14 @@ $selection-bg: #26351c !default;
   .title {
     color: $body-color;
     font-size: 1.8em;
-    font-weight: lighter;
+    font-weight: light;
   }
 
   .subtitle {
     color: $accent;
     font-style: italic;
     margin-top: 0em;
-    font-weight: lighter;
+    font-weight: light;
   }
 
   .author,
@@ -94,7 +93,7 @@ $selection-bg: #26351c !default;
 
 .reveal h2 {
   // font-weight: 350;
-  font-weight: lighter;
+  font-weight: light;
   font-size: 1.4em;
 }
 
@@ -102,7 +101,7 @@ $selection-bg: #26351c !default;
   color: $accent;
   font-style: italic;
   // font-weight: 350;
-  font-weight: lighter;
+  font-weight: light;
   font-size: 0.95em;
 }
 
@@ -136,7 +135,7 @@ $selection-bg: #26351c !default;
 
 .reveal ul {
   // font-weight: 300;
-  font-weight: lighter;
+  font-weight: light;
   padding-left: 16px;
 
   li {
@@ -165,7 +164,7 @@ $selection-bg: #26351c !default;
 
 .reveal ol {
   // font-weight: 300;
-  font-weight: lighter;
+  font-weight: light;
   padding-left: 16px;
 
   li::marker {
@@ -272,7 +271,7 @@ $selection-bg: #26351c !default;
   border: none; /* Remove internal row lines */
   padding: 0.23em; /* Adjust padding as needed */
   text-align: left; /* Adjust text alignment as needed */
-  font-weight: lighter; /* Lighter font weight for main table text */
+  font-weight: light; /* Lighter font weight for main table text */
 }
 
 /* Adds a bottom border to the table header row for distinction */
