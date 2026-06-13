@@ -87,8 +87,8 @@ echo: true
 
 ::: {.why-rust-points .nonincremental}
 
-- Comprendre les outils qu'on utilise
-- Donner envie d'essayer
+- 1. Comprendre les outils qu'on utilise
+- 2. Donner envie d'essayer
 
 :::
 
@@ -221,11 +221,17 @@ error[E0277]: cannot add `&str` to `i32`
 
 ## Projet en développement
 
+<br>
+<br>
+<br>
+
 :::: {.project-grid .nonincremental}
 
 ::: {.project-card}
 
-### `q2`
+<div class="project-title"><code>q2</code></div>
+
+<div class="project-description">Quarto version 2</div>
 
 ![](./q2.png)
 
@@ -233,7 +239,9 @@ error[E0277]: cannot add `&str` to `i32`
 
 ::: {.project-card}
 
-### `rv`
+<div class="project-title"><code>rv</code></div>
+
+<div class="project-description">Gestion des dépendances et paquets R</div>
 
 ![](./rv.png)
 
@@ -241,7 +249,9 @@ error[E0277]: cannot add `&str` to `i32`
 
 ::: {.project-card}
 
-### `ggsql`
+<div class="project-title"><code>ggsql</code></div>
+
+<div class="project-description">Grammaire des graphiques et SQL</div>
 
 ![](./ggsql.png)
 
@@ -249,9 +259,9 @@ error[E0277]: cannot add `&str` to `i32`
 
 ::::
 
-## Connecter R et Rust avec `extendr`
+## Appeler Rust depuis R : `extendr`
 
-<center style="border: 1px solid black"><img src="./extendr.png" width="650"></center>
+<center ><img src="./extendr.png" width="650" style="border: 1px solid black"></center>
 
 ## 
 
@@ -300,10 +310,9 @@ hello()
 
 ::: {.column width="50%"}
 - Rust ne remplace(ra) pas R
-- Rust fonctionne très bien avec R
+- Rust fonctionne **avec R**
 - Rust <u>peut</u> remplacer C/C++
 - Rust ne résoudra pas tous vos problèmes
-- Il est probable que vous n'ayez même **pas besoin de Rust** 😳
 :::
 ::::
 

@@ -401,10 +401,19 @@ img.circle {
   align-items: center;
 }
 
-.reveal .project-card h3 {
-  margin: 0 0 0.5em;
-  font-size: 1.15em;
-  font-style: normal;
+.reveal .project-title {
+  margin: 0 0 0.25em;
+  font-size: 1.35em;
+  color: $accent;
+  font-weight: normal;
+}
+
+.reveal .project-description {
+  min-height: 2.4em;
+  margin-bottom: 0.4em;
+  font-size: 0.85em;
+  line-height: 1.2;
+  text-align: center;
 }
 
 .reveal .project-card p {
