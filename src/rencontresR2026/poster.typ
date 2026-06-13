@@ -12,7 +12,7 @@
 #let navy = rgb("#1d3557")
 
 #set document(
-  title: "Ce qui rend R unique : 5 fonctionnalités qui séduisent un développeur Python",
+  title: "Ce qui rend R unique : 5 fonctionnalités qui séduisent un développeur Python 🐍",
   author: "Joseph Barbier",
 )
 
@@ -55,7 +55,7 @@
   radius: 6pt,
   inset: 14pt,
 )[
-  #set text(font: "Menlo", size: 18pt, fill: ink)
+  #set text(font: "Menlo", size: 19pt, fill: ink)
   #raw(code, block: true, lang: lang)
 ]
 
@@ -85,7 +85,7 @@
     #h(12pt)
     #text(size: 36pt, weight: "bold", fill: ink)[#title]
     #v(2pt)
-    #text(size: 21pt, fill: muted)[#hook]
+    #text(size: 25pt, fill: muted)[#hook]
     #v(5pt)
     #grid(
       columns: 2,
@@ -136,7 +136,7 @@
   #text(
     size: 40pt,
     fill: muted,
-  )[5 fonctionnalités qui _séduisent_ un développeur Python]
+  )[5 fonctionnalités qui _séduisent_ un développeur Python 🐍]
 ]
 
 #v(13mm)
@@ -163,7 +163,7 @@
 
   card(
     "01",
-    "Créer ses opérateurs",
+    "Créer ses propres opérateurs",
     "Nommer une intention directement dans la syntaxe.",
     "`%within%` <- function(x, range) {
     x >= range[1] & x <= range[2]
@@ -225,12 +225,7 @@ print(Euros(30) + Euros(12), 'EUR')
 
 label(log(x + 1))
 # log(x + 1)",
-    "# Pas vraiment possible
-def label(expr_src):
-    return expr_src
-
-label(\"log(x + 1)\")
-# log(x + 1)",
+    "# Pas possible en Python...",
     "Créer des messages, des formules, des messages de débogage ou des pipelines plus lisibles.",
     "`substitute()` récupère l'expression *avant* son évaluation. Python ne permet pas de passer une vraie expression en entrée.",
     "Proche d'une manipulation d'AST, avec beaucoup moins de cérémonie.",
@@ -270,7 +265,7 @@ Order('A42', 89).label()
 
   card(
     "05",
-    "Profiter de l'évaluation paresseuse",
+    "Profiter de l'évaluation paresseuse (\"lazy\")",
     "Définir des valeurs par défaut qui dépendent des autres arguments.",
     "scale2 <- function(x, mu = mean(x), sigma = sd(x)) {
   (x - mu) / sigma
