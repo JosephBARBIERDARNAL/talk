@@ -97,42 +97,16 @@ echo: true
 
 ## Performance (⚠️⚠️⚠️)
 
+<br>
+
 <center><img src="./performance-benchmark.png" width="900"></center>
 
 ## Langage interprété ou compilé ?
 
-:::: {.columns}
+<br>
 
-::: {.column width="40%"}
+<center><img src="./interprete-et-compile.png" width="100%"></center>
 
-```{mermaid}
-%%| echo: false
-flowchart LR
-    subgraph interpreted["Langage interprété (R, Python)"]
-        direction TB
-        source_i["Code source"] --> interpreter["Interpréteur"]
-        interpreter --> execution_i["Exécution"]
-    end
-```
-
-:::
-::: {.column width="10%"}
-:::
-::: {.column width="40%"}
-
-```{mermaid}
-%%| echo: false
-flowchart LR
-    subgraph compiled["Langage compilé (Rust, C++)"]
-        direction TB
-        source_c["Code source"] --> compiler["Compilateur"]
-        compiler --> binary["Programme natif (.exe)"]
-        binary --> execution_c["Exécution"]
-    end
-```
-
-:::
-::::
 
 ## Memory safety
 
