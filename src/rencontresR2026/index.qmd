@@ -31,12 +31,7 @@ echo: true
 ::: {.column width="40%" .nonincremental}
 <img src="./reddit-answer.png" width="700">
 
-- **Open source**
-  - Linux
-  - Firefox
-  - Deno
-  - ...
-  
+- **Open source**: Linux, Firefox, uv, Deno, bun, ...
 
 - **Industrie**
   - Windows
