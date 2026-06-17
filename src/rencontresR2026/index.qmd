@@ -12,60 +12,18 @@ embed-resources: true
 echo: true
 ---
 
-## A propos
-
-<br>
-
-:::: {.columns}
-
-::: {.column width="35%"}
-![](joseph.png){.circle}
-<div style="font-size:1.3em;">
-
-   <a href="https://ysunflower.com">ysunflower.com</a>
-
-</div>
-:::
-
-::: {.column width="15%"}
-:::
-
-::: {.column width="50%"}
-<div style="font-size: 1.2em;">
-   Consulting 
-
-   Open source 
-
-   ![](viz.png)
-</div>
-:::
-
-::::
-
 ## Pourquoi venir parler de Rust ?
 
 <br>
-<br>
 
-<div style="font-size: 1.3em">
-
-- *Pas pour vous dire que c'est mieux que R*
-- *Pas pour vous dire que vous devez re-écrire vos projets en Rust*
-
-</div>
-
-::: {.fragment}
-<center><img src="./google-trend.png" width="800"></center>
-:::
+<center><img src="./memegirls.png" width="900"></center>
 
 ## Pourquoi venir parler de Rust ?
-
-<br>
 
 :::: {.columns}
 
 ::: {.column width="60%"}
-<img src="./reddit-question.png" width="700">
+<img src="./google-trend.png" width="700">
 <img src="./rust-hn.png" width="700">
 :::
 
@@ -73,12 +31,21 @@ echo: true
 ::: {.column width="40%" .nonincremental}
 <img src="./reddit-answer.png" width="700">
 
-<br>
-<br>
+- **Open source**
+  - Linux
+  - Firefox
+  - Deno
+  - ...
   
-- **Open source** : Linux, Firefox, Deno, ...
 
-- **Industrie** : Windows, AWS, Dropbox, Cloudflare, Discord, Datadog, ...
+- **Industrie**
+  - Windows
+  - AWS
+  - Dropbox
+  - Cloudflare
+  - Discord
+  - Datadog
+  - ...
 
 :::
 ::::
@@ -87,11 +54,17 @@ echo: true
 
 ::: {.why-rust-points .nonincremental}
 
-- 1. Comprendre les outils qu'on utilise
-- 2. Donner envie d'essayer
+- **Pas** pour vous dire que c'est mieux que R
+- Pour comprendre les outils qu'on utilise
+- Pour vous donner envie d'essayer
 
 :::
 
+## Langage interprété ou compilé ?
+
+<br>
+
+<center><img src="./interprete-et-compile.png" width="100%"></center>
 
 # D'où ça vient ?
 
@@ -100,12 +73,6 @@ echo: true
 <br>
 
 <center><img src="./performance-benchmark.png" width="900"></center>
-
-## Langage interprété ou compilé ?
-
-<br>
-
-<center><img src="./interprete-et-compile.png" width="100%"></center>
 
 
 ## Memory safety
@@ -312,7 +279,6 @@ hello()
 - Rust ne remplace(ra) pas R
 - Rust fonctionne **avec R**
 - Rust <u>peut</u> remplacer C/C++
-- Rust ne résoudra pas tous vos problèmes
 :::
 ::::
 
@@ -326,25 +292,14 @@ hello()
 Merci !
 </div>
 
-J'ai dit des choses fausses ?
+Vous voulez en savoir plus ?
+
 
 ::: {.nonincremental}
-- venez m'en parler !
-:::
-
-J'ai dit des choses pertinentes ?
-
-::: {.nonincremental}
-- venez m'en parler !
-:::
-
-<br>
-
-Autres ?
-
-::: {.nonincremental}
-- venez me voir !
+- venez discuter !
 - linkedin: Joseph Barbier
 - mail: `joseph@ysunflower.com`
-- slides: [github.com/JosephBARBIERDARNAL/talk](https://github.com/JosephBARBIERDARNAL/talk/tree/main/src/rencontresR2026)
+- slides: [github.com/josephbarbierdarnal/talk](https://github.com/JosephBARBIERDARNAL/talk/tree/main/src/rencontresR2026)
 :::
+
+<center><img src="./bye.png"></center>
