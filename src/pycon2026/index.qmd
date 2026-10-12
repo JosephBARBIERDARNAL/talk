@@ -203,7 +203,13 @@ error[E0277]: cannot add `&str` to `i32`
 
 <img src="./rust-vc-3.png" width="600">
 
+## Commencer Rust
 
+<br>
+
+- Les bases : [rustfinity.com](https://www.rustfinity.com/)
+- Implémenter bindings d'un project existant
+- Refaire un de vos projets Python
 
 ## Un mot sur l'IA et l'apprentissage
 
