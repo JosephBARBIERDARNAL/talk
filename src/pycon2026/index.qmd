@@ -186,8 +186,26 @@ error[E0277]: cannot add `&str` to `i32`
 
 :::
 
+## Demo intégration rust<->python
 
-## Un mot sur l'IA
+<br>
+<br>
+<br>
+
+<center><img src="./python-call-rust.png"></center>
+
+## Vibe coding et Rust
+
+
+<img src="./rust-vc-1.png" width="600">
+
+<img src="./rust-vc-2.png" width="600">
+
+<img src="./rust-vc-3.png" width="600">
+
+
+
+## Un mot sur l'IA et l'apprentissage
 
 <center><img src="./robot-ai.png"></center>
 
