@@ -84,6 +84,51 @@ The default way to code with AI now is through a **Terminal User Interface** (TU
   </video>
 </center>
 
+## TUI
+
+Those tools are written in languages like Rust (codex) and Typescript (claude code, opencode, pi), but there are no technical limitations to use **any other language**
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<center style="font-size: 3rem;"><i>how about R?</i></center>
+
+## Understand how agents work
+
+- LLM = A model that takes text input and generates text output
+- Chatbot = A conversational interface built around an LLM, where previous messages are included in the context of each new request
+- Agent = An AI system that can use tools (APIs, browsers, code execution, etc.) to perform actions
+
+How to create that in R:
+
+- LLM = any AI API can work: openai, claude, ollama, etc
+- Chatbot = an R console is perfectly fine here!
+- Agent = that's what we need to work
+
+## 
+
+<center><img src="./ellmer.png"></center>
+
+## Chatbot
+
+<br>
+<br>
+<br>
+
+```R
+library(ellmer)
+
+chat <- chat_anthropic()
+live_console(chat)
+```
+
+<br>
+
+That's it!!
 
 ##
 
