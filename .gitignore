@@ -3,3 +3,4 @@ plotnine.mov
 *_files
 *cache*
 src/rencontresR2026/reprex/target
+.Rprofile

@@ -1,0 +1,104 @@
+---
+title: "50 lines of code to rebuild Claude Code in R"
+author: "R+AI Conference 2026, *Joseph Barbier*"
+format:
+  revealjs:
+    theme: [default, style.scss]
+    transition: slide
+    background-transition: fade
+    incremental: false
+    auto-stretch: false
+embed-resources: false
+echo: true
+---
+
+## A propos
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="35%"}
+![](joseph.png){.circle}
+<div style="font-size:0.9em;">
+   *Joseph*
+
+   <br><br>
+
+   <a href="https://barbierjoseph.com">barbierjoseph.com</a>
+
+   <a href="https://ysunflower.com">ysunflower.com</a>
+
+</div>
+:::
+
+::: {.column width="15%"}
+:::
+
+::: {.column width="50%"}
+<div style="font-size: 1.2em;">
+   
+   **Consulting**: data, Typst, 
+
+   **Open source**: dataviz, Typst, accessibility
+
+   ![](viz.png)
+</div>
+:::
+
+::::
+
+## Web app
+
+When using an AI in a web app (ChatGPT, Claude, etc.), you need to give it enough information to help you solve your problem.
+
+This is easy to fix in theory, but in practice:
+
+- we forget important details
+- we ignore things that could be relevant
+- we need to copy-paste lots of code
+- we're lazy
+
+
+## Claude Code, Codex, OpenCode, Pi...
+
+- For over a year now, many developers have been using AI coding tools
+- Those tools solve several problems you run into with web apps:
+
+  - they have access to your whole project, not just what you give them
+  - they decide what's relevant when answering your request (e.g., which files)
+  - they can run shell commands (almost limitless possibilities)
+
+## TUI
+
+The default way to code with AI now is through a **Terminal User Interface** (TUI)
+
+  - [where many devs already work]{.green}
+  - [no browser limitations (e.g., file access)]{.green}
+  - [faster]{.green}
+  - [doesn't look as good]{.red}
+
+<center>
+  <video autoplay loop muted width="70%">
+    <source src="./codex.mp4" type="video/mp4">
+  </video>
+</center>
+
+
+##
+
+<div style="display: flex; justify-content: center; font-size: 3em;">
+Thanks!
+</div>
+
+Want to know more?
+
+
+::: {.nonincremental}
+- let's chat!
+- LinkedIn: Joseph Barbier
+- email: `joseph@ysunflower.com`
+- slides: [github.com/josephbarbierdarnal/talk](https://github.com/JosephBARBIERDARNAL/talk/tree/main/src/rencontresR2026)
+:::
+
+<center><img src="./bye.png"></center>
