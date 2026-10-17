@@ -305,6 +305,23 @@ R+AI Conference 2026, <em>Joseph Barbier</em>
 <p><br></p>
 <p>That’s it!!</p>
 </section>
+<section id="agent-chat-with-tools" class="slide level2">
+<h2>Agent = chat with tools</h2>
+<p><br></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-code-line-numbers="3-8|4|5|6|7|11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">library</span>(ellmer)</span>
+<span id="cb2-2"><a href=""></a></span>
+<span id="cb2-3"><a href=""></a>list_files <span class="ot">&lt;-</span> <span class="fu">tool</span>(</span>
+<span id="cb2-4"><a href=""></a>  \(<span class="at">path =</span> <span class="st">"."</span>) <span class="fu">list.files</span>(path, <span class="at">recursive =</span> <span class="cn">TRUE</span>, <span class="at">all.files =</span> <span class="cn">TRUE</span>, <span class="at">no.. =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-5"><a href=""></a>  <span class="at">name =</span> <span class="st">"list_files"</span>,</span>
+<span id="cb2-6"><a href=""></a>  <span class="at">description =</span> <span class="st">"List files under a directory."</span>,</span>
+<span id="cb2-7"><a href=""></a>  <span class="at">arguments =</span> <span class="fu">list</span>(<span class="at">path =</span> <span class="fu">type_string</span>(<span class="st">"Directory to list."</span>, <span class="at">required =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb2-8"><a href=""></a>)</span>
+<span id="cb2-9"><a href=""></a></span>
+<span id="cb2-10"><a href=""></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_anthropic</span>(<span class="at">system_prompt =</span> <span class="st">"You're a coding agent that can list files."</span>)</span>
+<span id="cb2-11"><a href=""></a>chat<span class="sc">$</span><span class="fu">register_tool</span>(list_files)</span>
+<span id="cb2-12"><a href=""></a></span>
+<span id="cb2-13"><a href=""></a><span class="fu">live_console</span>(chat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
 <section id="section-1" class="slide level2">
 <h2></h2>
 <div style="display: flex; justify-content: center; font-size: 3em;">
