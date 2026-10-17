@@ -19,7 +19,10 @@
 
 - **Recontres R 2026 (in French)**: _"R et Rust : une histoire d'amour naissante"_
   - [Slide](https://josephbarbierdarnal.github.io/talk/src/rencontresR2026/)
-- _"An introduction to Typst"_
+
+<br>
+
+- **Private workshop**: _"An introduction to Typst"_
   - [Slide](https://josephbarbierdarnal.github.io/talk/src/introduction-to-typst/)
 
 <br>
