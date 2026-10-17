@@ -113,7 +113,7 @@ How to create that in R:
 
 <center><img src="./ellmer.png"></center>
 
-## Chatbot
+## Chatbot {auto-animate="true"}
 
 <br>
 <br>
@@ -126,11 +126,9 @@ chat <- chat_anthropic()
 live_console(chat)
 ```
 
-<br>
 
-That's it!!
 
-## Agent = chat with tools
+## Agent = chat with tools {auto-animate="true"}
 
 <br>
 
@@ -138,17 +136,128 @@ That's it!!
 library(ellmer)
 
 list_files <- tool(
-  \(path = ".") list.files(path, recursive = TRUE, all.files = TRUE, no.. = TRUE),
+  function(path = ".") list.files(path, recursive = TRUE, all.files = TRUE, no.. = TRUE),
   name = "list_files",
   description = "List files under a directory.",
   arguments = list(path = type_string("Directory to list.", required = FALSE))
 )
 
-chat <- chat_anthropic(system_prompt = "You're a coding agent that can list files.")
+chat <- chat_anthropic()
 chat$register_tool(list_files)
 
 live_console(chat)
 ```
+
+## Claude Code key tools
+
+- [x] List files 
+- [ ] Read files
+- [ ] Write files
+- [ ] Run commands
+
+<br>
+<br>
+<br>
+
+<center style="font-size:2.5rem;">Next: **read a file**</center>
+
+## Read files
+
+<br>
+<br>
+
+```r
+read_file <- tool(
+  function(path) paste(readLines(path, warn = FALSE), collapse = "\n"),
+  name = "read_file",
+  description = "Read a text file.",
+  arguments = list(path = type_string("Path to the text file to read."))
+)
+```
+
+## Claude Code key tools
+
+- [x] List files 
+- [x] Read files
+- [ ] Write files
+- [ ] Run commands
+
+<br>
+<br>
+<br>
+
+<center style="font-size:2.5rem;">Next: **write a file**</center>
+
+## Write files
+
+<br>
+<br>
+
+```{.r code-line-numbers="1|4-8|9|10|4,11-14"}
+ask <- \(x) isTRUE(utils::askYesNo(x))
+
+write_file <- tool(
+  function(path, text) {
+    if (!ask(sprintf("Write %s?", path))) tool_reject()
+    writeLines(text, path)
+    sprintf("Wrote %s", path)
+  },
+  name = "write_file",
+  description = "Write text to a file.",
+  arguments = list(
+    path = type_string("Path to write."),
+    text = type_string("Full text content to write.")
+  )
+)
+```
+
+## Claude Code key tools
+
+- [x] List files 
+- [x] Read files
+- [x] Write files
+- [ ] Run commands
+
+<br>
+<br>
+<br>
+
+<center style="font-size:2.5rem;">Next: **run commands**</center>
+
+## Write files
+
+<br>
+<br>
+
+```{.r code-line-numbers="4-8"}
+ask <- \(x) isTRUE(utils::askYesNo(x))
+
+run_shell <- tool(
+  function(command) {
+    if (!ask(sprintf("Run `%s`?", command))) tool_reject()
+    out <- suppressWarnings(system2("sh", c("-c", command), stdout = TRUE, stderr = TRUE))
+    paste(c(sprintf("exit status: %s", attr(out, "status") %||% 0L), out), collapse = "\n")
+  },
+  name = "run_shell",
+  description = "Run a shell command and return its output.",
+  arguments = list(command = type_string("Shell command to run."))
+)
+```
+
+## Claude Code key tools
+
+- [x] List files 
+- [x] Read files
+- [x] Write files
+- [x] Run commands
+
+<br>
+<br>
+<br>
+
+- 53 lines of code
+- time to test?
+
 
 ##
 

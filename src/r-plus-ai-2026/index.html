@@ -98,7 +98,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-78fefd50e0226dc6dd292b9c1ccb8015.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-1bfb190b111d035e975b6b240d38e259.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -295,32 +295,128 @@ R+AI Conference 2026, <em>Joseph Barbier</em>
 <img src="./ellmer.png">
 </center>
 </section>
-<section id="chatbot" class="slide level2">
-<h2>Chatbot</h2>
+<section id="chatbot" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Chatbot</h2>
 <p><br> <br> <br></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">library</span>(ellmer)</span>
-<span id="cb1-2"><a href=""></a></span>
-<span id="cb1-3"><a href=""></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_anthropic</span>()</span>
-<span id="cb1-4"><a href=""></a><span class="fu">live_console</span>(chat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><br></p>
-<p>That’s it!!</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb1-1" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(ellmer)</span>
+<span id="cb1-2" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb1-3" class="hljs-ln-code"><a href=""></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_anthropic</span>()</span>
+<span id="cb1-4" class="hljs-ln-code"><a href=""></a><span class="fu">live_console</span>(chat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="agent-chat-with-tools" class="slide level2">
-<h2>Agent = chat with tools</h2>
+<section id="agent-chat-with-tools" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Agent = chat with tools</h2>
 <p><br></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-code-line-numbers="3-8|4|5|6|7|11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">library</span>(ellmer)</span>
-<span id="cb2-2"><a href=""></a></span>
-<span id="cb2-3"><a href=""></a>list_files <span class="ot">&lt;-</span> <span class="fu">tool</span>(</span>
-<span id="cb2-4"><a href=""></a>  \(<span class="at">path =</span> <span class="st">"."</span>) <span class="fu">list.files</span>(path, <span class="at">recursive =</span> <span class="cn">TRUE</span>, <span class="at">all.files =</span> <span class="cn">TRUE</span>, <span class="at">no.. =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb2-5"><a href=""></a>  <span class="at">name =</span> <span class="st">"list_files"</span>,</span>
-<span id="cb2-6"><a href=""></a>  <span class="at">description =</span> <span class="st">"List files under a directory."</span>,</span>
-<span id="cb2-7"><a href=""></a>  <span class="at">arguments =</span> <span class="fu">list</span>(<span class="at">path =</span> <span class="fu">type_string</span>(<span class="st">"Directory to list."</span>, <span class="at">required =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb2-8"><a href=""></a>)</span>
-<span id="cb2-9"><a href=""></a></span>
-<span id="cb2-10"><a href=""></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_anthropic</span>(<span class="at">system_prompt =</span> <span class="st">"You're a coding agent that can list files."</span>)</span>
-<span id="cb2-11"><a href=""></a>chat<span class="sc">$</span><span class="fu">register_tool</span>(list_files)</span>
-<span id="cb2-12"><a href=""></a></span>
-<span id="cb2-13"><a href=""></a><span class="fu">live_console</span>(chat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-code-line-numbers="3-8|4|5|6|7|11"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb2-1" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(ellmer)</span>
+<span id="cb2-2" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb2-3" class="hljs-ln-code"><a href=""></a>list_files <span class="ot">&lt;-</span> <span class="fu">tool</span>(</span>
+<span id="cb2-4" class="hljs-ln-code"><a href=""></a>  <span class="cf">function</span>(<span class="at">path =</span> <span class="st">"."</span>) <span class="fu">list.files</span>(path, <span class="at">recursive =</span> <span class="cn">TRUE</span>, <span class="at">all.files =</span> <span class="cn">TRUE</span>, <span class="at">no.. =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-5" class="hljs-ln-code"><a href=""></a>  <span class="at">name =</span> <span class="st">"list_files"</span>,</span>
+<span id="cb2-6" class="hljs-ln-code"><a href=""></a>  <span class="at">description =</span> <span class="st">"List files under a directory."</span>,</span>
+<span id="cb2-7" class="hljs-ln-code"><a href=""></a>  <span class="at">arguments =</span> <span class="fu">list</span>(<span class="at">path =</span> <span class="fu">type_string</span>(<span class="st">"Directory to list."</span>, <span class="at">required =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb2-8" class="hljs-ln-code"><a href=""></a>)</span>
+<span id="cb2-9" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb2-10" class="hljs-ln-code"><a href=""></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_anthropic</span>()</span>
+<span id="cb2-11" class="hljs-ln-code"><a href=""></a>chat<span class="sc">$</span><span class="fu">register_tool</span>(list_files)</span>
+<span id="cb2-12" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb2-13" class="hljs-ln-code"><a href=""></a><span class="fu">live_console</span>(chat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="claude-code-key-tools" class="slide level2">
+<h2>Claude Code key tools</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">List files</label></li>
+<li><label><input type="checkbox">Read files</label></li>
+<li><label><input type="checkbox">Write files</label></li>
+<li><label><input type="checkbox">Run commands</label></li>
+</ul>
+<p><br> <br> <br></p>
+<center style="font-size:2.5rem;">
+Next: <strong>read a file</strong>
+</center>
+</section>
+<section id="read-files" class="slide level2">
+<h2>Read files</h2>
+<p><br> <br></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>read_file <span class="ot">&lt;-</span> <span class="fu">tool</span>(</span>
+<span id="cb3-2"><a href=""></a>  <span class="cf">function</span>(path) <span class="fu">paste</span>(<span class="fu">readLines</span>(path, <span class="at">warn =</span> <span class="cn">FALSE</span>), <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>),</span>
+<span id="cb3-3"><a href=""></a>  <span class="at">name =</span> <span class="st">"read_file"</span>,</span>
+<span id="cb3-4"><a href=""></a>  <span class="at">description =</span> <span class="st">"Read a text file."</span>,</span>
+<span id="cb3-5"><a href=""></a>  <span class="at">arguments =</span> <span class="fu">list</span>(<span class="at">path =</span> <span class="fu">type_string</span>(<span class="st">"Path to the text file to read."</span>))</span>
+<span id="cb3-6"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="claude-code-key-tools-1" class="slide level2">
+<h2>Claude Code key tools</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">List files</label></li>
+<li><label><input type="checkbox" checked="">Read files</label></li>
+<li><label><input type="checkbox">Write files</label></li>
+<li><label><input type="checkbox">Run commands</label></li>
+</ul>
+<p><br> <br> <br></p>
+<center style="font-size:2.5rem;">
+Next: <strong>write a file</strong>
+</center>
+</section>
+<section id="write-files" class="slide level2">
+<h2>Write files</h2>
+<p><br> <br></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-code-line-numbers="1|4-8|9|10|4,11-14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>ask <span class="ot">&lt;-</span> \(x) <span class="fu">isTRUE</span>(utils<span class="sc">::</span><span class="fu">askYesNo</span>(x))</span>
+<span id="cb4-2"><a href=""></a></span>
+<span id="cb4-3"><a href=""></a>write_file <span class="ot">&lt;-</span> <span class="fu">tool</span>(</span>
+<span id="cb4-4"><a href=""></a>  <span class="cf">function</span>(path, text) {</span>
+<span id="cb4-5"><a href=""></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">ask</span>(<span class="fu">sprintf</span>(<span class="st">"Write %s?"</span>, path))) <span class="fu">tool_reject</span>()</span>
+<span id="cb4-6"><a href=""></a>    <span class="fu">writeLines</span>(text, path)</span>
+<span id="cb4-7"><a href=""></a>    <span class="fu">sprintf</span>(<span class="st">"Wrote %s"</span>, path)</span>
+<span id="cb4-8"><a href=""></a>  },</span>
+<span id="cb4-9"><a href=""></a>  <span class="at">name =</span> <span class="st">"write_file"</span>,</span>
+<span id="cb4-10"><a href=""></a>  <span class="at">description =</span> <span class="st">"Write text to a file."</span>,</span>
+<span id="cb4-11"><a href=""></a>  <span class="at">arguments =</span> <span class="fu">list</span>(</span>
+<span id="cb4-12"><a href=""></a>    <span class="at">path =</span> <span class="fu">type_string</span>(<span class="st">"Path to write."</span>),</span>
+<span id="cb4-13"><a href=""></a>    <span class="at">text =</span> <span class="fu">type_string</span>(<span class="st">"Full text content to write."</span>)</span>
+<span id="cb4-14"><a href=""></a>  )</span>
+<span id="cb4-15"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="claude-code-key-tools-2" class="slide level2">
+<h2>Claude Code key tools</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">List files</label></li>
+<li><label><input type="checkbox" checked="">Read files</label></li>
+<li><label><input type="checkbox" checked="">Write files</label></li>
+<li><label><input type="checkbox">Run commands</label></li>
+</ul>
+<p><br> <br> <br></p>
+<center style="font-size:2.5rem;">
+Next: <strong>run commands</strong>
+</center>
+</section>
+<section id="write-files-1" class="slide level2">
+<h2>Write files</h2>
+<p><br> <br></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-code-line-numbers="4-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>ask <span class="ot">&lt;-</span> \(x) <span class="fu">isTRUE</span>(utils<span class="sc">::</span><span class="fu">askYesNo</span>(x))</span>
+<span id="cb5-2"><a href=""></a></span>
+<span id="cb5-3"><a href=""></a>run_shell <span class="ot">&lt;-</span> <span class="fu">tool</span>(</span>
+<span id="cb5-4"><a href=""></a>  <span class="cf">function</span>(command) {</span>
+<span id="cb5-5"><a href=""></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">ask</span>(<span class="fu">sprintf</span>(<span class="st">"Run `%s`?"</span>, command))) <span class="fu">tool_reject</span>()</span>
+<span id="cb5-6"><a href=""></a>    out <span class="ot">&lt;-</span> <span class="fu">suppressWarnings</span>(<span class="fu">system2</span>(<span class="st">"sh"</span>, <span class="fu">c</span>(<span class="st">"-c"</span>, command), <span class="at">stdout =</span> <span class="cn">TRUE</span>, <span class="at">stderr =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb5-7"><a href=""></a>    <span class="fu">paste</span>(<span class="fu">c</span>(<span class="fu">sprintf</span>(<span class="st">"exit status: %s"</span>, <span class="fu">attr</span>(out, <span class="st">"status"</span>) <span class="sc">%||%</span> <span class="dv">0</span>L), out), <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-8"><a href=""></a>  },</span>
+<span id="cb5-9"><a href=""></a>  <span class="at">name =</span> <span class="st">"run_shell"</span>,</span>
+<span id="cb5-10"><a href=""></a>  <span class="at">description =</span> <span class="st">"Run a shell command and return its output."</span>,</span>
+<span id="cb5-11"><a href=""></a>  <span class="at">arguments =</span> <span class="fu">list</span>(<span class="at">command =</span> <span class="fu">type_string</span>(<span class="st">"Shell command to run."</span>))</span>
+<span id="cb5-12"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="claude-code-key-tools-3" class="slide level2">
+<h2>Claude Code key tools</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">List files</label></li>
+<li><label><input type="checkbox" checked="">Read files</label></li>
+<li><label><input type="checkbox" checked="">Write files</label></li>
+<li><label><input type="checkbox" checked="">Run commands</label></li>
+</ul>
+<p><br> <br> <br></p>
+<ul>
+<li>53 lines of code</li>
+<li>time to test?</li>
+</ul>
 </section>
 <section id="section-1" class="slide level2">
 <h2></h2>

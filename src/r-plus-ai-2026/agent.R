@@ -4,21 +4,21 @@ library(ellmer)
 ask <- \(x) isTRUE(utils::askYesNo(x))
 
 list_files <- tool(
-  \(path = ".") list.files(path, recursive = TRUE, all.files = TRUE, no.. = TRUE),
+  function(path = ".") list.files(path, recursive = TRUE, all.files = TRUE, no.. = TRUE),
   name = "list_files",
   description = "List files under a directory.",
   arguments = list(path = type_string("Directory to list.", required = FALSE))
 )
 
 read_file <- tool(
-  \(path) paste(readLines(path, warn = FALSE), collapse = "\n"),
+  function(path) paste(readLines(path, warn = FALSE), collapse = "\n"),
   name = "read_file",
   description = "Read a text file.",
   arguments = list(path = type_string("Path to the text file to read."))
 )
 
 write_file <- tool(
-  \(path, text) {
+  function(path, text) {
     if (!ask(sprintf("Write %s?", path))) tool_reject()
     writeLines(text, path)
     sprintf("Wrote %s", path)
@@ -32,7 +32,7 @@ write_file <- tool(
 )
 
 run_shell <- tool(
-  \(command) {
+  function(command) {
     if (!ask(sprintf("Run `%s`?", command))) tool_reject()
     out <- suppressWarnings(system2("sh", c("-c", command), stdout = TRUE, stderr = TRUE))
     paste(c(sprintf("exit status: %s", attr(out, "status") %||% 0L), out), collapse = "\n")
