@@ -8,11 +8,11 @@ format:
     background-transition: fade
     incremental: false
     auto-stretch: false
-embed-resources: false
+embed-resources: true
 echo: true
 ---
 
-## A propos
+## About
 
 <br>
 
@@ -38,7 +38,7 @@ echo: true
 ::: {.column width="50%"}
 <div style="font-size: 1.2em;">
    
-   **Consulting**: data, Typst, 
+   **Consulting**: data, Typst
 
    **Open source**: dataviz, Typst, accessibility
 
@@ -50,43 +50,39 @@ echo: true
 
 ## Web app
 
-When using an AI in a web app (ChatGPT, Claude, etc.), you need to give it enough information to help you solve your problem.
+:::: {.columns}
 
-This is easy to fix in theory, but in practice:
+::: {.column width="50%"}
+![](./claude.png)
+:::
+
+::: {.column width="50%"}
+![](./chatgpt.png)
+:::
+
+::::
+
+<br>
 
 - we forget important details
 - we ignore things that could be relevant
 - we need to copy-paste lots of code
 - we're lazy
 
+## TUI (Terminal User Interface)
 
-## Claude Code, Codex, OpenCode, Pi...
+- [where many devs already work]{.green}
+- [no browser limitations (e.g., file access)]{.green}
+- [faster]{.green}
+- [doesn't look as good]{.red}
 
-- For over a year now, many developers have been using AI coding tools
-- Those tools solve several problems you run into with web apps:
-
-  - they have access to your whole project, not just what you give them
-  - they decide what's relevant when answering your request (e.g., which files)
-  - they can run shell commands (almost limitless possibilities)
-
-## TUI
-
-The default way to code with AI now is through a **Terminal User Interface** (TUI)
-
-  - [where many devs already work]{.green}
-  - [no browser limitations (e.g., file access)]{.green}
-  - [faster]{.green}
-  - [doesn't look as good]{.red}
-
-<center>
-  <video autoplay loop muted width="70%">
-    <source src="./codex.mp4" type="video/mp4">
-  </video>
-</center>
+<center><img src="./codex.png" width=70%></center>
 
 ## TUI
 
-Those tools are written in languages like Rust (codex) and Typescript (claude code, opencode, pi), but there are no technical limitations to use **any other language**
+<br>
+
+They are written in [Rust]{.rust} (Codex) or [TypeScript]{.typescript} (Claude Code, OpenCode, Pi)
 
 <br>
 <br>
@@ -95,19 +91,32 @@ Those tools are written in languages like Rust (codex) and Typescript (claude co
 <br>
 <br>
 
-<center style="font-size: 3rem;"><i>how about R?</i></center>
+<center style="font-size: 3rem; font-style:italic;">How about R?</center>
 
-## Understand how agents work
+## **LLM** VS **chatbot** VS **agent** 
 
-- LLM = A model that takes text input and generates text output
-- Chatbot = A conversational interface built around an LLM, where previous messages are included in the context of each new request
-- Agent = An AI system that can use tools (APIs, browsers, code execution, etc.) to perform actions
+<br>
+<br>
 
-How to create that in R:
+### Definitions
 
-- LLM = any AI API can work: openai, claude, ollama, etc
-- Chatbot = an R console is perfectly fine here!
-- Agent = that's what we need to work
+<div class="incremental">
+
+- **LLM** = A model that takes text input and generates text output
+- **Chatbot** = A conversational interface built around an LLM, where previous messages are included in the context of each new request
+- **Agent** = An AI system that can use tools (APIs, browsers, code execution, etc.) to perform actions
+
+<br>
+<br>
+<br>
+
+### How can we create that in R?
+
+- ✅ **LLM** = any AI API can work: OpenAI, Claude, Ollama, etc.
+- ⚠️ **Chatbot** = an R console can do the work
+- ❌ **Agent** = [that's what we need to build]{.red}
+
+</div>
 
 ## 
 
@@ -115,6 +124,7 @@ How to create that in R:
 
 ## Chatbot {auto-animate="true"}
 
+<br>
 <br>
 <br>
 <br>
@@ -126,13 +136,22 @@ chat <- chat_anthropic()
 live_console(chat)
 ```
 
+## Claude Code's key tools
 
+<br>
+<br>
+<br>
+
+- [ ] List files 
+- [ ] Read files
+- [ ] Write files
+- [ ] Run commands
 
 ## Agent = chat with tools {auto-animate="true"}
 
 <br>
 
-```{.r code-line-numbers="3-8|4|5|6|7|11"}
+```{.r code-line-numbers="|3-8|4|5|6|7|11"}
 library(ellmer)
 
 list_files <- tool(
@@ -148,7 +167,7 @@ chat$register_tool(list_files)
 live_console(chat)
 ```
 
-## Claude Code key tools
+## Claude Code's key tools
 
 - [x] List files 
 - [ ] Read files
@@ -165,8 +184,10 @@ live_console(chat)
 
 <br>
 <br>
+<br>
+<br>
 
-```r
+```{.r code-line-numbers="|2|3|4|5"}
 read_file <- tool(
   function(path) paste(readLines(path, warn = FALSE), collapse = "\n"),
   name = "read_file",
@@ -175,7 +196,7 @@ read_file <- tool(
 )
 ```
 
-## Claude Code key tools
+## Claude Code's key tools
 
 - [x] List files 
 - [x] Read files
@@ -193,7 +214,7 @@ read_file <- tool(
 <br>
 <br>
 
-```{.r code-line-numbers="1|4-8|9|10|4,11-14"}
+```{.r code-line-numbers="1|4-8|5|6|7|9|10|4,11-14"}
 ask <- \(x) isTRUE(utils::askYesNo(x))
 
 write_file <- tool(
@@ -211,7 +232,7 @@ write_file <- tool(
 )
 ```
 
-## Claude Code key tools
+## Claude Code's key tools
 
 - [x] List files 
 - [x] Read files
@@ -229,8 +250,9 @@ write_file <- tool(
 <br>
 <br>
 
-```{.r code-line-numbers="4-8"}
+```{.r code-line-numbers="5-9|6|7|2,8|10|11|12"}
 ask <- \(x) isTRUE(utils::askYesNo(x))
+`%||%` <- \(x, y) if (is.null(x)) y else x
 
 run_shell <- tool(
   function(command) {
@@ -244,21 +266,82 @@ run_shell <- tool(
 )
 ```
 
-## Claude Code key tools
+## Claude Code's key tools
 
-- [x] List files 
-- [x] Read files
-- [x] Write files
-- [x] Run commands
+```r
+library(ellmer)
+
+`%||%` <- \(x, y) if (is.null(x)) y else x
+ask <- \(x) isTRUE(utils::askYesNo(x))
+
+list_files <- tool(
+  function(path = ".") list.files(path, recursive = TRUE, all.files = TRUE, no.. = TRUE),
+  name = "list_files",
+  description = "List files under a directory.",
+  arguments = list(path = type_string("Directory to list.", required = FALSE))
+)
+
+read_file <- tool(
+  function(path) paste(readLines(path, warn = FALSE), collapse = "\n"),
+  name = "read_file",
+  description = "Read a text file.",
+  arguments = list(path = type_string("Path to the text file to read."))
+)
+
+write_file <- tool(
+  function(path, text) {
+    if (!ask(sprintf("Write %s?", path))) tool_reject()
+    writeLines(text, path)
+    sprintf("Wrote %s", path)
+  },
+  name = "write_file",
+  description = "Write text to a file.",
+  arguments = list(
+    path = type_string("Path to write."),
+    text = type_string("Full text content to write.")
+  )
+)
+
+run_shell <- tool(
+  function(command) {
+    if (!ask(sprintf("Run `%s`?", command))) tool_reject()
+    out <- suppressWarnings(system2("sh", c("-c", command), stdout = TRUE, stderr = TRUE))
+    paste(c(sprintf("exit status: %s", attr(out, "status") %||% 0L), out), collapse = "\n")
+  },
+  name = "run_shell",
+  description = "Run a shell command and return its output.",
+  arguments = list(command = type_string("Shell command to run."))
+)
+
+chat <- chat_anthropic()
+chat$register_tools(list(list_files, read_file, write_file, run_shell))
+live_console(chat)
+```
 
 <br>
 <br>
+
+**47 lines of R code** for an Agent that can list/read/modify files and run commands
+
+## Ending notes
+
 <br>
 
-- 53 lines of code
-- time to test?
+⚠️ [This isn't a viable replacement!]{.red}
 
-# Ending notes
+<br>
+<br>
+
+Want to learn more? Implement missing features yourself!
+
+- read CLAUDE.md
+- security guardrails
+- nicer UI
+- ...
+
+<br>
+
+<center><b>Code: [github.com/josephbarbierdarnal/r-claude-code](https://github.com/JosephBARBIERDARNAL/r-claude-code)</b></center>
 
 ##
 

@@ -42,12 +42,6 @@ run_shell <- tool(
   arguments = list(command = type_string("Shell command to run."))
 )
 
-chat <- chat_anthropic(
-  system_prompt = paste(
-    "You are a coding agent, working in the current directory.",
-    "Use tools to inspect/read/edit files and run shell commands."
-  )
-)
-
+chat <- chat_anthropic()
 chat$register_tools(list(list_files, read_file, write_file, run_shell))
 live_console(chat)

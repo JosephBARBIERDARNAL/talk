@@ -1,5 +1,7 @@
 # talk
 
+- **R+AI conf 2026**: _"50 lines of code to rebuild Claude Code in R"_
+  - [Slide](https://josephbarbierdarnal.github.io/talk/src/r-plus-ai-2026/)
 - **Pycon 2026 (in French)**: _"Python outside, Rust inside"_
   - [Slide](https://josephbarbierdarnal.github.io/talk/src/pycon2026/)
 - **Recontres R 2026 (in French)**: _"Ce qui rend R unique : 5 fonctionnalités qui séduisent un développeur Python"_
