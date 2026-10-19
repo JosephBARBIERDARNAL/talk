@@ -81,7 +81,16 @@ echo: true
 
 <center><img src="./interprete-et-compile.png" width="100%"></center>
 
-# D'où ça vient ?
+## D'où ça vient ?
+
+<br>
+<br>
+<br>
+
+- Performance
+- Memory safety
+- Type safety
+- Expérience développeur
 
 ## Performance (⚠️⚠️⚠️)
 
@@ -196,6 +205,7 @@ error[E0277]: cannot add `&str` to `i32`
 
 ## Vibe coding et Rust
 
+<br>
 
 <img src="./rust-vc-1.png" width="600">
 
@@ -205,11 +215,10 @@ error[E0277]: cannot add `&str` to `i32`
 
 ## Commencer Rust
 
-<br>
+![](./rustinifintgy.png){width="800"}
 
-- Les bases : [rustfinity.com](https://www.rustfinity.com/)
-- Implémenter bindings d'un project existant
-- Refaire un de vos projets Python
+- Bindings / rewrite
+- Contribution open source
 
 ## Un mot sur l'IA et l'apprentissage
 
