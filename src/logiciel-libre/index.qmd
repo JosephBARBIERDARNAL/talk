@@ -1,0 +1,72 @@
+---
+title: "Logiciel libre"
+format:
+  revealjs:
+    theme: [default, style.scss]
+    transition: slide
+    background-transition: fade
+    auto-stretch: false
+embed-resources: true
+echo: true
+---
+
+## Definitions
+
+- Open source
+- Logiciel libre
+- Ouvert
+- Propriétaire
+
+## Qui utilise l'open source ?
+
+- Tous les serveurs dans le monde
+- Tous les téléphones Android (~75% des téléphones)
+- Tous les langages de programmation/packages
+- Toutes les technologies autour de l'IA
+- VLC, Firefox, Blender...
+
+## Qui décide ?
+
+<br>
+
+:::: {.columns}
+::: {.column width="40%"}
+
+### Big tech
+
+<br>
+
+- **Google**: Android, Chromium, Tensorflow...
+- **Microsoft**: TypeScript, VS Code, ...
+- **Meta**: Pytorch, React, ...
+
+::: 
+::: {.column width="60%"}
+
+### Et les autres
+
+<center><img src="./meme-opensource.png" width="450"/></center>
+
+:::
+::::
+
+
+## xz utils
+
+<br>
+
+- Environ ~100 millions d'ordinateur qui l'utilisent
+- Collaboration pendant ~2 ans
+- CVSS 10
+- Un seul maintaineur, **Lasse Colin**
+- En 2022: *"I haven't lost interest but my ability to care has been fairly limited mostly due to **longterm mental health issues** but also due to some other things. Recently I've worked off-list a bit with [Jia Tan]{.red} on XZ Utils and perhaps he will have a **bigger role in the future**, we'll see."*
+
+![](./colin.png){width="500"}
+
+- Recommendation : *"L'attaque informatique la plus sophistiquée de l'Histoire, Micode"*
+
+
+## IA et modèles ouverts
+
+
+## Science et logiciel libre
