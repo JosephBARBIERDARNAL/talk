@@ -40,6 +40,13 @@ echo: true
 - **Microsoft**: TypeScript, VS Code, ...
 - **Meta**: Pytorch, React, ...
 
+Rachat récents:
+
+- **OpenAI**: Astral, OpenClaw
+- **Anthropic**: Bun
+- **IBM**: RedHat
+- **CloudFlare**: VoidZero
+
 ::: 
 ::: {.column width="60%"}
 
