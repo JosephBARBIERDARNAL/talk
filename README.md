@@ -2,6 +2,11 @@
 
 <br>
 
+- _"Enjeux du logiciel libre"_
+  - [Slide](https://josephbarbierdarnal.github.io/talk/src/logiciel-libre/)
+
+<br>
+
 - **R+AI conf 2026**: _"50 lines of code to rebuild Claude Code in R"_
   - [Slide](https://josephbarbierdarnal.github.io/talk/src/r-plus-ai-2026/)
 
@@ -12,7 +17,7 @@
 
 <br>
 
-- **Recontres R 2026 (in French)**: _"Ce qui rend R unique : 5 fonctionnalités qui séduisent un développeur Python"_
+- _"Ce qui rend R unique : 5 fonctionnalités qui séduisent un développeur Python"_
   - [Poster](https://josephbarbierdarnal.github.io/talk/src/rencontresR2026/poster.pdf)
 
 <br>
@@ -22,7 +27,7 @@
 
 <br>
 
-- **Private workshop**: _"An introduction to Typst"_
+- _"An introduction to Typst"_
   - [Slide](https://josephbarbierdarnal.github.io/talk/src/introduction-to-typst/)
 
 <br>
