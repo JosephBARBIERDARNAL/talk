@@ -57,6 +57,9 @@ Rachat récents:
 :::
 ::::
 
+##
+
+<center><img src="./meme-opensource-2.jpg" width="500"/></center>
 
 ## xz utils
 
