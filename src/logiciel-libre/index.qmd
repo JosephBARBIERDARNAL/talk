@@ -42,7 +42,7 @@ echo: true
 
 Rachat récents:
 
-- **OpenAI**: Astral, OpenClaw
+- **OpenAI**: Astral
 - **Anthropic**: Bun
 - **IBM**: RedHat
 - **CloudFlare**: VoidZero
