@@ -175,7 +175,14 @@ error[E0277]: cannot add `&str` to `i32`
 
 ## Expérience développeur
 
-<video autoplay loop muted>
+- Formatter? `rustfmt`
+- Linter? `clippy`
+- LSP? `rust-analyzer`
+- Package management? `cargo`
+- Testing? `cargo test`
+- Documentation? `rustdoc`
+
+<video autoplay loop muted width="65%">
   <source src="./rust-usage.mp4" type="video/mp4">
 </video>
 
@@ -183,10 +190,9 @@ error[E0277]: cannot add `&str` to `i32`
 
 ::: {.nonincremental .ecosystem-list}
 
-- `uv`: package/project manager
+- `uv`/`pixi`: package/project manager
 - `ruff`: linter & formatter
-- `ty`: type checker
-- `pyrefly`: type checker
+- `ty`/`pyrefly`: type checker
 - `polars`: data manipulation
 - `pydantic`: data validation
 - `monty`: interpreter
