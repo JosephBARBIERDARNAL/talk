@@ -245,7 +245,7 @@ write_file <- tool(
 
 <center style="font-size:2.5rem;">Next: **run commands**</center>
 
-## Write files
+## Run shell
 
 <br>
 <br>
