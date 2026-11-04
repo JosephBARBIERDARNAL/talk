@@ -371,3 +371,16 @@ img.circle {
   color: #6a994e;
   font-weight: 500;
 }
+
+.big-number {
+  color: $accent;
+  font-size: 2em;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.source {
+  font-size: 0.7em;
+  color: #777777;
+  font-style: italic;
+}
