@@ -155,16 +155,16 @@ Hoffmann, Nagle & Zhou, *The Value of Open Source Software*, Harvard Business Sc
 
 <br>
 
-- **Google**: Android, Chromium, Tensorflow...
+- **Google**: Android, Chromium, TensorFlow...
 - **Microsoft**: TypeScript, VS Code, ...
-- **Meta**: Pytorch, React, ...
+- **Meta**: PyTorch, React, ...
 
-Rachat récents:
+Rachats récents:
 
 - **OpenAI**: Astral
 - **Anthropic**: Bun
-- **IBM**: RedHat
-- **CloudFlare**: VoidZero
+- **IBM**: Red Hat
+- **Cloudflare**: VoidZero
 
 ::: 
 ::: {.column width="60%"}
@@ -180,15 +180,15 @@ Rachat récents:
 
 <br>
 
-- Environ ~100 millions d'ordinateur qui l'utilisent
-- Un seul maintaineur, **Lasse Colin**
+- Environ ~100 millions d'ordinateurs qui l'utilisent
+- Un seul mainteneur, **Lasse Colin**
 - En 2022: *"I haven't lost interest but my ability to care has been fairly limited mostly due to **longterm mental health issues** but also due to some other things. Recently I've worked off-list a bit with [Jia Tan]{.red} on XZ Utils and perhaps he will have a **bigger role in the future**, we'll see."*
 - Collaboration pendant ~2 ans
 - CVSS 10
 
 ![](./colin.png){width="500"}
 
-- Recommendation : *"L'attaque informatique la plus sophistiquée de l'Histoire, Micode"*
+- Recommandation : *"L'attaque informatique la plus sophistiquée de l'Histoire, Micode"*
 
 
 ## IA et modèles ouverts
@@ -294,7 +294,7 @@ Prix Nobel de chimie (AlphaFold)
 <br>
 <br>
 
-Et dans les labos : R, Python, Jupyter, Quarto/Rmarkdown, LaTeX...
+Et dans les labos : R, Python, Jupyter, Quarto/R Markdown, LaTeX...
 
 ## Quand la science dépend d'un logiciel fermé
 
