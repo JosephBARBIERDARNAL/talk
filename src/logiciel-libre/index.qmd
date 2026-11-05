@@ -251,6 +251,7 @@ La quasi-totalité des modèles dits "open source" sont en fait **open weights**
 
 <br>
 
+
 - **Janvier 2025** : DeepSeek publie R1 en MIT
 
   - Nvidia perd **~600 milliards $** en bourse en une journée
