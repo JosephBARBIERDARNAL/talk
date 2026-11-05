@@ -23,9 +23,7 @@ echo: true
 
 <br>
 
-::: {.fragment}
-*"Libre et open source, c'est pareil alors ?"* → **Presque**.
-:::
+*"Libre et open source, c'est pareil ?"* → **Presque**
 
 ## Libre vs open source
 
@@ -178,19 +176,15 @@ Rachat récents:
 :::
 ::::
 
-##
-
-<center><img src="./meme-opensource-2.jpg" width="500"/></center>
-
 ## xz utils
 
 <br>
 
 - Environ ~100 millions d'ordinateur qui l'utilisent
-- Collaboration pendant ~2 ans
-- CVSS 10
 - Un seul maintaineur, **Lasse Colin**
 - En 2022: *"I haven't lost interest but my ability to care has been fairly limited mostly due to **longterm mental health issues** but also due to some other things. Recently I've worked off-list a bit with [Jia Tan]{.red} on XZ Utils and perhaps he will have a **bigger role in the future**, we'll see."*
+- Collaboration pendant ~2 ans
+- CVSS 10
 
 ![](./colin.png){width="500"}
 
@@ -249,16 +243,19 @@ La quasi-totalité des modèles dits "open source" sont en fait **open weights**
 
 <br>
 
-- **Confidentialité** : faire tourner un modèle en local (Ollama, llama.cpp), sans envoyer ses données
+- **Confidentialité** : faire tourner un modèle en local sans envoyer ses données
 - **Souveraineté** : ne pas dépendre de 3 entreprises américaines
 - **Recherche** : on ne peut pas étudier ce qu'on ne peut pas ouvrir
+- **Reproductibilité** : modèle inutilisable au bout de quelques années
 - **Prix** : la concurrence des modèles ouverts fait baisser les prix
 
 <br>
 
-**27 janvier 2025** : DeepSeek publie R1 en MIT
+- **Janvier 2025** : DeepSeek publie R1 en MIT
 
-→ Nvidia perd **~600 milliards $** en bourse en une journée
+  - Nvidia perd **~600 milliards $** en bourse en une journée
+
+- **Octobre 2026** : OpenAI supprime GPT 3.5 de ses services
 
 ## Science et logiciel libre
 
