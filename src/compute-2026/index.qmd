@@ -1,11 +1,12 @@
 ---
 title: "More accessible data science"
 author: "*Compute! Paris 2026*"
+lang: en
 format:
   revealjs:
     theme: [default, style.scss]
-    transition: slide
-    background-transition: fade
+    transition: none
+    background-transition: none
     incremental: false
     auto-stretch: false
 embed-resources: true
@@ -19,7 +20,7 @@ echo: true
 :::: {.columns}
 
 ::: {.column width="30%"}
-![](joseph.png){.circle}
+![](joseph.png){fig-alt="Portrait of Joseph Barbier smiling and resting his cheek on one hand." .circle}
 <div style="font-size:1em;">
    *Joseph*
 
@@ -42,7 +43,7 @@ echo: true
    
    data(viz), Typst, accessibility
 
-   ![](viz.png)
+   ![](viz.png){fig-alt="Collage of maps, charts, and other data visualizations."}
 </div>
 :::
 
@@ -74,37 +75,37 @@ Problem is: accessibility rarely happens by default! which means we need to add 
 
 <br>
 
-![](./graph-example-1.png){width=100% fig-align="center"}
+![](./graph-example-1.png){fig-alt="Two bar charts compare France, Italy, Spain, the UK, and Greece. The pale yellow bars are marked as hard to distinguish; dark blue bars provide stronger contrast." width=100% fig-align="center"}
 
 ## Colorblind-friendly palette
 
 <br>
 
-![](./graph-example-4.png){width=100% fig-align="center"}
+![](./graph-example-4.png){fig-alt="Two scatterplots compare red and green points, which are difficult to distinguish for some viewers, with a colorblind-friendly blue and amber palette." width=100% fig-align="center"}
 
 ## Colorblind-friendly palette + double encoding
 
 <br>
 
-![](./graph-example-5.png){width=100% fig-align="center"}
+![](./graph-example-5.png){fig-alt="Scatterplots use blue and amber colors, then add circle and diamond shapes so the groups can also be distinguished without color." width=100% fig-align="center"}
 
 ## Fonts
 
 <br>
 
-![](./graph-example-2.png){width=100% fig-align="center"}
+![](./graph-example-2.png){fig-alt="Two line charts compare a tiny, hard-to-read label with a larger, clearer label." width=100% fig-align="center"}
 
 ## Fonts
 
 <br>
 
-![](./graph-example-3.png){width=100% fig-align="center"}
+![](./graph-example-3.png){fig-alt="Two line charts compare a small italic label with a larger, more legible label." width=100% fig-align="center"}
 
 ## Fonts
 
 <br>
 
-![](./font-example-1.png){width=100% fig-align="center"}
+![](./font-example-1.png){fig-alt="Text sample comparing letter recognition in two fonts, with the clearer character shapes marked as the better example." width=100% fig-align="center"}
 
 <br>
 
@@ -148,4 +149,4 @@ Want to know more?
 - slides: [github.com/josephbarbierdarnal/talk](https://github.com/JosephBARBIERDARNAL/talk/)
 :::
 
-<center><img src="./bye.png"></center>
+<center><img src="./bye.png" alt=""></center>

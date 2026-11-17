@@ -1,11 +1,12 @@
 ---
 title: "50 lines of code to rebuild Claude Code in R"
 author: "R+AI Conference 2026, *Joseph Barbier*"
+lang: en
 format:
   revealjs:
     theme: [default, style.scss]
-    transition: slide
-    background-transition: fade
+    transition: none
+    background-transition: none
     incremental: false
     auto-stretch: false
 embed-resources: true
@@ -19,7 +20,7 @@ echo: true
 :::: {.columns}
 
 ::: {.column width="35%"}
-![](joseph.png){.circle}
+![](joseph.png){fig-alt="Portrait of Joseph Barbier smiling and resting his cheek on one hand." .circle}
 <div style="font-size:0.9em;">
    *Joseph*
 
@@ -42,7 +43,7 @@ echo: true
 
    **Open source**: dataviz, Typst, accessibility
 
-   ![](viz.png)
+   ![](viz.png){fig-alt="Collage of maps, charts, and other data visualizations."}
 </div>
 :::
 
@@ -53,11 +54,11 @@ echo: true
 :::: {.columns}
 
 ::: {.column width="50%"}
-![](./claude.png)
+![](./claude.png){fig-alt="Screenshot of the Claude chat interface with a “Let’s noodle” prompt box."}
 :::
 
 ::: {.column width="50%"}
-![](./chatgpt.png)
+![](./chatgpt.png){fig-alt="Screenshot of the ChatGPT home screen with its prompt field and suggested actions."}
 :::
 
 ::::
@@ -76,7 +77,7 @@ echo: true
 - [faster]{.green}
 - [doesn't look as good]{.red}
 
-<center><img src="./codex.png" width=70%></center>
+<center><img src="./codex.png" width=70% alt="Screenshot of Codex reviewing source code changes in a development editor."></center>
 
 ## TUI
 
@@ -120,9 +121,9 @@ They are written in [Rust]{.rust} (Codex) or [TypeScript]{.typescript} (Claude C
 
 ## 
 
-<center><img src="./ellmer.png"></center>
+<center><img src="./ellmer.png" alt="Screenshot of the ellmer package website, with its overview, documentation links, and package details."></center>
 
-## Chatbot {auto-animate="true"}
+## Chatbot
 
 <br>
 <br>
@@ -147,7 +148,7 @@ live_console(chat)
 - [ ] Write files
 - [ ] Run commands
 
-## Agent = chat with tools {auto-animate="true"}
+## Agent = chat with tools
 
 <br>
 
@@ -359,4 +360,4 @@ Want to know more?
 - slides: [github.com/josephbarbierdarnal/talk](https://github.com/JosephBARBIERDARNAL/talk/tree/main/src/rencontresR2026)
 :::
 
-<center><img src="./bye.png"></center>
+<center><img src="./bye.png" alt=""></center>

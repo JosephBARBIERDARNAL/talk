@@ -1,11 +1,12 @@
 ---
 title: "Typst in production: turning data into deliverables"
 author: "Joseph Barbier - *Typst meetup, 2026*"
+lang: en
 format:
   revealjs:
     theme: [default, style.scss]
-    transition: slide
-    background-transition: fade
+    transition: none
+    background-transition: none
     auto-stretch: false
 embed-resources: true
 echo: true
@@ -19,7 +20,7 @@ execute:
 
 *(\*thanks to Typst!)*
 
-<center>![](./meme-show-typst-code.png){width="35%"}</center>
+<center>![](./meme-show-typst-code.png){fig-alt="Meme saying “You if I show you my Typst code” above a collage of surprised faces." width="35%"}</center>
 
 - I don't have any tips
 - No best-practice recommendations
@@ -47,7 +48,7 @@ execute:
 :::: {.columns}
 
 ::: {.column width="35%"}
-![](joseph.png){.circle}
+![](joseph.png){fig-alt="Portrait of Joseph Barbier smiling and resting his cheek on one hand." .circle}
 <div style="font-size:0.9em;">
    *Joseph*
 
@@ -71,7 +72,7 @@ execute:
 
    Data(viz)
 
-   ![](viz.png)
+   ![](viz.png){fig-alt="Collage of maps, charts, and other data visualizations."}
 </div>
 :::
 
@@ -95,14 +96,14 @@ execute:
 :::: {.columns}
 
 ::: {.column width="40%"}
-![](./jhu-logo.png)
+![](./jhu-logo.png){fig-alt="Johns Hopkins University logo."}
 :::
 
 ::: {.column width="20%"}
 :::
 
 ::: {.column width="25%"}
-![](./cds-logo.png)
+![](./cds-logo.png){fig-alt="Clarity Data Studio logo, shown as concentric orange and yellow circles."}
 ***made with Clarity Data Studio***
 :::
 
@@ -122,15 +123,15 @@ execute:
 <br>
 <br>
 
-<center><img src="./quarto.png" width="900"></center>
+<center><img src="./quarto.png" width="900" alt="Workflow diagram showing a Quarto document moving through knitr, Markdown, and Pandoc to produce Word, PDF, and web outputs."></center>
 
 ## Reports
 
-![](./parametrized-report.png)
+![](./parametrized-report.png){fig-alt="Diagram showing one Johns Hopkins immunization report template generating multiple state-specific reports."}
 
 ## How it works
 
-![](./jhp-pipeline.png)
+![](./jhp-pipeline.png){fig-alt="Four-step report pipeline: fetch source data, filter for a state, generate charts and statistics, then pass the results to a Typst template; repeat for each state."}
 
 ## Now
 
@@ -170,7 +171,7 @@ Code + Data + Doc
     - external consulting can be expensive
 </div>
 
-<img src="./hr-meme.png" width="500">
+<img src="./hr-meme.png" width="500" alt="Meme comparing a $10,000 consultant fee with a simple survey and PDF report.">
 
 
 ## Approach
@@ -182,7 +183,7 @@ Code + Data + Doc
 That's the core idea.
 </div>
 
-<img src="./meme-typst-consultants.png" width="450">
+<img src="./meme-typst-consultants.png" width="450" alt="Meme showing an expensive funeral and consultants, with the word “Typst” on the grave.">
 
 ## In practice, it's more complex...
 
@@ -195,7 +196,7 @@ That's the core idea.
 
 ## Solution
 
-![](./how-it-works-2.png)
+![](./how-it-works-2.png){fig-alt="Diagram: a client website sends a survey request to a Python server, which returns a PDF report."}
 
 ## What about Typst?
 
@@ -247,7 +248,7 @@ typst.compile(
 - My clients do not care about my tech stack, they just want to "consume" data easily
 - I don't want code to be a limiting factor for what I'm trying to do
 
-<img src="./meme-rust-safe.png" width="400">
+<img src="./meme-rust-safe.png" width="400" alt="Cartoon about Rust memory safety, showing a developer, clients, and users.">
 
 ## How I used to make PDFs\*
 
@@ -297,7 +298,7 @@ typst.compile(
 ::: {.column width="10%"}
 :::
 ::: {.column width="30%"}
-![](./wtf.png)
+![](./wtf.png){fig-alt="Meme showing a confused man surrounded by question marks."}
 :::
 
 ::::
@@ -315,7 +316,7 @@ typst.compile(
   - I can just focus on what matters to the clients/users
 </div>
 
-<img src="./iq-typst.png" width="500">
+<img src="./iq-typst.png" width="500" alt="Bell-curve meme contrasting people who focus only on data with people asking for a fully CSS-compliant parser and dynamic layout dimensions.">
 
 ## Related projects
 

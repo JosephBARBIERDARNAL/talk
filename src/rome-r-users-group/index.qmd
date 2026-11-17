@@ -1,11 +1,12 @@
 ---
 title: "**Less iteration, better charts**<br><span style='font-size: 0.7em;'>Rethinking how we create visualizations</span>"
 author: "<br><br>Joseph Barbier - *Rome R Users Group, 2026*"
+lang: en
 format:
   revealjs:
     theme: [default, style.scss]
-    transition: slide
-    background-transition: fade
+    transition: none
+    background-transition: none
     auto-stretch: false
     incremental: true
 embed-resources: true
@@ -69,7 +70,7 @@ df <- tibble(
 
 ## The default workflow
 
-<center><img src="./wrong-wokflow.png" width="900"></center>
+<center><img src="./wrong-wokflow.png" width="900" alt="Workflow loop that starts by exploring data and building a chart, then repeatedly changes chart type, scales, labels, and colors before asking for feedback."></center>
 
 ## Why this feels natural
 
@@ -95,7 +96,7 @@ df <- tibble(
 :::: {.columns}
 
 ::: {.column width="35%"}
-![](joseph.png){.circle}
+![](joseph.png){fig-alt="Portrait of Joseph Barbier smiling and resting his cheek on one hand." .circle}
 <div style="font-size:0.9em;">
    *Joseph*
 
@@ -119,13 +120,15 @@ df <- tibble(
 
    Data(viz)
 
-   ![](viz.png)
+   ![](viz.png){fig-alt="Collage of maps, charts, and other data visualizations."}
 </div>
 :::
 
 ::::
 
 ## Example
+
+The table lists the first six weekly observations: date, price, units sold, and sales.
 
 ```{r}
 #| fig-height: 5
@@ -142,6 +145,7 @@ df |> head() |> gt()
 
 ```{r}
 #| fig-height: 5
+#| fig-alt: "Line chart of weekly units sold over three years: sales are near 320 units per week, then fall to about 290 after the price increase."
 ggplot(df, aes(x = date, y = unit_sold)) + geom_line()
 ```
 
@@ -151,6 +155,7 @@ Far fewer units sold!
 
 ```{r}
 #| fig-height: 5
+#| fig-alt: "Line chart of weekly sales over three years: sales rise slightly after the price increases from about 100 to 115."
 ggplot(df, aes(x = date, y = sales)) + geom_line()
 ```
 
@@ -160,6 +165,7 @@ But much higher sales!
 
 ```{r}
 #| fig-height: 5
+#| fig-alt: "Two lines share one vertical scale: sales values are much larger than units sold, making the units-sold line appear almost flat."
 ggplot(df, aes(x = date)) +
     geom_line(aes(y = unit_sold)) +
     geom_line(aes(y = sales))
@@ -171,6 +177,7 @@ Wait, what?
 
 ```{r}
 #| fig-height: 5
+#| fig-alt: "Side-by-side line charts show weekly units sold and sales over three years, each with its own vertical scale."
 units_sold <- ggplot(df, aes(x = date, y = unit_sold)) + geom_line()
 sales <- ggplot(df, aes(x = date, y = sales)) + geom_line()
 units_sold + sales
@@ -182,6 +189,7 @@ What a diff! Oh wait, the scale is weird!
 
 ```{r}
 #| fig-height: 4
+#| fig-alt: "Side-by-side line charts of weekly units sold and sales, both starting at zero; the zero-based scales compress the changes."
 units_sold <- ggplot(df, aes(x = date, y = unit_sold)) +
     geom_line() +
     ylim(0, NA)
@@ -195,6 +203,7 @@ Better, but most of the data is useless here
 
 ```{r}
 #| fig-height: 4
+#| fig-alt: "Side-by-side weekly units-sold and sales charts filtered to 2025 onward; the zero-based axes make the remaining changes look small."
 df_filter <- df |> filter(date >= "2025-01-01")
 units_sold <- ggplot(df_filter, aes(x = date, y = unit_sold)) +
     geom_line() +
@@ -210,15 +219,17 @@ The trend isn't really obvious now...
 ```{r}
 #| fig-height: 5
 #| echo: false
+#| fig-alt: "Dual-axis line chart from January 2025 onward. A solid navy line shows units sold, which decline after the price increase; a dashed dark-red line shows sales, which rise slightly."
 ggplot(df_filter, aes(x = date)) +
-    geom_line(aes(y = unit_sold, color = "Units sold")) +
-    geom_line(aes(y = sales / 100, color = "Sales")) +
+    geom_line(aes(y = unit_sold, color = "Units sold", linetype = "Units sold")) +
+    geom_line(aes(y = sales / 100, color = "Sales", linetype = "Sales")) +
     scale_y_continuous(
         name = "Units sold",
         sec.axis = sec_axis(~ . * 100, name = "Sales")
     ) +
-    scale_color_manual(values = c("Units sold" = "blue", "Sales" = "red")) +
-    labs(x = NULL, color = NULL)
+    scale_color_manual(values = c("Units sold" = "#005b91", "Sales" = "#9a2515")) +
+    scale_linetype_manual(values = c("Units sold" = "solid", "Sales" = "dashed")) +
+    labs(x = NULL, color = NULL, linetype = NULL)
 ```
 
 ##
@@ -227,23 +238,23 @@ ggplot(df_filter, aes(x = date)) +
 
 ### Scenario 1
 
-![](./scenario-1.png)
+![](./scenario-1.png){fig-alt="Dual-axis line chart of World GDP and France GDP from 2004 to 2023. World GDP rises gradually while France GDP fluctuates sharply; the separate scales affect how the relationship appears."}
 
 ### Scenario 2
 
-![](./scenario-2.png)
+![](./scenario-2.png){fig-alt="Dual-axis line chart of World GDP and France GDP from 2004 to 2023. World GDP rises steadily while France GDP fluctuates within a narrower range."}
 
 ### Scenario 3
 
-![](./scenario-3.png)
+![](./scenario-3.png){fig-alt="Dual-axis line chart of World GDP and France GDP from 2004 to 2023. World GDP rises strongly while France GDP changes more gradually."}
 
 ### Scenario 4
 
-![](./scenario-4.png)
+![](./scenario-4.png){fig-alt="Dual-axis line chart of World GDP and France GDP from 2004 to 2023. World GDP rises steadily; France GDP fluctuates, drops around 2015, then recovers."}
 
 ### Scenario 5
 
-![](./scenario-5.png)
+![](./scenario-5.png){fig-alt="Dual-axis line chart of World GDP and France GDP from 2004 to 2023. Both lines rise at a similar pace, illustrating how separate scales can make trends look aligned."}
 
 :::
 
@@ -265,6 +276,7 @@ Sources:
 
 ```{r}
 #| fig-height: 5
+#| fig-alt: "Line chart of weekly sales with the vertical axis starting at 30,000, which magnifies the small increase after the price change."
 p <- ggplot(df_filter, aes(x = date, y = sales)) +
     geom_line() +
     ylim(30000, 36500)
@@ -277,6 +289,7 @@ This chart should work with better styling and annotations
 
 ```{r}
 #| fig-height: 5
+#| fig-alt: "The same weekly sales line chart with a minimal theme; its vertical axis starts at 30,000 to emphasize the small change."
 p <- p + theme_minimal()
 p
 ```
@@ -285,6 +298,7 @@ p
 
 ```{r}
 #| fig-height: 5
+#| fig-alt: "The weekly sales chart with axis labels removed; the line rises slightly after the price change."
 p <- p + xlab("") + ylab("")
 p
 ```
@@ -292,6 +306,7 @@ p
 ## Update labels
 
 ```{r}
+#| fig-alt: "The weekly sales chart with dates shown every three months and the vertical axis formatted in thousands of dollars."
 p <- p +
     scale_y_continuous(labels = label_dollar(scale = 1e-3, suffix = "K")) +
     scale_x_date(labels = label_date("%b, %Y"), date_breaks = "3 months")
@@ -301,6 +316,7 @@ p
 ## Increase their size
 
 ```{r}
+#| fig-alt: "The weekly sales chart with larger, bold vertical-axis labels and larger date labels."
 p <- p +
     theme(
         axis.text.x = element_text(size = 10),
@@ -315,6 +331,7 @@ p
 
 ```{r}
 #| echo: false
+#| fig-alt: "The weekly sales chart with a shaded region after the price change and an annotation stating that the price rose from 100 to 115 dollars."
 p <- p +
     annotate(
         "rect",
@@ -342,6 +359,7 @@ p
 
 ```{r}
 #| echo: false
+#| fig-alt: "The annotated weekly sales chart with most grid lines removed; a light horizontal guide remains."
 p <- p +
     theme(
         panel.grid.minor = element_blank(),
@@ -360,6 +378,7 @@ p
 
 ```{r}
 #| echo: false
+#| fig-alt: "The annotated weekly sales chart with the dollar axis moved to the right side."
 p <- p +
     scale_y_continuous(
         labels = label_dollar(scale = 1e-3, suffix = "K"),
@@ -387,7 +406,7 @@ Getting better!
 
 ## Let's do it differently
 
-![](./better-workflow.png)
+![](./better-workflow.png){fig-alt="Workflow diagram: define the goal, make a design, and ask for feedback in an iterative loop before writing code."}
 
 ## Define the goal
 
@@ -407,11 +426,11 @@ Getting better!
 - Canva
 - Excalidraw (personal preference)
 - Pen and paper
-- <span style="color: red; font-weight: normal;">It doesn't matter! Use whatever you prefer</span>
+- <span style="color: #9a2515; font-weight: normal;">It doesn't matter! Use whatever you prefer</span>
 
 ## Create a design
 
-<center><img src="./design-example.png" height="400"></center>
+<center><img src="./design-example.png" height="400" alt="Two bar charts compare sales and units sold before and after a price increase. The marked change is followed by higher average sales and lower average units sold."></center>
 
 - This takes much less time
 - Ask for feedback

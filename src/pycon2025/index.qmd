@@ -1,11 +1,12 @@
 ---
 title: "(presque) Tout ce dont votre package a besoin"
 author: "Joseph Barbier - *PyCon2025*"
+lang: fr
 format:
   revealjs:
     theme: [default, style.scss]
-    transition: slide
-    background-transition: fade
+    transition: none
+    background-transition: none
     incremental: true
     auto-stretch: false
 embed-resources: true
@@ -19,7 +20,7 @@ echo: true
 :::: {.columns}
 
 ::: {.column width="35%"}
-![](joseph.png){.circle}
+![](joseph.png){fig-alt="Portrait de Joseph Barbier, souriant et appuyé sur une main." .circle}
 <div style="font-size:0.9em;">
    *Joseph*
 
@@ -43,7 +44,7 @@ echo: true
 
    Data(viz)
 
-   ![](viz.png)
+   ![](viz.png){fig-alt="Montage de cartes, de graphiques et d’autres visualisations de données."}
 </div>
 :::
 
@@ -100,11 +101,11 @@ def my_super_cool_function(arg):
 :::
 
 ::: {.column width="30%"}
-![](./arrow.svg){width=80%}
+![](./arrow.svg){fig-alt="" width=80%}
 :::
 
 ::: {.column width="50%"}
-![](./pkg.jpg){width=60%}
+![](./pkg.jpg){fig-alt="Illustration d’un paquet Python représenté par une boîte en carton." width=60%}
 :::
 
 ::::
@@ -113,7 +114,7 @@ Facilement **distribuable** et donc **reutilisable** !
 
 ## Le bon package et le mauvais package
 
-![](./meme-bon-mauvais-package.png){width=40%}
+![](./meme-bon-mauvais-package.png){fig-alt="Mème montrant un homme dans un bar, utilisé pour illustrer la différence entre un bon et un mauvais paquet Python." width=40%}
 
 Un bon package **c'est pas (uniquement) une question de code**.
 
@@ -138,9 +139,11 @@ Un bon package **c'est pas (uniquement) une question de code**.
 
 - Tester dans les meilleures conditions
 
-::: {.blur}
+::: {.blur aria-hidden="true"}
 - Créer la meilleure documentation
 :::
+
+<span class="sr-only">Le troisième point est masqué sur cette diapositive.</span>
 
 </div>
 
@@ -179,25 +182,25 @@ Un package ça se décompose en :
 
 <br>
 
-![](./meme-pyproject.jpg){fig-align="center" width="50%"}
+![](./meme-pyproject.jpg){fig-alt="Mème comparant plusieurs façons de configurer un projet Python et présentant pyproject.toml comme le choix central." fig-align="center" width="50%"}
 
 ## Gestion des dépendances
 
 <br>
 
-![](./dependencies-scheme-1.png){width="50%" fig-align="center" }
+![](./dependencies-scheme-1.png){fig-alt="Schéma : le paquet my_cool_package dépend directement de FastAPI et de NumPy." width="50%" fig-align="center"}
 
 ## Gestion des dépendances
 
 <br>
 
-![](./dependencies-scheme-2.png){width="50%" fig-align="center" }
+![](./dependencies-scheme-2.png){fig-alt="Schéma de dépendances montrant my_cool_package, FastAPI et NumPy, ainsi que Starlette et Pydantic utilisés par FastAPI." width="50%" fig-align="center"}
 
 ## Gestion des dépendances
 
 <br>
 
-![](./dependencies-scheme-3.png){width="50%" fig-align="center" }
+![](./dependencies-scheme-3.png){fig-alt="Schéma de dépendances directes et transitives : my_cool_package utilise FastAPI et NumPy; FastAPI entraîne aussi Starlette, Pydantic, AnyIO, Sniffio et Idna." width="50%" fig-align="center"}
 
 ## Gestion des dépendances
 
@@ -207,19 +210,19 @@ Un package ça se décompose en :
 
 ::: {.fragment .column width="30%"}
 
-![](./dependencies-numpy.png)
+![](./dependencies-numpy.png){fig-alt="Sortie du terminal après « uv add numpy » : une dépendance est installée et NumPy 2.3.3 est ajouté."}
 
 :::
 
 ::: {.fragment .column width="30%"}
 
-![](./dependencies-fastapi.png)
+![](./dependencies-fastapi.png){fig-alt="Sortie du terminal après « uv add fastapi » : FastAPI et ses dépendances sont installés dans l’environnement virtuel."}
 
 :::
 
 ::: {.fragment .column width="30%"}
 
-![](./dependencies-morethemes.png)
+![](./dependencies-morethemes.png){fig-alt="Sortie du terminal après « uv add morethemes » : le résolveur installe les dépendances du paquet morethemes."}
 
 :::
 
@@ -255,7 +258,7 @@ Un package ça se décompose en :
 :::: {.columns}
 
 ::: {.column width="30%"}
-![](./meme-testing.jpg)
+![](./meme-testing.jpg){fig-alt="Mème montrant un homme devant un ordinateur avec la question : « Est-ce moi qui teste le code ou le code qui me teste ? »"}
 :::
 
 ::: {.column width="70%"}
@@ -271,7 +274,7 @@ Tester son code ça veut dire quoi ?
 :::{.fragment .fade-in-then-semi-out}
 Il suffit de le faire tourner!
 :::
-:::{.fragment style="color: red; font-weight: bold; font-size: 1.5em; font-style: italic;"}
+:::{.fragment style="color: #9a2515; font-weight: bold; font-size: 1.5em; font-style: italic;"}
 Il suffit de le faire tourner?
 :::
 :::
@@ -302,12 +305,12 @@ Il suffit de le faire tourner?
 :::
 
 ::: {.column width="40%"}
-![](./meme-test.jpg)
+![](./meme-test.jpg){fig-alt="Mème opposant l’intuition « pas de raison que ça ne marche pas » aux vérifications pytest et git push."}
 :::
 
 ::::
 
-## Github actions {auto-animate=true}
+## Github actions
 
 Scrits (yaml) qui se déclenchent dans certaines conditions
 
@@ -334,15 +337,15 @@ Scrits (yaml) qui se déclenchent dans certaines conditions
 → **Et cela tout le temps!**
 :::
 
-## Github actions  {auto-animate=true}
+## Github actions
 
 ::: {data-id="os" style="margin-top: 100px; font-size: 3em;"}
 sur plusieurs OS
 :::
 
-## Github actions  {auto-animate=true}
+## Github actions
 
-::: {data-id="os" style="margin-top: 100px; font-size: 3.2em; color: red;"}
+::: {data-id="os" style="margin-top: 100px; font-size: 3.2em; color: #9a2515;"}
 sur plusieurs OS ???
 :::
 
@@ -360,7 +363,7 @@ Python est interprété, mais peut se comporter différemment en fonction de l'O
 
 # Documentation
 
-![](./boring.jpg)
+![](./boring.jpg){fig-alt="Public endormi pendant une présentation, pour illustrer une documentation ennuyeuse."}
 
 ## Documentation
 
@@ -386,29 +389,30 @@ Pour ça on a besoin de 2 choses:
 
 ## Landing page
 
-![](./doc-emacs.png){width=70% fig-align="center"}
+![](./doc-emacs.png){fig-alt="Capture de la page d’accueil de GNU Emacs avec ses liens de téléchargement et sa documentation." width=70% fig-align="center"}
 
 ## Landing page
 
-![](./doc-vscode.png)
+![](./doc-vscode.png){fig-alt="Capture de la page d’accueil de Visual Studio Code, qui présente l’éditeur open source et son bouton de téléchargement."}
 
 ## Landing page
 
-![](./doc-zed.png)
+![](./doc-zed.png){fig-alt="Capture de la page d’accueil de Zed, qui présente l’éditeur et une fenêtre de code."}
 
 ## Landing page
 
-![](./doc-vim.png)
+![](./doc-vim.png){fig-alt="Capture d’écran de l’éditeur Vim et de sa documentation en ligne."}
 
 ## Exemple parfait: `plotnine`
 
-<video controls width="100%" loop>
-  <source src="./plotnine.mov" type="video/webm" />
+<video controls width="100%" aria-label="Enregistrement d’écran muet du site plotnine, présentant une galerie de graphiques et des exemples de figures prêtes à être publiées.">
+  <source src="./plotnine.mov" type="video/quicktime" />
 </video>
+<p class="sr-only">Vidéo sans son du site plotnine : une galerie de visualisations, une page de démarrage et une référence API sont présentées.</p>
 
 ## Diátaxis framework (**diataxis.fr**)
 
-![](./diataxis.png)
+![](./diataxis.png){fig-alt="Diagramme de Diátaxis : les tutoriels et guides pratiques soutiennent l’apprentissage et l’action; les explications et références soutiennent la compréhension et l’information."}
 
 ## Aller plus loin
 

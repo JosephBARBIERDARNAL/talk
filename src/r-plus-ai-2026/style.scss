@@ -32,7 +32,7 @@ $font-family-sans-serif: "Roboto", sans-serif !default;
 $presentation-heading-font: "Roboto", sans-serif !default;
 
 $presentation-heading-color: $jet !default;
-$presentation-heading-font-weight: light;
+$presentation-heading-font-weight: 400;
 //$presentation-heading-line-height: 2;
 //$presentation-block-margin: 28px;
 $presentation-font-size-root: 28px;
@@ -51,9 +51,9 @@ $selection-bg: #26351c !default;
 
 .reveal p {
   // font-weight: 300;
-  font-weight: light;
+  font-weight: 400;
   margin-top: 0.2em;
-  line-height: 1;
+  line-height: 1.2;
   font-size: 0.8em;
 }
 
@@ -65,14 +65,14 @@ $selection-bg: #26351c !default;
   .title {
     color: $body-color;
     font-size: 1.8em;
-    font-weight: light;
+    font-weight: 400;
   }
 
   .subtitle {
     color: $accent;
     font-style: italic;
     margin-top: 0em;
-    font-weight: light;
+    font-weight: 400;
   }
 
   .author,
@@ -94,7 +94,7 @@ $selection-bg: #26351c !default;
 
 .reveal h2 {
   // font-weight: 350;
-  font-weight: light;
+  font-weight: 400;
   font-size: 1.4em;
 }
 
@@ -102,7 +102,7 @@ $selection-bg: #26351c !default;
   color: $accent;
   font-style: italic;
   // font-weight: 350;
-  font-weight: light;
+  font-weight: 400;
   font-size: 0.95em;
 }
 
@@ -136,7 +136,7 @@ $selection-bg: #26351c !default;
 
 .reveal ul {
   // font-weight: 300;
-  font-weight: light;
+  font-weight: 400;
   padding-left: 16px;
 
   li {
@@ -165,7 +165,7 @@ $selection-bg: #26351c !default;
 
 .reveal ol {
   // font-weight: 300;
-  font-weight: light;
+  font-weight: 400;
   padding-left: 16px;
 
   li::marker {
@@ -223,7 +223,7 @@ $selection-bg: #26351c !default;
   bottom: 6px !important;
   right: 10px !important;
   top: unset !important;
-  color: #777777 !important;
+  color: #595959 !important;
 }
 
 // Beamer-style button link environment
@@ -272,7 +272,7 @@ $selection-bg: #26351c !default;
   border: none; /* Remove internal row lines */
   padding: 0.23em; /* Adjust padding as needed */
   text-align: left; /* Adjust text alignment as needed */
-  font-weight: light; /* Lighter font weight for main table text */
+  font-weight: 400; /* Lighter font weight for main table text */
 }
 
 /* Adds a bottom border to the table header row for distinction */
@@ -363,17 +363,17 @@ img.circle {
 }
 
 .red {
-  color: red;
+  color: #9a2515;
   font-weight: 500;
 }
 
 .green {
-  color: #6a994e;
+  color: #3b6b2a;
   font-weight: 500;
 }
 
 .rust {
-  color: #d44c27;
+  color: #b23a14;
   font-weight: 500;
 }
 
@@ -384,4 +384,40 @@ img.circle {
 
 pre.sourceCode {
   font-size: 1.1rem;
+}
+
+
+.reveal a:not(.button) {
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.reveal a:focus-visible,
+.reveal button:focus-visible,
+.reveal [tabindex]:focus-visible {
+  outline: 3px solid #9a2515;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal *,
+  .reveal *::before,
+  .reveal *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

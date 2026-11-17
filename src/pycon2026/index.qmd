@@ -1,11 +1,12 @@
 ---
 title: "Python outside, Rust inside"
 author: "Joseph Barbier - *PyCon2026*"
+lang: fr
 format:
   revealjs:
     theme: [default, style.scss]
-    transition: slide
-    background-transition: fade
+    transition: none
+    background-transition: none
     incremental: true
     auto-stretch: false
 embed-resources: true
@@ -19,7 +20,7 @@ echo: true
 :::: {.columns}
 
 ::: {.column width="35%"}
-![](joseph.png){.circle}
+![](joseph.png){fig-alt="Portrait de Joseph Barbier, souriant et appuyé sur une main." .circle}
 <div style="font-size:0.9em;">
    *Joseph*
 
@@ -42,7 +43,7 @@ echo: true
 
    **Open source**: dataviz, typst, accessibility
 
-   ![](viz.png)
+   ![](viz.png){fig-alt="Montage de cartes, de graphiques et d’autres visualisations de données."}
 </div>
 :::
 
@@ -53,13 +54,13 @@ echo: true
 :::: {.columns}
 
 ::: {.column width="60%"}
-<img src="./google-trend.png" width="700">
-<img src="./rust-hn.png" width="700">
+<img src="./google-trend.png" width="700" alt="Graphique Google Trends montrant l’intérêt pour Rust en hausse depuis 2014, avec une forte accélération à partir de 2021.">
+<img src="./rust-hn.png" width="700" alt="Capture d’un fil Hacker News où des développeurs expliquent pourquoi ils utilisent Rust.">
 :::
 
 
 ::: {.column width="40%" .nonincremental}
-<img src="./reddit-answer.png" width="700">
+<img src="./reddit-answer.png" width="700" alt="Commentaire Reddit disant que Rust est bien meilleur qu’on ne le pense et que son adoption est une évidence.">
 
 - **Open source**: Linux, Firefox, uv, Deno, bun, ...
 
@@ -79,7 +80,7 @@ echo: true
 
 <br>
 
-<center><img src="./interprete-et-compile.png" width="100%"></center>
+<center><img src="./interprete-et-compile.png" width="100%" alt="Schéma comparant deux flux : un langage interprété passe du code source à l’interpréteur puis à l’exécution; un langage compilé passe du code source à la compilation puis à un exécutable."></center>
 
 ## D'où ça vient ?
 
@@ -96,7 +97,7 @@ echo: true
 
 <br>
 
-<center><img src="./performance-benchmark.png" width="900"></center>
+<center><img src="./performance-benchmark.png" width="900" alt="Benchmark de multiplication matricielle : C++ et Rust prennent environ 0,02 seconde, Go environ 0,03 seconde, et Python et R environ 2,4 secondes."></center>
 
 
 ## Memory safety
@@ -182,9 +183,10 @@ error[E0277]: cannot add `&str` to `i32`
 - Testing? `cargo test`
 - Documentation? `rustdoc`
 
-<video autoplay loop muted width="65%">
+<video controls muted width="65%" aria-label="Enregistrement d’écran muet montrant un éditeur de code avec un fichier Rust et la définition d’une fonction qui construit un moteur Typst.">
   <source src="./rust-usage.mp4" type="video/mp4">
 </video>
+<p class="sr-only">La vidéo montre un fichier Rust ouvert dans un éditeur, avec des imports et une fonction de construction d’un moteur Typst.</p>
 
 ## Ecosystème Python
 
@@ -207,28 +209,28 @@ error[E0277]: cannot add `&str` to `i32`
 <br>
 <br>
 
-<center><img src="./python-call-rust.png"></center>
+<center><img src="./python-call-rust.png" alt="Schéma d’appel entre deux langages : le code Python appelle le code Rust, qui renvoie une valeur et affiche un résultat."></center>
 
 ## Vibe coding et Rust
 
 <br>
 
-<img src="./rust-vc-1.png" width="600">
+<img src="./rust-vc-1.png" width="600" alt="Capture d’un message Reddit affirmant que Rust est le langage idéal pour le vibe coding.">
 
-<img src="./rust-vc-2.png" width="600">
+<img src="./rust-vc-2.png" width="600" alt="Capture d’un article intitulé « Rust: The Unlikely Engine of The Vibe Coding Era ».">
 
-<img src="./rust-vc-3.png" width="600">
+<img src="./rust-vc-3.png" width="600" alt="Question Reddit demandant si Rust est le langage idéal pour le vibe coding grâce à la maturité de ses outils.">
 
 ## Commencer Rust
 
-![](./rustinifintgy.png){width="800"}
+![](./rustinifintgy.png){fig-alt="Capture du site Rust in One Day, qui propose un exercice de code quotidien pour progresser en Rust." width="800"}
 
 - Bindings / rewrite
 - Contribution open source
 
 ## Un mot sur l'IA et l'apprentissage
 
-<center><img src="./robot-ai.png"></center>
+<center><img src="./robot-ai.png" alt="Mème montrant un robot IA à côté d’une personne qui apprend Rust."></center>
 
 ##
 
@@ -246,4 +248,4 @@ Vous voulez en savoir plus ?
 - slides: [github.com/josephbarbierdarnal/talk](https://github.com/JosephBARBIERDARNAL/talk/tree/main/src/rencontresR2026)
 :::
 
-<center><img src="./bye.png"></center>
+<center><img src="./bye.png" alt=""></center>

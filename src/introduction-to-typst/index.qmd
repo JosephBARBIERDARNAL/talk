@@ -1,10 +1,11 @@
 ---
 title: "Introduction to Typst"
+lang: en
 format:
   revealjs:
     theme: [default, style.scss]
-    transition: slide
-    background-transition: fade
+    transition: none
+    background-transition: none
     auto-stretch: false
     incremental: true
 embed-resources: true
@@ -31,7 +32,7 @@ Hey *folks*, how's that _crash course_ going so far?
 - of the document
 ```
 
-![](./example-1.png)
+![](./example-1.png){fig-alt="Screenshot showing Typst markup with headings, emphasis, and a bulleted list beside its rendered document."}
 
 ## A bit of history
 
@@ -50,7 +51,7 @@ Hey *folks*, how's that _crash course_ going so far?
 
 Typst is very fast, thanks to Rust
 
-![](./migration.png)
+![](./migration.png){fig-alt="Screenshot of the Zerodha website with the headline “1.5+ million PDFs in 25 minutes.”"}
 
 - Typst is also a Rust library! Which means there are bindings to it (Python, R, JavaScript & Rust itself)
 

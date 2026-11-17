@@ -1,11 +1,12 @@
 ---
 title: "R et Rust : une histoire d'amour naissante"
 author: "Joseph Barbier - *Rencontres R 2026*"
+lang: fr
 format:
   revealjs:
     theme: [default, style.scss]
-    transition: slide
-    background-transition: fade
+    transition: none
+    background-transition: none
     incremental: true
     auto-stretch: false
 embed-resources: true
@@ -16,20 +17,20 @@ echo: true
 
 <br>
 
-<center><img src="./memegirls.png" width="900"></center>
+<center><img src="./memegirls.png" width="900" alt="Mème avec deux personnes : l’une parle de Rust, tandis que l’autre s’intéresse à R."></center>
 
 ## Pourquoi venir parler de Rust ?
 
 :::: {.columns}
 
 ::: {.column width="60%"}
-<img src="./google-trend.png" width="700">
-<img src="./rust-hn.png" width="700">
+<img src="./google-trend.png" width="700" alt="Graphique Google Trends montrant l’intérêt pour Rust en hausse depuis 2014, avec une forte accélération à partir de 2021.">
+<img src="./rust-hn.png" width="700" alt="Capture d’un fil Hacker News où des développeurs expliquent pourquoi ils utilisent Rust.">
 :::
 
 
 ::: {.column width="40%" .nonincremental}
-<img src="./reddit-answer.png" width="700">
+<img src="./reddit-answer.png" width="700" alt="Commentaire Reddit disant que Rust est bien meilleur qu’on ne le pense et que son adoption est une évidence.">
 
 - **Open source**: Linux, Firefox, uv, Deno, bun, ...
 
@@ -59,7 +60,7 @@ echo: true
 
 <br>
 
-<center><img src="./interprete-et-compile.png" width="100%"></center>
+<center><img src="./interprete-et-compile.png" width="100%" alt="Schéma comparant deux flux : un langage interprété passe du code source à l’interpréteur puis à l’exécution; un langage compilé passe du code source à la compilation puis à un exécutable."></center>
 
 # D'où ça vient ?
 
@@ -67,7 +68,7 @@ echo: true
 
 <br>
 
-<center><img src="./performance-benchmark.png" width="900"></center>
+<center><img src="./performance-benchmark.png" width="900" alt="Benchmark de multiplication matricielle : C++ et Rust prennent environ 0,02 seconde, Go environ 0,03 seconde, et Python et R environ 2,4 secondes."></center>
 
 
 ## Memory safety
@@ -146,9 +147,10 @@ error[E0277]: cannot add `&str` to `i32`
 
 ## Expérience développeur
 
-<video autoplay loop muted>
+<video controls muted aria-label="Enregistrement d’écran muet montrant un éditeur de code avec un fichier Rust et la définition d’une fonction qui construit un moteur Typst.">
   <source src="./rust-usage.mp4" type="video/mp4">
 </video>
+<p class="sr-only">La vidéo montre un fichier Rust ouvert dans un éditeur, avec des imports et une fonction de construction d’un moteur Typst.</p>
 
 ## Ecosystème Python
 
@@ -195,7 +197,7 @@ error[E0277]: cannot add `&str` to `i32`
 
 <div class="project-description">Quarto version 2</div>
 
-![](./q2.png)
+![](./q2.png){fig-alt="Statistiques de langages d’un dépôt GitHub : Rust 40,2 %, C 29 %, CSS 20,8 % et TypeScript 7 %; le dépôt compte dix contributeurs."}
 
 :::
 
@@ -205,7 +207,7 @@ error[E0277]: cannot add `&str` to `i32`
 
 <div class="project-description">Gestion des dépendances et paquets R</div>
 
-![](./rv.png)
+![](./rv.png){fig-alt="Statistiques d’un dépôt GitHub dominé par Rust, avec 98,3 % de code Rust et 1,7 % de Shell."}
 
 :::
 
@@ -215,7 +217,7 @@ error[E0277]: cannot add `&str` to `i32`
 
 <div class="project-description">Grammaire des graphiques et SQL</div>
 
-![](./ggsql.png)
+![](./ggsql.png){fig-alt="Statistiques de langages d’un dépôt GitHub : R 38,3 %, C 31,4 % et Fortran 23,6 %."}
 
 :::
 
@@ -223,7 +225,7 @@ error[E0277]: cannot add `&str` to `i32`
 
 ## Appeler Rust depuis R : `extendr`
 
-<center ><img src="./extendr.png" width="650" style="border: 1px solid black"></center>
+<center ><img src="./extendr.png" width="650" style="border: 1px solid black" alt="Capture de la page du projet extendr, qui présente des outils pour créer des paquets R rapides avec Rust."></center>
 
 ## 
 
@@ -267,7 +269,7 @@ hello()
 :::: {.columns}
 
 ::: {.column width="50%"}
-<img src="./meme-language-war.png">
+<img src="./meme-language-war.png" alt="Mème illustrant l’alliance entre R et Rust et demandant si R est meilleur que Rust.">
 :::
 
 ::: {.column width="50%"}
@@ -279,7 +281,7 @@ hello()
 
 ## Un mot sur l'IA
 
-<center><img src="./robot-ai.png"></center>
+<center><img src="./robot-ai.png" alt="Mème montrant un robot IA à côté d’une personne qui apprend Rust."></center>
 
 ##
 
@@ -297,4 +299,4 @@ Vous voulez en savoir plus ?
 - slides: [github.com/josephbarbierdarnal/talk](https://github.com/JosephBARBIERDARNAL/talk/tree/main/src/rencontresR2026)
 :::
 
-<center><img src="./bye.png"></center>
+<center><img src="./bye.png" alt=""></center>

@@ -1,10 +1,11 @@
 ---
 title: "Enjeux du logiciel libre"
+lang: fr
 format:
   revealjs:
     theme: [default, style.scss]
-    transition: slide
-    background-transition: fade
+    transition: none
+    background-transition: none
     auto-stretch: false
 embed-resources: true
 echo: true
@@ -14,12 +15,18 @@ echo: true
 
 <br>
 
-| | Lire le code | Modifier | Redistribuer | Usage commercial |
-|---|:---:|:---:|:---:|:---:|
-| **Logiciel libre** | ✅ | ✅ | ✅ | ✅ |
-| **Open source** | ✅ | ✅ | ✅ | ✅ |
-| **"Ouvert"** | ✅ | ⚠️ | ⚠️ | ❌ |
-| **Propriétaire** | ❌ | ❌ | ❌ | 💰 |
+<table>
+<caption class="sr-only">Comparaison des droits selon le type de logiciel.</caption>
+<thead>
+<tr><th scope="col">Type de logiciel</th><th scope="col">Lire le code</th><th scope="col">Modifier</th><th scope="col">Redistribuer</th><th scope="col">Usage commercial</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Logiciel libre</th><td>Oui</td><td>Oui</td><td>Oui</td><td>Oui</td></tr>
+<tr><th scope="row">Open source</th><td>Oui</td><td>Oui</td><td>Oui</td><td>Oui</td></tr>
+<tr><th scope="row">« Ouvert »</th><td>Oui</td><td>Partiellement</td><td>Partiellement</td><td>Non</td></tr>
+<tr><th scope="row">Propriétaire</th><td>Non</td><td>Non</td><td>Non</td><td>Payant</td></tr>
+</tbody>
+</table>
 
 <br>
 
@@ -74,12 +81,18 @@ On voit le code... mais on ne peut pas en faire un concurrent.
 
 <br>
 
-| Projet | Avant | Après | Réponse | Retour ? |
-|---|---|---|---|---|
-| **MongoDB** (2018) | AGPL | SSPL | Clone AWS DocumentDB | ❌ |
-| **Elasticsearch** (2021) | Apache 2.0 | SSPL / Elastic License | Fork [OpenSearch]{.green} | AGPL (2024) |
-| **Terraform** (2023) | MPL | BSL | Fork [OpenTofu]{.green} | ❌ (racheté par IBM) |
-| **Redis** (2024) | BSD | RSAL / SSPL | Fork [Valkey]{.green} | AGPL (2025) |
+<table>
+<caption class="sr-only">Exemples de changements de licence et de leurs conséquences.</caption>
+<thead>
+<tr><th scope="col">Projet</th><th scope="col">Licence avant</th><th scope="col">Licence après</th><th scope="col">Réponse</th><th scope="col">Retour ?</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">MongoDB (2018)</th><td>AGPL</td><td>SSPL</td><td>Clone AWS DocumentDB</td><td>Non</td></tr>
+<tr><th scope="row">Elasticsearch (2021)</th><td>Apache 2.0</td><td>SSPL / Elastic License</td><td>Fork <span class="green">OpenSearch</span></td><td>AGPL (2024)</td></tr>
+<tr><th scope="row">Terraform (2023)</th><td>MPL</td><td>BSL</td><td>Fork <span class="green">OpenTofu</span></td><td>Non (racheté par IBM)</td></tr>
+<tr><th scope="row">Redis (2024)</th><td>BSD</td><td>RSAL / SSPL</td><td>Fork <span class="green">Valkey</span></td><td>AGPL (2025)</td></tr>
+</tbody>
+</table>
 
 <br>
 
@@ -171,7 +184,7 @@ Rachats récents:
 
 ### Et les autres
 
-<center><img src="./meme-opensource.png" width="450"/></center>
+<center><img src="./meme-opensource.png" width="450" alt="Dessin montrant l’infrastructure numérique moderne reposant sur une seule personne qui maintient un projet bénévole depuis 2005."></center>
 
 :::
 ::::
@@ -186,7 +199,7 @@ Rachats récents:
 - Collaboration pendant ~2 ans
 - CVSS 10
 
-![](./colin.png){width="500"}
+![](./colin.png){fig-alt="Graphiques des contributions à un dépôt GitHub : un contributeur a effectué beaucoup plus de commits que les trois autres." width="500"}
 
 - Recommandation : *"L'attaque informatique la plus sophistiquée de l'Histoire, Micode"*
 
@@ -225,13 +238,19 @@ Données + code → entraînement → **poids**
 
 <br>
 
-| Modèle | Poids | Code | Données | Licence |
-|---|:---:|:---:|:---:|---|
-| **GPT-5, Claude, Gemini** | ❌ | ❌ | ❌ | Propriétaire (API) |
-| **Llama** (Meta) | ✅ | ⚠️ | ❌ | [Llama License]{.red} (max 700M utilisateurs) |
-| **DeepSeek R1** | ✅ | ⚠️ | ❌ | MIT |
-| **Qwen, Mistral, gpt-oss** | ✅ | ⚠️ | ❌ | Apache 2.0 (en général) |
-| **OLMo** (Ai2) | ✅ | ✅ | ✅ | [Apache 2.0]{.green} |
+<table>
+<caption class="sr-only">Comparaison de l’ouverture des poids, du code et des données de plusieurs modèles.</caption>
+<thead>
+<tr><th scope="col">Modèle</th><th scope="col">Poids ouverts</th><th scope="col">Code ouvert</th><th scope="col">Données ouvertes</th><th scope="col">Licence</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">GPT-5, Claude, Gemini</th><td>Non</td><td>Non</td><td>Non</td><td>Propriétaire (API)</td></tr>
+<tr><th scope="row">Llama (Meta)</th><td>Oui</td><td>Partiellement</td><td>Non</td><td><span class="red">Llama License</span> (max 700M utilisateurs)</td></tr>
+<tr><th scope="row">DeepSeek R1</th><td>Oui</td><td>Partiellement</td><td>Non</td><td>MIT</td></tr>
+<tr><th scope="row">Qwen, Mistral, gpt-oss</th><td>Oui</td><td>Partiellement</td><td>Non</td><td>Apache 2.0 (en général)</td></tr>
+<tr><th scope="row">OLMo (Ai2)</th><td>Oui</td><td>Oui</td><td>Oui</td><td><span class="green">Apache 2.0</span></td></tr>
+</tbody>
+</table>
 
 <br>
 
