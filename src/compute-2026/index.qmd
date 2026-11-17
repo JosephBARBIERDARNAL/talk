@@ -1,0 +1,151 @@
+---
+title: "More accessible data science"
+author: "*Compute! Paris 2026*"
+format:
+  revealjs:
+    theme: [default, style.scss]
+    transition: slide
+    background-transition: fade
+    incremental: false
+    auto-stretch: false
+embed-resources: true
+echo: true
+---
+
+## About
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="30%"}
+![](joseph.png){.circle}
+<div style="font-size:1em;">
+   *Joseph*
+
+   <br><br>
+
+   <a href="https://barbierjoseph.com">barbierjoseph.com</a>
+
+   <a href="https://ysunflower.com">ysunflower.com</a>
+
+</div>
+:::
+
+::: {.column width="15%"}
+:::
+
+::: {.column width="50%"}
+<div style="font-size: 1.2em;">
+   
+   **Consulting / open source**:
+   
+   data(viz), Typst, accessibility
+
+   ![](viz.png)
+</div>
+:::
+
+::::
+
+## Digital accessibility
+
+ensuring that people with disabilities can perceive, understand, navigate, and interact with digital content and services.
+
+- visual: blindness, low vision, color blindness or light sensitivity
+- auditive: deafness and hearing loss
+- physical: difficulty using a mouse, touchscreen or keyboard
+- neurological: dyslexia, motion sensitivity, etc
+
+## Accessibility and data science
+
+- accessibility of the tools we use: IDEs, Jupyter, spreadsheets, BI tools, documentation
+- accessibility of the outputs we produce: dashboards, charts (static or interactive), PDFs, web reports, slides
+
+## The goal
+
+Make people autonomous, reliable and let them chose the tool they want not because of its accessibility features.
+
+Problem is: accessibility rarely happens by default! which means we need to add intent to ensure it
+
+# Accessibility in data visualization
+
+## Color contrast
+
+<br>
+
+![](./graph-example-1.png){width=100% fig-align="center"}
+
+## Colorblind-friendly palette
+
+<br>
+
+![](./graph-example-4.png){width=100% fig-align="center"}
+
+## Colorblind-friendly palette + double encoding
+
+<br>
+
+![](./graph-example-5.png){width=100% fig-align="center"}
+
+## Fonts
+
+<br>
+
+![](./graph-example-2.png){width=100% fig-align="center"}
+
+## Fonts
+
+<br>
+
+![](./graph-example-3.png){width=100% fig-align="center"}
+
+## Fonts
+
+<br>
+
+![](./font-example-1.png){width=100% fig-align="center"}
+
+<br>
+
+<center><span style='weight: bold; font-family: "Atkinson Hyperlegible", sans-serif; font-size: 1.6em; background-color: black; color: white; padding: 18px 25px'>Atkinson Hyperlegible</span></center>
+
+## Dashboards, interactive graph, web apps
+
+- keyboard navigation
+- visible focus
+- no hover only effects
+
+## Existing projects
+
+- realcolor
+- matplotalt
+- verapdf/page
+
+## *"nobody is my team has disabilities"*
+
+- are you sure?
+- can people with disabilities join your team?
+
+## what you should do now
+
+- check whether the required tools you used are accessible
+- check whether what you produce is accessible
+
+##
+
+<div style="display: flex; justify-content: center; font-size: 3em;">
+Thanks!
+</div>
+
+Want to know more?
+
+
+::: {.nonincremental}
+- let's chat!
+- LinkedIn: Joseph Barbier
+- email: `joseph@ysunflower.com`
+- slides: [github.com/josephbarbierdarnal/talk](https://github.com/JosephBARBIERDARNAL/talk/)
+:::
+
+<center><img src="./bye.png"></center>
