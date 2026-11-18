@@ -24,10 +24,6 @@ echo: true
 <div style="font-size:1em;">
    *Joseph*
 
-   <br><br>
-
-   <a href="https://barbierjoseph.com">barbierjoseph.com</a>
-
    <a href="https://ysunflower.com">ysunflower.com</a>
 
 </div>
@@ -60,7 +56,7 @@ ensuring that people with disabilities can perceive, understand, navigate, and i
 
 ## Accessibility and data science
 
-- accessibility of the tools we use: IDEs, Jupyter, spreadsheets, BI tools, documentation
+- accessibility of the tools we use: IDEs, notebooks, spreadsheets, BI tools, documentation
 - accessibility of the outputs we produce: dashboards, charts (static or interactive), PDFs, web reports, slides
 
 ## The goal
@@ -111,7 +107,83 @@ Problem is: accessibility rarely happens by default! which means we need to add 
 
 <center><span style='weight: bold; font-family: "Atkinson Hyperlegible", sans-serif; font-size: 1.6em; background-color: black; color: white; padding: 18px 25px'>Atkinson Hyperlegible</span></center>
 
-## Dashboards, interactive graph, web apps
+# **Documents & reports**:<br>PDF, HTML, docx, pptx, ...
+
+## Semantic structure
+
+<br>
+
+<div style="font-size: 2.1em;">
+
+
+```md
+# Title
+
+### A subtitle
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
+```
+
+<br>
+
+```md
+# Title
+
+## A subtitle
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
+```
+
+</div>
+
+## Reading order
+
+## Alternative text
+
+<center><img src="./bye.png" alt="A brown bear standing upright in water, waving a paw."></center>
+
+<div style="font-size: 1.8em;">
+   
+> *"A brown bear standing upright in water, waving a paw."*
+   
+</div>
+
+##
+
+<br>
+<br>
+
+![](./this-is-not-text.png){width="50%"}
+
+<br>
+<br>
+
+<div style="font-size: 3.2em; font-family: 'Atkinson Hyperlegible'; margin-left: 20px">
+   
+This is text
+
+</div>
+
+##
+
+<br>
+<br>
+
+<div style="font-size: 2.5em;">
+
+<h3>This is an heading</h3>
+
+<br>
+
+<span style="font-style: italic; font-weight: 400; font-size: 1.20em; color: #107895;">This is not an heading</span>
+
+</div>
+
+## Dashboards, interactive charts, web apps
 
 - keyboard navigation
 - visible focus
@@ -129,6 +201,8 @@ Problem is: accessibility rarely happens by default! which means we need to add 
 - can people with disabilities join your team?
 
 ## what you should do now
+
+accessibility in a lot of small, easy-to-fix things!
 
 - check whether the required tools you used are accessible
 - check whether what you produce is accessible
@@ -149,4 +223,4 @@ Want to know more?
 - slides: [github.com/josephbarbierdarnal/talk](https://github.com/JosephBARBIERDARNAL/talk/)
 :::
 
-<center><img src="./bye.png" alt=""></center>
+<center><img src="./bye.png" alt="A brown bear standing upright in water, waving a paw."></center>
