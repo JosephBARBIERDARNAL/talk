@@ -73,11 +73,37 @@ Problem is: accessibility rarely happens by default! which means we need to add 
 
 ![](./graph-example-1.png){fig-alt="Two bar charts compare France, Italy, Spain, the UK, and Greece. The pale yellow bars are marked as hard to distinguish; dark blue bars provide stronger contrast." width=100% fig-align="center"}
 
+<div style="display:flex; justify-content:center; align-items:center; gap:1.5em; margin-top:0.25em; font-size:0.9em;">
+<div><span style="display:inline-block; width:0.8em; height:0.8em; background:#FCEDA3; vertical-align:middle;"></span> Yellow bars on white: <strong>1.18:1</strong></div>
+<div><span style="display:inline-block; width:0.8em; height:0.8em; background:#204FA9; vertical-align:middle;"></span> Blue bars on white: <strong>7.63:1</strong></div>
+</div>
+
+## Color contrast
+
+<br><br>
+
+<div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0.5em 0.8em; margin:0.35em 0 0.5em;">
+<div style="padding:0.35em 0.5em; text-align:center;">
+<div style="color:#B3B3B3; font-size:1.7em; font-weight:700; line-height:1.1;">Sample text</div>
+<div style="font-size:1.25em; font-weight:700;">2.1:1</div>
+</div>
+<div style="border:4px solid #C00000; padding:0.35em 0.5em; text-align:center;">
+<div style="color:#777777; font-size:1.7em; font-weight:700; line-height:1.1;">Sample text</div>
+<div style="font-size:1.25em; font-weight:700;">4.48:1</div>
+</div>
+<div style="padding:0.35em 0.5em; text-align:center;">
+<div style="color:#595959; font-size:1.7em; font-weight:700; line-height:1.1;">Sample text</div>
+<div style="font-size:1.25em; font-weight:700;">7:1</div>
+</div>
+<div style="padding:0.35em 0.5em; text-align:center;">
+<div style="color:#000000; font-size:1.7em; font-weight:700; line-height:1.1;">Sample text</div>
+<div style="font-size:1.25em; font-weight:700;">21:1</div>
+</div>
+</div>
+
 ## Colorblind-friendly palette
 
-<br>
-
-![](./graph-example-4.png){fig-alt="Two scatterplots compare red and green points, which are difficult to distinguish for some viewers, with a colorblind-friendly blue and amber palette." width=100% fig-align="center"}
+![](./graph-example-4.png){fig-alt="Two scatterplots compare red and green points, which are difficult to distinguish for some viewers, with a colorblind-friendly blue and amber palette." width=80% fig-align="center"}
 
 ## Colorblind-friendly palette + double encoding
 
@@ -107,7 +133,7 @@ Problem is: accessibility rarely happens by default! which means we need to add 
 
 <center><span style='weight: bold; font-family: "Atkinson Hyperlegible", sans-serif; font-size: 1.6em; background-color: black; color: white; padding: 18px 25px'>Atkinson Hyperlegible</span></center>
 
-# **Documents & reports**:<br>PDF, HTML, docx, pptx, ...
+# **Documents & reports**:<br>PDF, HTML, markdown, Word...
 
 ## Semantic structure
 
