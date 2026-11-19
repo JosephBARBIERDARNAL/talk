@@ -47,25 +47,79 @@ echo: true
 
 ## Digital accessibility
 
-ensuring that people with disabilities can perceive, understand, navigate, and interact with digital content and services.
+<br>
 
-- visual: blindness, low vision, color blindness or light sensitivity
-- auditive: deafness and hearing loss
-- physical: difficulty using a mouse, touchscreen or keyboard
-- neurological: dyslexia, motion sensitivity, etc
+<div style="font-size: 1.8em;">
+   
+> *Ensuring that people with disabilities can **perceive**, **understand**, **navigate**, and **interact** with digital content/services/softwares/...*
+   
+</div>
+
+<br>
+
+
+<div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:0.5em; justify-items:center; align-items:center; margin-top:0.35em;">
+  <svg role="img" aria-label="Visual accessibility" viewBox="0 0 64 64" width="4.5em" height="4.5em" fill="none" stroke="#107895" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 32s9-17 27-17 27 17 27 17-9 17-27 17S5 32 5 32Z"/>
+    <circle cx="32" cy="32" r="8"/>
+  </svg>
+  <svg role="img" aria-label="Auditory accessibility" viewBox="0 0 64 64" width="4.5em" height="4.5em" fill="none" stroke="#107895" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19 26a13 13 0 0 1 26 0c0 8-5 11-9 15-3 3-3 7-4 10-1 3-4 5-7 4-4-1-5-5-4-9 2-7 8-10 10-15 2-5-1-9-5-9-3 0-5 2-5 5"/>
+    <path d="M32 37c3-3 6-5 6-10"/>
+  </svg>
+  <svg role="img" aria-label="Physical accessibility" viewBox="0 0 64 64" width="4.5em" height="4.5em" fill="none" stroke="#107895" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 32V15a4 4 0 0 1 8 0v15-20a4 4 0 0 1 8 0v20-16a4 4 0 0 1 8 0v19-11a4 4 0 0 1 8 0v17c0 11-7 19-18 19h-5c-6 0-10-3-14-8L9 39a4 4 0 0 1 6-5l9 8"/>
+  </svg>
+  <svg role="img" aria-label="Neurological accessibility" viewBox="0 0 64 64" width="4.5em" height="4.5em" fill="none" stroke="#107895" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 10c-4-5-13-4-15 3-7-1-12 6-9 12-6 4-5 13 1 16-2 7 4 13 11 12 3 7 12 7 15 1V14c0-2-1-3-3-4Z"/>
+    <path d="M32 10c4-5 13-4 15 3 7-1 12 6 9 12 6 4 5 13-1 16 2 7-4 13-11 12-3 7-12 7-15 1"/>
+    <path d="M20 20c5 1 7 5 6 9m-14 4c5-2 9 0 10 4m-4 10c4-3 8-3 11 0m15-27c-5 1-7 5-6 9m14 4c-5-2-9 0-10 4m4 10c-4-3-8-3-11 0"/>
+  </svg>
+</div>
 
 ## Accessibility and data science
 
-- accessibility of the tools we use: IDEs, notebooks, spreadsheets, BI tools, documentation
-- accessibility of the outputs we produce: dashboards, charts (static or interactive), PDFs, web reports, slides
+<br><br>
 
-## The goal
+:::: {.columns}
 
-Make people autonomous, reliable and let them chose the tool they want not because of its accessibility features.
+::: {.column width="45%"}
 
-Problem is: accessibility rarely happens by default! which means we need to add intent to ensure it
+**Tools we use**: IDEs, notebooks, spreadsheets, BI tools, documentation
 
-# Accessibility in data visualization
+![](./tools.png)
+
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+
+**Outputs we produce**: dashboards, charts, PDFs, web reports, slides
+
+![](./outputs.png)
+
+:::
+
+::::
+
+## Goal
+
+<br>
+<br>
+
+<div style="font-size: 1.8em;">
+   
+> *Make people autonomous, reliable and let them chose the tool they want not because of its accessibility features.*
+
+<br>
+   
+Problem is: accessibility rarely happens by default! which means we need to **add intent** to ensure it
+
+</div>
+
+# Data visualization
 
 ## Color contrast
 
@@ -91,7 +145,7 @@ Problem is: accessibility rarely happens by default! which means we need to add 
 <div style="color:#777777; font-size:1.7em; font-weight:700; line-height:1.1;">Sample text</div>
 <div style="font-size:1.25em; font-weight:700;">4.48:1</div>
 </div>
-<div style="padding:0.35em 0.5em; text-align:center;">
+<div style="border:4px solid #53b602; padding:0.35em 0.5em; text-align:center;">
 <div style="color:#595959; font-size:1.7em; font-weight:700; line-height:1.1;">Sample text</div>
 <div style="font-size:1.25em; font-weight:700;">7:1</div>
 </div>
@@ -211,9 +265,9 @@ This is text
 
 ## Dashboards, interactive charts, web apps
 
-- keyboard navigation
-- visible focus
-- no hover only effects
+<video controls width="100%">
+  <source src="./keyboard-demo.mp4" type="video/mp4" />
+</video>
 
 ## Existing projects
 
