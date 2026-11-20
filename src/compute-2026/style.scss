@@ -101,7 +101,6 @@ $selection-bg: #26351c !default;
 
 .reveal h3 {
   color: $accent;
-  font-style: italic;
   // font-weight: 350;
   font-weight: 400;
   font-size: 0.95em;
@@ -386,7 +385,6 @@ img.circle {
 pre.sourceCode {
   font-size: 1.1rem;
 }
-
 
 .reveal a:not(.button) {
   text-decoration: underline;
