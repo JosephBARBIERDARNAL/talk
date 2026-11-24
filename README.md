@@ -2,6 +2,11 @@
 
 <br>
 
+- **Compute! 2026**: _"More accessible data science"_
+  - [Slide](https://josephbarbierdarnal.github.io/talk/src/compute-2026/)
+
+<br>
+
 - _"Enjeux du logiciel libre"_
   - [Slide](https://josephbarbierdarnal.github.io/talk/src/logiciel-libre/)
 

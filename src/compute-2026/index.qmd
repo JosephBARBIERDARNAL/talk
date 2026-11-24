@@ -53,7 +53,7 @@ execute:
 
 <div style="font-size: 1.8em;">
    
-> *Ensuring that people with disabilities can **perceive**, **understand**, **navigate**, and **interact** with digital content/services/softwares/...*
+> *Ensuring that people with disabilities can **perceive**, **understand**, **navigate**, and **interact** with digital content/services/software/...*
    
 </div>
 
@@ -85,7 +85,28 @@ execute:
 
 <div style="font-size: 1.6em;">
 
-- Less than **1% of PDF** meet accessibility standards
+**Not just a good practice, a legal requirement!**
+
+</div>
+
+<br>
+
+- **1990** — Americans with Disabilities Act (US)
+- **2005** — French Disability Law (France)
+- **2016** — Web Accessibility Directive (EU)
+- **2025** — European Accessibility Act (EU, applicable since June)
+
+<br>
+
+> Non-compliance can result in lawsuits, financial penalties or market restrictions.
+
+## Digital accessibility
+
+<br>
+
+<div style="font-size: 1.6em;">
+
+- Less than **1% of PDFs** meet accessibility standards
 - Less than **4.1% of web pages** meet accessibility standards
 
 </div>
@@ -103,8 +124,8 @@ execute:
 
 ### References
 
-- *PDF Trends 2026: the production, structure, and accessibility of 20,000,000 PDFs*, PDF Association
-- *WebAIM Million: The 2026 report on the accessibility of the top 1,000,000 home pages*, WebAIM
+- *PDF Trends 2026: the production, structure, and accessibility of 20,000,000 PDFs*, **PDF Association**
+- *WebAIM Million: The 2026 report on the accessibility of the top 1,000,000 home pages*, **WebAIM**
 
 
 ## Accessibility and data science
@@ -117,7 +138,7 @@ execute:
 
 **Tools we use**: IDEs, notebooks, spreadsheets, BI tools, documentation
 
-![](./tools.png)
+![](./tools.png){fig-alt="Logos of VS Code, PyCharm, Jupyter, Excel, and Power BI."}
 
 :::
 
@@ -128,7 +149,7 @@ execute:
 
 **Outputs we produce**: dashboards, charts, PDFs, web reports, slides
 
-![](./outputs.png)
+![](./outputs.png){fig-alt="Collage of a dashboard, a Jupyter notebook with interactive bar charts, and a PDF report on childhood immunization."}
 
 :::
 
@@ -141,21 +162,21 @@ execute:
 
 <div style="font-size: 1.8em;">
    
-> *Make people autonomous, reliable and let them chose the tool they need not because of its accessibility features.*
+> *Make people autonomous and reliable, and let them choose the tool they need, not because of its accessibility features.*
 
 <br>
    
-Problem is: accessibility rarely happens by default! which means we need to **add intent** to ensure it
+Problem is: accessibility rarely happens by default! Which means we need to **add intent** to ensure it.
 
 </div>
 
 ##
 
-![](./transform-1.png){width="90%"}
+![](./transform-1.png){fig-alt="Diagram of a typical data workflow: (1) a data source is transformed into (2) a database, which is visualized and calculated into (3) charts and stats, rendered into (4) a PDF, and sent to (5) the client." width="90%"}
 
 ## 
 
-![](./transform-2.png){width="90%"}
+![](./transform-2.png){fig-alt="Same data workflow diagram, with step 3 (charts and stats) highlighted." width="90%"}
 
 # Data visualization
 
@@ -198,7 +219,7 @@ Problem is: accessibility rarely happens by default! which means we need to **ad
 
 <center>
 
-![](./colorblindness.png){width="60%"}
+![](./colorblindness.png){fig-alt="Four color wheels showing how the same colors look with normal vision, deuteranopia, protanopia, and tritanopia. With deuteranopia and protanopia, reds and greens become yellows and browns; with tritanopia, blues and yellows become teals and pinks." width="60%"}
 
 </center>
 
@@ -232,13 +253,17 @@ Problem is: accessibility rarely happens by default! which means we need to **ad
 
 <br>
 
-<center><span style='weight: bold; font-family: "Atkinson Hyperlegible", sans-serif; font-size: 1.6em; background-color: black; color: white; padding: 18px 25px'>Atkinson Hyperlegible</span></center>
+<center><span style='font-weight: bold; font-family: "Atkinson Hyperlegible", sans-serif; font-size: 1.6em; background-color: black; color: white; padding: 18px 25px'>Atkinson Hyperlegible</span></center>
 
-# **Documents & reports**:<br>PDF, HTML, markdown, Word...
+## 
+
+![](./transform-3.png){fig-alt="Same data workflow diagram, with steps 4 and 5 (rendering the PDF and sending it to the client) highlighted." width="90%"}
+
+# **Documents & reports**:<br>PDF, HTML, Markdown, Word...
 
 ##
 
-![](./meme-semantic.png)
+![](./meme-semantic.png){fig-alt="“Always has been” meme: an astronaut looks at Earth, covered with HTML, PDF, Markdown, and Word logos, and says “Wait, it's all just semantics?” A second astronaut, pointing a gun at them from behind, replies “Always has been.”"}
 
 ## Semantic structure
 
@@ -286,7 +311,7 @@ enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
 <br>
 <br>
 
-![](./this-is-not-text.png){width="50%"}
+![](./this-is-not-text.png){fig-alt="Image of the words “This is not text”." width="50%"}
 
 <br>
 <br>
@@ -304,56 +329,103 @@ This is text
 
 <div style="font-size: 2.5em;">
 
-<h3>This is an heading</h3>
+<h3>This is a heading</h3>
 
 <br>
 
-<span style="font-weight: 400; font-size: 1.20em; color: #107895;">This is not an heading</span>
+<span style="font-weight: 400; font-size: 1.20em; color: #107895;">This is not a heading</span>
 
 </div>
 
 ## Dashboards, interactive charts, web apps
 
-<video controls width="100%">
+<video autoplay loop muted playsinline controls width="100%" aria-label="Screen recording demonstrating keyboard navigation of an interactive chart.">
   <source src="./keyboard-demo.mp4" type="video/mp4" />
 </video>
 
-## *"nobody is my team has disabilities"*
+# What's next?
 
-- are you sure?
-- can people with disabilities join your team?
+## What's next?
 
-## What's next
+<div style="font-size:1.4em;">
 
-### Tools
+Accessibility can be viewed as an **engineering problem**!
 
-IDEs · notebooks · spreadsheets · BI tools
+- automate accessibility validation
+- good vs. great accessibility
+  
+</div>
 
-### Outputs
+## What's next?
 
-<div style="font-size: 0.72em; line-height: 1.8em;">
-PDF: <a href="https://github.com/veraPDF/veraPDF-library"><svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="0.9em" height="0.9em" style="vertical-align: -0.1em; margin-right: 0.2em; fill: currentColor;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>veraPDF/veraPDF-library</a><br>
-HTML: <a href="https://github.com/dequelabs/axe-core"><svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="0.9em" height="0.9em" style="vertical-align: -0.1em; margin-right: 0.2em; fill: currentColor;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>dequelabs/axe-core</a><br>
+<br>
+
+<div style="font-size: 1.2em; line-height: 2.2em;">
+
+<center style="font-size:1.2em;">Accessibility audit!</center>
+
+<br>
+<br>
+<br>
+
+PDF: <a href="https://github.com/veraPDF/veraPDF-library"><svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="0.9em" height="0.9em" style="vertical-align: -0.1em; margin-right: 0.2em; fill: currentColor;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>veraPDF/veraPDF-library</a>
+<br>
+HTML: <a href="https://github.com/dequelabs/axe-core"><svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="0.9em" height="0.9em" style="vertical-align: -0.1em; margin-right: 0.2em; fill: currentColor;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>dequelabs/axe-core</a>
+<br>
 Markdown: <a href="https://github.com/DavidAnson/markdownlint"><svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="0.9em" height="0.9em" style="vertical-align: -0.1em; margin-right: 0.2em; fill: currentColor;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>DavidAnson/markdownlint</a>
 </div>
 
-## Good news
 
-Accessibility is in many cases an engineering problem!
+## Colorblindness simulators
 
-- automate accessibility audits
-- automate accessibility requirements
-- good VS great accessibility
+<br>
+
+<div style="font-size: 1.2em; line-height: 2.2em;">
+R: <a href="https://github.com/clauswilke/colorblindr"><svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="0.9em" height="0.9em" style="vertical-align: -0.1em; margin-right: 0.2em; fill: currentColor;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>clauswilke/colorblindr</a>
+<br>
+Python: <a href="https://github.com/y-sunflower/realcolor"><svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="0.9em" height="0.9em" style="vertical-align: -0.1em; margin-right: 0.2em; fill: currentColor;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>y-sunflower/realcolor</a>
+</div>
+
+![](./realcolor.png){fig-alt="A line chart with two groups in blue and orange, with an arrow pointing to four simulated versions of it: deuteranopia, protanopia, tritanopia, and desaturated."}
+
+## Alt text generators
+
+<br>
+
+<div style="font-size: 1.2em; line-height: 2.2em;">
+R: <a href="https://github.com/y-sunflower/ggalttext"><svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="0.9em" height="0.9em" style="vertical-align: -0.1em; margin-right: 0.2em; fill: currentColor;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>y-sunflower/ggalttext</a>
+<br>
+Python: <a href="https://github.com/make4all/matplotalt"><svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="0.9em" height="0.9em" style="vertical-align: -0.1em; margin-right: 0.2em; fill: currentColor;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>make4all/matplotalt</a>
+</div>
+
+![](./alttext.png){fig-alt="The code generate_alt_text(plot) applied to a faceted area chart titled “Popularity of American names in the previous 30 years” returns the description: “Area chart split into 6 small charts arranged in a 2-row by 3-column grid, titled ‘Popularity of American names in the previous 30 years’.”"}
+
+## Screen reader testing
+
+<br>
+
+<div style="font-size: 1.2em; line-height: 2.2em;">
+Windows: <a href="https://github.com/nvaccess/nvda"><svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="0.9em" height="0.9em" style="vertical-align: -0.1em; margin-right: 0.2em; fill: currentColor;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>nvaccess/nvda</a>
+<br>
+Linux: <a href="https://gitlab.gnome.org/GNOME/orca"><svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="0.9em" height="0.9em" style="vertical-align: -0.1em; margin-right: 0.2em; fill: currentColor;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>GNOME/orca</a>
+<br>
+macOS / iOS: <a href="https://www.apple.com/accessibility/vision/">VoiceOver</a> (built-in)
+<br>
+Android: <a href="https://github.com/google/talkback">TalkBack</a> (built-in)
+</div>
+
+<br>
+<br>
+
+<center style="font-size: 1.4em;">
+
+**Passing an accessibility audit doesn't guarantee accessibility!**
+
+</center>
 
 ## AI & accessibility
 
-<center><img src="./meme-ai.png" width="60%"></center>
-
-# Accessibility by design
-
-## 
-
-![](./transform-3.png){width="60%"}
+<center><img src="./meme-ai.png" width="60%" alt="Meme: a hand offers a human brain, and a man in a suit raises his palm to refuse it, with the caption “No thanks i use ai”."></center>
 
 ##
 
