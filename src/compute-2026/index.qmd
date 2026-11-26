@@ -53,7 +53,7 @@ execute:
 
 <div style="font-size: 1.8em;">
    
-> *Ensuring that people with disabilities can **perceive**, **understand**, **navigate**, and **interact** with digital content/services/software/...*
+> *Ensuring that people with disabilities can **perceive**, **understand**, **navigate**, and **interact** with digital content, services, software, and more.*
    
 </div>
 
@@ -85,11 +85,15 @@ execute:
 
 <div style="font-size: 1.6em;">
 
-**Not just a good practice, a legal requirement!**
+**Not just a good practice, but a legal requirement!**
 
 </div>
 
 <br>
+<br>
+<br>
+
+<div style="font-size: 1.2em;">
 
 - **1990** — Americans with Disabilities Act (US)
 - **2005** — French Disability Law (France)
@@ -98,7 +102,9 @@ execute:
 
 <br>
 
-> Non-compliance can result in lawsuits, financial penalties or market restrictions.
+> Non-compliance can result in lawsuits, financial penalties, or market restrictions.
+
+</div>
 
 ## Digital accessibility
 
@@ -155,18 +161,16 @@ execute:
 
 ::::
 
-## Goal
+## Problem
 
+<br>
+<br>
 <br>
 <br>
 
 <div style="font-size: 1.8em;">
    
-> *Make people autonomous and reliable, and let them choose the tool they need, not because of its accessibility features.*
-
-<br>
-   
-Problem is: accessibility rarely happens by default! Which means we need to **add intent** to ensure it.
+Accessibility rarely happens by default, which means we need to **be intentional** about ensuring it.
 
 </div>
 
@@ -347,7 +351,10 @@ This is text
 
 ## What's next?
 
-<div style="font-size:1.4em;">
+<br>
+<br>
+
+<div style="font-size:1.6em;">
 
 Accessibility can be viewed as an **engineering problem**!
 
@@ -398,7 +405,7 @@ R: <a href="https://github.com/y-sunflower/ggalttext"><svg aria-hidden="true" fo
 Python: <a href="https://github.com/make4all/matplotalt"><svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="0.9em" height="0.9em" style="vertical-align: -0.1em; margin-right: 0.2em; fill: currentColor;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>make4all/matplotalt</a>
 </div>
 
-![](./alttext.png){fig-alt="The code generate_alt_text(plot) applied to a faceted area chart titled “Popularity of American names in the previous 30 years” returns the description: “Area chart split into 6 small charts arranged in a 2-row by 3-column grid, titled ‘Popularity of American names in the previous 30 years’.”"}
+![](./alttext.png){fig-alt="The code generate_alt_text(plot), applied to a faceted area chart titled “Popularity of American names in the previous 30 years,” returns this description: “Area chart split into 6 small charts arranged in a 2-row by 3-column grid, titled ‘Popularity of American names in the previous 30 years’.”"}
 
 ## Screen reader testing
 
@@ -427,7 +434,7 @@ Android: <a href="https://github.com/google/talkback">TalkBack</a> (built-in)
 
 <center><img src="./meme-ai.png" width="50%" alt="Meme: a hand offers a human brain, and a man in a suit raises his palm to refuse it, with the caption “No thanks i use ai”."></center>
 
-<a href="https://github.com/y-sunflower/data-science-accessibility"><svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="0.9em" height="0.9em" style="vertical-align: -0.1em; margin-right: 0.2em; fill: currentColor;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>y-sunflower/data-science-accessibility</a>
+Read only skill: <a href="https://github.com/y-sunflower/data-science-accessibility"><svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="0.9em" height="0.9em" style="vertical-align: -0.1em; margin-right: 0.2em; fill: currentColor;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>y-sunflower/data-science-accessibility</a>
 
 ##
 
@@ -439,7 +446,7 @@ Want to know more?
 
 
 ::: {.nonincremental}
-- let's chat!
+- Let's chat!
 - LinkedIn: Joseph Barbier
 - email: `joseph@ysunflower.com`
 - slides: [github.com/josephbarbierdarnal/talk](https://github.com/JosephBARBIERDARNAL/talk/)
